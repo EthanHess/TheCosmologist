@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 
-static NSString * const BASE_URL = @"";
+static NSString * const BASE_URL = @"https://api.nasa.gov/planetary/apod";
 
 static NSString *const API_KEY = @"";
 

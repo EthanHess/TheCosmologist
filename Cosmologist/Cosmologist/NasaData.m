@@ -22,6 +22,7 @@
         self.dateString = dictionary[dateKey];
         self.urlString = dictionary[urlKey];
         self.hdurlString = dictionary[hdurlKey];
+        self.mediaType = dictionary[mediaTypeKey]; 
         
     }
     

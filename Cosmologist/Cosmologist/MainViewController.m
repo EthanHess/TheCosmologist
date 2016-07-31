@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "NasaDataController.h"
 #import "NasaData.h"
+@import WebKit;
 
 @interface MainViewController ()
 
@@ -61,13 +62,43 @@
             
             NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
             
-            self.pictureView.image = [UIImage imageWithData:pictureData];
-            self.pictureTitle.text = dataClass.title;
+            if ([dataClass.mediaType isEqualToString:@"video"]) {
+                
+                [self setUpViewForVideoWithURLString:urlString];
+            }
+            
+            else {
+                
+                self.pictureView.image = [UIImage imageWithData:pictureData];
+                self.pictureTitle.text = dataClass.title;
+            }
         }
-        
-        
     }];
     
+}
+
+- (void)setUpViewForPicture {
+    
+    
+    
+}
+
+//use webview to play youtube videos
+
+- (void)setUpViewForVideoWithURLString:(NSURL *)urlString {
+    
+
+    CGFloat width = self.pictureView.frame.size.width;
+    CGFloat height = self.pictureView.frame.size.height;
+    
+    NSString *htmlString = [NSString stringWithFormat:@"<iframe width=\"%f\" height=\"%f\" src=\"%@/\" frameborder=\"0\" allowfullscreen></iframe>", width, height, (NSString *)urlString];
+
+    
+    UIWebView *webView = [[UIWebView alloc]initWithFrame:self.pictureView.bounds];
+    [webView loadHTMLString:htmlString baseURL:nil];
+    webView.mediaPlaybackRequiresUserAction = NO;
+    webView.allowsInlineMediaPlayback = YES;
+    [self.view addSubview:webView];
 }
 
 - (void)didReceiveMemoryWarning {

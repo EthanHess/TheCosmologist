@@ -14,6 +14,7 @@ static NSString *const hdurlKey = @"hdurl";
 static NSString *const copyrightKey = @"copyright";
 static NSString *const dateKey = @"date";
 static NSString *const explanationKey = @"explanation";
+static NSString *const mediaTypeKey = @"media_type";
 
 @interface NasaData : NSObject
 
@@ -23,6 +24,7 @@ static NSString *const explanationKey = @"explanation";
 @property (nonatomic, strong) NSString *copyright;
 @property (nonatomic, strong) NSString *dateString;
 @property (nonatomic, strong) NSString *explanation;
+@property (nonatomic, strong) NSString *mediaType; 
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 

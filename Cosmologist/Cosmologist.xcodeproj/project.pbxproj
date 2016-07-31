@@ -21,6 +21,8 @@
 		27EEB7881D3D9D4F00F46FBC /* NasaDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EEB7871D3D9D4F00F46FBC /* NasaDataController.m */; };
 		27F3A4A21D4A67CD002DC4DA /* SoundData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3A4A11D4A67CD002DC4DA /* SoundData.m */; };
 		27F3A4A51D4C0675002DC4DA /* SoundCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3A4A41D4C0675002DC4DA /* SoundCell.m */; };
+		27F3A4AC1D4D2C0E002DC4DA /* MarsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3A4AB1D4D2C0E002DC4DA /* MarsData.m */; };
+		27F3A4AF1D4D2F63002DC4DA /* MarsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F3A4AE1D4D2F63002DC4DA /* MarsViewController.m */; };
 		C72AE5AEC010BA1F1421C8D2 /* libPods-Cosmologist.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D20A8C4868DCE1693107C5 /* libPods-Cosmologist.a */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,10 @@
 		27F3A4A11D4A67CD002DC4DA /* SoundData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundData.m; sourceTree = "<group>"; };
 		27F3A4A31D4C0675002DC4DA /* SoundCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundCell.h; sourceTree = "<group>"; };
 		27F3A4A41D4C0675002DC4DA /* SoundCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundCell.m; sourceTree = "<group>"; };
+		27F3A4AA1D4D2C0E002DC4DA /* MarsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarsData.h; sourceTree = "<group>"; };
+		27F3A4AB1D4D2C0E002DC4DA /* MarsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarsData.m; sourceTree = "<group>"; };
+		27F3A4AD1D4D2F63002DC4DA /* MarsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarsViewController.h; sourceTree = "<group>"; };
+		27F3A4AE1D4D2F63002DC4DA /* MarsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarsViewController.m; sourceTree = "<group>"; };
 		620DCD7D5BEACBC2B8D1CD56 /* Pods-Cosmologist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmologist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cosmologist/Pods-Cosmologist.debug.xcconfig"; sourceTree = "<group>"; };
 		7B9E0C4039BF3EAF1D37FADC /* Pods-Cosmologist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmologist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cosmologist/Pods-Cosmologist.release.xcconfig"; sourceTree = "<group>"; };
 		A5D20A8C4868DCE1693107C5 /* libPods-Cosmologist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cosmologist.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +103,8 @@
 				27EEB77E1D3D804F00F46FBC /* ToggleTableViewController.m */,
 				27CFF6111D496A52003668BC /* DetailViewController.h */,
 				27CFF6121D496A52003668BC /* DetailViewController.m */,
+				27F3A4AD1D4D2F63002DC4DA /* MarsViewController.h */,
+				27F3A4AE1D4D2F63002DC4DA /* MarsViewController.m */,
 				27EEB7771D3D797600F46FBC /* SWRevealViewController.h */,
 				27EEB7781D3D797600F46FBC /* SWRevealViewController.m */,
 				27F3A4A71D4C06B0002DC4DA /* Controllers */,
@@ -126,6 +134,8 @@
 				27CFF60F1D494017003668BC /* NasaData.m */,
 				27F3A4A01D4A67CD002DC4DA /* SoundData.h */,
 				27F3A4A11D4A67CD002DC4DA /* SoundData.m */,
+				27F3A4AA1D4D2C0E002DC4DA /* MarsData.h */,
+				27F3A4AB1D4D2C0E002DC4DA /* MarsData.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -292,6 +302,8 @@
 				27EEB7201D3C82FB00F46FBC /* AppDelegate.m in Sources */,
 				27CFF6131D496A52003668BC /* DetailViewController.m in Sources */,
 				27F3A4A21D4A67CD002DC4DA /* SoundData.m in Sources */,
+				27F3A4AF1D4D2F63002DC4DA /* MarsViewController.m in Sources */,
+				27F3A4AC1D4D2C0E002DC4DA /* MarsData.m in Sources */,
 				27EEB7881D3D9D4F00F46FBC /* NasaDataController.m in Sources */,
 				27EEB7821D3D897300F46FBC /* MainViewController.m in Sources */,
 				27F3A4A51D4C0675002DC4DA /* SoundCell.m in Sources */,
