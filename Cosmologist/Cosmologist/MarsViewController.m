@@ -9,6 +9,7 @@
 #import "MarsViewController.h"
 #import "NasaDataController.h"
 #import "MarsData.h"
+#import "MarsTableViewCell.h"
 
 @interface MarsViewController ()
 
@@ -29,12 +30,15 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
-    [self getNasaInfo];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+         [self getNasaInfo];
+    });
 }
 
 - (void)getNasaInfo {
     
-    [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)@"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=nKSlklNflzmjDb9rOForb7kQBrS5xLhhnEaDgNvv" andCompletion:^(NSArray *nasaArray) {
+    [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)@"" andCompletion:^(NSArray *nasaArray) {
         
         //NSLog(@"%@", nasaArray);
         
@@ -90,16 +94,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"marsCell"];
+    MarsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"marsCell"];
     
-    MarsData *data = _marsDataArray[indexPath.row];
+    //get priority queue so table view doesn't freeze
     
-    NSURL *urlString = [NSURL URLWithString:data.imageURLString];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        MarsData *data = _marsDataArray[indexPath.row];
     
-    NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
+        NSURL *urlString = [NSURL URLWithString:data.imageURLString];
     
-    cell.imageView.image = [UIImage imageWithData:pictureData];
-    cell.textLabel.text = data.landingDateString;
+        NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+                   
+        cell.marsImageView.image = [UIImage imageWithData:pictureData];
+        cell.dateLabel.text = data.landingDateString;
+        
+    });
+        
+    });
     
     return cell;
 }

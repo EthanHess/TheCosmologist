@@ -16,7 +16,10 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *pictureView;
 @property (strong, nonatomic) IBOutlet UILabel *pictureTitle;
+@property (strong, nonatomic) IBOutlet UILabel *imageOrVideoLabel;
+@property (strong, nonatomic) IBOutlet UIWebView *webView;
 
+//add activity view controller
 
 @end
 
@@ -25,7 +28,18 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self getImageData];
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        
+//        [self getImageData];
+//        
+//    });
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        [self getImageData];
+        
+    });
+ 
 }
 
 - (void)viewDidLoad {
@@ -64,7 +78,7 @@
             
             if ([dataClass.mediaType isEqualToString:@"video"]) {
                 
-                [self setUpViewForVideoWithURLString:urlString];
+                [self setUpViewForVideoWithURLString:urlString andTitle:dataClass.title];
             }
             
             else {
@@ -85,7 +99,7 @@
 
 //use webview to play youtube videos
 
-- (void)setUpViewForVideoWithURLString:(NSURL *)urlString {
+- (void)setUpViewForVideoWithURLString:(NSURL *)urlString andTitle:(NSString *)title {
     
 
     CGFloat width = self.pictureView.frame.size.width;
@@ -94,11 +108,14 @@
     NSString *htmlString = [NSString stringWithFormat:@"<iframe width=\"%f\" height=\"%f\" src=\"%@/\" frameborder=\"0\" allowfullscreen></iframe>", width, height, (NSString *)urlString];
 
     
-    UIWebView *webView = [[UIWebView alloc]initWithFrame:self.pictureView.bounds];
-    [webView loadHTMLString:htmlString baseURL:nil];
-    webView.mediaPlaybackRequiresUserAction = NO;
-    webView.allowsInlineMediaPlayback = YES;
-    [self.view addSubview:webView];
+    [_webView loadHTMLString:htmlString baseURL:nil];
+    _webView.mediaPlaybackRequiresUserAction = NO;
+    _webView.allowsInlineMediaPlayback = YES;
+    [_webView setContentMode:UIViewContentModeScaleAspectFit];
+    
+    
+    self.pictureTitle.text = title;
+    self.imageOrVideoLabel.text = @"Video of the day!"; 
 }
 
 - (void)didReceiveMemoryWarning {

@@ -28,8 +28,8 @@
     
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     
-    manager.requestSerializer=[AFHTTPRequestSerializer serializer];
-    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         
         [manager GET:urlString parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
             

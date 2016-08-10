@@ -214,17 +214,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jyz-Q1-62w">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="310" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jyz-Q1-62w">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="marsCell" id="uPf-ZT-0rs">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="marsCell" rowHeight="310" id="uPf-ZT-0rs" customClass="MarsTableViewCell">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="310"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uPf-ZT-0rs" id="anD-4l-tNo">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="309.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="McT-Mn-0VU">
+                                                    <rect key="frame" x="8" y="63" width="584" height="239"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYH-76-D6A">
+                                                    <rect key="frame" x="8" y="8" width="584" height="47"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="47" id="kRt-Ms-az8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="McT-Mn-0VU" firstAttribute="top" secondItem="RYH-76-D6A" secondAttribute="bottom" constant="8" symbolic="YES" id="0rl-cM-Ap8"/>
+                                                <constraint firstItem="RYH-76-D6A" firstAttribute="trailing" secondItem="anD-4l-tNo" secondAttribute="trailingMargin" id="8Lh-Rt-rln"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="McT-Mn-0VU" secondAttribute="bottom" constant="-0.5" id="EQD-PO-XaC"/>
+                                                <constraint firstItem="RYH-76-D6A" firstAttribute="leading" secondItem="McT-Mn-0VU" secondAttribute="leading" id="Ghe-h1-Qyq"/>
+                                                <constraint firstItem="RYH-76-D6A" firstAttribute="top" secondItem="anD-4l-tNo" secondAttribute="topMargin" id="cGI-08-f8W"/>
+                                                <constraint firstItem="RYH-76-D6A" firstAttribute="trailing" secondItem="McT-Mn-0VU" secondAttribute="trailing" id="dAh-cf-T4d"/>
+                                                <constraint firstItem="RYH-76-D6A" firstAttribute="leading" secondItem="anD-4l-tNo" secondAttribute="leadingMargin" id="fSk-SB-7Sh"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="RYH-76-D6A" id="w9f-aN-ps3"/>
+                                            <outlet property="marsImageView" destination="McT-Mn-0VU" id="OLF-xW-RCN"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -410,11 +437,19 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mm-UG-X3g">
+                                <rect key="frame" x="0.0" y="155" width="600" height="353"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="7mm-UG-X3g" firstAttribute="leading" secondItem="O3U-d4-gQO" secondAttribute="leading" id="0eR-yJ-vTV"/>
+                            <constraint firstItem="7mm-UG-X3g" firstAttribute="top" secondItem="5UK-AL-6pw" secondAttribute="bottom" constant="91" id="3rc-2M-WMv"/>
+                            <constraint firstItem="7mm-UG-X3g" firstAttribute="centerY" secondItem="O3U-d4-gQO" secondAttribute="centerY" id="6ch-kp-Usf"/>
                             <constraint firstAttribute="trailing" secondItem="O3U-d4-gQO" secondAttribute="trailing" id="HRI-3w-bww"/>
                             <constraint firstItem="O3U-d4-gQO" firstAttribute="top" secondItem="5UK-AL-6pw" secondAttribute="bottom" id="cCQ-bi-NzU"/>
+                            <constraint firstItem="7mm-UG-X3g" firstAttribute="trailing" secondItem="O3U-d4-gQO" secondAttribute="trailing" id="d8k-Lx-Zch"/>
                             <constraint firstAttribute="bottom" secondItem="O3U-d4-gQO" secondAttribute="bottom" constant="1" id="hbU-uu-Bd4"/>
                             <constraint firstItem="O3U-d4-gQO" firstAttribute="leading" secondItem="vAt-Ao-GO3" secondAttribute="leading" id="ucm-wR-m1a"/>
                         </constraints>
@@ -423,9 +458,11 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="organize" id="OLi-Aa-aqp"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="imageOrVideoLabel" destination="NrZ-lY-qB8" id="IpP-cQ-F4z"/>
                         <outlet property="leftBarButton" destination="OLi-Aa-aqp" id="Uo8-fa-qnX"/>
                         <outlet property="pictureTitle" destination="Jox-CF-GbN" id="tNL-u8-bBn"/>
                         <outlet property="pictureView" destination="0ye-V9-6hA" id="RZD-di-ZM2"/>
+                        <outlet property="webView" destination="7mm-UG-X3g" id="sSA-7w-PuO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6L2-Gx-Qai" userLabel="First Responder" sceneMemberID="firstResponder"/>

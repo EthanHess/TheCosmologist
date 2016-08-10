@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 277522D21D5547FB0099D511 /* MarsTableViewCell.m */; };
 		27CFF6101D494017003668BC /* NasaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CFF60F1D494017003668BC /* NasaData.m */; };
 		27CFF6131D496A52003668BC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CFF6121D496A52003668BC /* DetailViewController.m */; };
 		27EEB71D1D3C82FB00F46FBC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EEB71C1D3C82FB00F46FBC /* main.m */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		277522D11D5547FB0099D511 /* MarsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarsTableViewCell.h; sourceTree = "<group>"; };
+		277522D21D5547FB0099D511 /* MarsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarsTableViewCell.m; sourceTree = "<group>"; };
 		27CFF60E1D494017003668BC /* NasaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NasaData.h; sourceTree = "<group>"; };
 		27CFF60F1D494017003668BC /* NasaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NasaData.m; sourceTree = "<group>"; };
 		27CFF6111D496A52003668BC /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 			children = (
 				27F3A4A31D4C0675002DC4DA /* SoundCell.h */,
 				27F3A4A41D4C0675002DC4DA /* SoundCell.m */,
+				277522D11D5547FB0099D511 /* MarsTableViewCell.h */,
+				277522D21D5547FB0099D511 /* MarsTableViewCell.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 				27EEB7881D3D9D4F00F46FBC /* NasaDataController.m in Sources */,
 				27EEB7821D3D897300F46FBC /* MainViewController.m in Sources */,
 				27F3A4A51D4C0675002DC4DA /* SoundCell.m in Sources */,
+				277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */,
 				27EEB71D1D3C82FB00F46FBC /* main.m in Sources */,
 				27EEB77F1D3D804F00F46FBC /* ToggleTableViewController.m in Sources */,
 			);
