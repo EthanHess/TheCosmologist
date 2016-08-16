@@ -7,12 +7,22 @@
 //
 
 #import "SoundCell.h"
+#import "Constants.h"
 
 @implementation SoundCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    _soundPlayButton.layer.cornerRadius = 10;
+    _soundStopButton.layer.cornerRadius = 10;
+    
+    _soundPlayButton.layer.borderColor = [[UIColor darkGrayColor]CGColor];
+    _soundPlayButton.layer.borderWidth = 5;
+    
+    _soundStopButton.layer.borderColor = [[UIColor darkGrayColor]CGColor];
+    _soundStopButton.layer.borderWidth = 5;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -31,6 +41,11 @@
     
     [self playAudioFileAtURL:fullUrl];
     
+}
+
+- (IBAction)stopPlaying:(id)sender {
+    
+    [self.player replaceCurrentItemWithPlayerItem:nil]; 
 }
 
 - (void)playAudioFileAtURL:(NSURL *)url {

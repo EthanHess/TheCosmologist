@@ -11,7 +11,7 @@
 
 static NSString * const BASE_URL = @"https://api.nasa.gov/planetary/apod";
 
-static NSString *const API_KEY = @"";
+static NSString *const API_KEY = @"?api_key=nKSlklNflzmjDb9rOForb7kQBrS5xLhhnEaDgNvv";
 
 @interface NasaDataController : NSObject
 

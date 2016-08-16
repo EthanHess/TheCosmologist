@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "NasaDataController.h"
 #import "NasaData.h"
+#import "Constants.h"
 @import WebKit;
 
 @interface MainViewController ()
@@ -18,8 +19,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *pictureTitle;
 @property (strong, nonatomic) IBOutlet UILabel *imageOrVideoLabel;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
-//add activity view controller
 
 @end
 
@@ -28,22 +29,21 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        
-//        [self getImageData];
-//        
-//    });
+    [_activityIndicator setHidesWhenStopped:YES]; 
+    [_activityIndicator startAnimating];
+    self.pictureTitle.text = @"Loading";
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         
         [self getImageData];
         
     });
- 
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _webView.hidden = YES;
     
     SWRevealViewController *revealController = self.revealViewController;
     
@@ -60,7 +60,9 @@
 
 - (void)getImageData {
     
-    [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)@"" andCompletion:^(NSArray *nasaArray) {
+    NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/planetary/apod?api_key=%@", NASA_API_KEY];
+    
+    [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
         
         //NSLog(@"ARRAY %@", nasaArray);
         
@@ -79,12 +81,16 @@
             if ([dataClass.mediaType isEqualToString:@"video"]) {
                 
                 [self setUpViewForVideoWithURLString:urlString andTitle:dataClass.title];
+                
+                [_activityIndicator stopAnimating];
             }
             
             else {
                 
                 self.pictureView.image = [UIImage imageWithData:pictureData];
                 self.pictureTitle.text = dataClass.title;
+                
+                [_activityIndicator stopAnimating];
             }
         }
     }];
@@ -101,6 +107,7 @@
 
 - (void)setUpViewForVideoWithURLString:(NSURL *)urlString andTitle:(NSString *)title {
     
+    _webView.hidden = NO;
 
     CGFloat width = self.pictureView.frame.size.width;
     CGFloat height = self.pictureView.frame.size.height;

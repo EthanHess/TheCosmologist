@@ -10,6 +10,7 @@
 #import "NasaDataController.h"
 #import "MarsData.h"
 #import "MarsTableViewCell.h"
+#import "Constants.h"
 
 @interface MarsViewController ()
 
@@ -38,7 +39,9 @@
 
 - (void)getNasaInfo {
     
-    [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)@"" andCompletion:^(NSArray *nasaArray) {
+    NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=%@", NASA_API_KEY];
+    
+    [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
         
         //NSLog(@"%@", nasaArray);
         

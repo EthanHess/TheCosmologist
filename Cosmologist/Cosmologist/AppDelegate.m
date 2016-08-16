@@ -19,37 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    //[self NSURLSessionGet];
-    
     return YES;
 }
 
-//for test
-
-- (void)NSURLSessionGet {
-    
-    NSString *dataUrl = @"https://api.nasa.gov/planetary/apod?api_key=nKSlklNflzmjDb9rOForb7kQBrS5xLhhnEaDgNvv";
-    NSURL *url = [NSURL URLWithString:dataUrl];
-    
-    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
-        if (error) {
-            
-            NSLog(@"%@", error.localizedDescription);
-        }
-        
-        NSLog(@"%@", response);
-        
-        id result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-        
-        NSLog(@"%@", result); 
-        
-    }];
-    
-    [task resume];
-    
-    
-}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

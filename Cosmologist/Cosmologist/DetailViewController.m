@@ -12,6 +12,7 @@
 #import "NasaDataController.h"
 #import "SoundData.h"
 #import "SoundCell.h"
+#import "Constants.h"
 
 //eventually move to constants file
 
@@ -37,15 +38,9 @@
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
     
-//    NSString *clientIdAddition = @"?client_id=";
-//    
-//    NSString *urlString = [NSString stringWithFormat:@"https://api.soundcloud.com/tracks/181835738/stream%@%@", clientIdAddition, SOUND_CLOUD_CLIENT_ID];
-//    
-//    NSURL *playURL = [NSURL URLWithString:urlString];
-//    
-//    [self playAudioFileAtURL:playURL];
+    NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/planetary/sounds?q=apollo&api_key=%@", NASA_API_KEY];
     
-    NSURL *url = (NSURL *)@"";
+    NSURL *url = (NSURL *)urlString;
     
     [[NasaDataController sharedInstance]getNasaInfoWithURL:url andCompletion:^(NSArray *nasaArray) {
         
@@ -97,7 +92,6 @@
     SoundData *data = _soundDataArary[indexPath.row];
     
     cell.soundTitleLabel.text = data.title;
-    //cell.soundURL = (NSURL *)data.streamURL;
     cell.soundURL = [NSURL URLWithString:data.streamURL];
     
     if (![data.soundDescription isKindOfClass:[NSNull class]]) {

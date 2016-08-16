@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Constants.h"
 
 static NSString *const titleKey = @"title";
 static NSString *const urlKey = @"url";

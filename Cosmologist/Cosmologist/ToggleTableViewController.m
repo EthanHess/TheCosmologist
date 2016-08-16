@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    items = @[@"Title", @"Home" ,@"Sounds", @"Mars Photos", @"Miscellaneous"];
+    items = @[@"Title", @"Home" ,@"Sounds", @"Mars Photos", @"Asteroids", @"Miscellaneous"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

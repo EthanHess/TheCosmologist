@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
-static NSString *const SOUND_CLOUD_CLIENT_ID = @"";
 static NSString *const CLIENT_PREFIX = @"?client_id=";
 
 @interface SoundCell : UITableViewCell
@@ -17,6 +16,7 @@ static NSString *const CLIENT_PREFIX = @"?client_id=";
 @property (strong, nonatomic) IBOutlet UILabel *soundTitleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *soundDescLabel;
 @property (strong, nonatomic) IBOutlet UIButton *soundPlayButton;
+@property (strong, nonatomic) IBOutlet UIButton *soundStopButton;
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) NSURL *soundURL;
 
