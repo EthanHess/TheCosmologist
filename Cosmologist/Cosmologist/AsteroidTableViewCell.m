@@ -21,4 +21,35 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)milesOrKilometersInDiameter:(id)sender {
+    
+    switch (self.milesKMSegControl.selectedSegmentIndex) {
+            
+        case 0:
+            
+            self.diameterLabel.text = _data.estimatedDiameterMilesMax;
+            
+            break;
+            
+        case 1:
+            
+            self.diameterLabel.text = _data.estimatedDiameterKilometersMax;
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (IBAction)openURL:(id)sender {
+    
+    NSURL* urlToOpen = [NSURL URLWithString:[self.urlButton titleForState:UIControlStateNormal]];
+    
+    if ([[UIApplication sharedApplication]canOpenURL:urlToOpen]) {
+        
+        [[UIApplication sharedApplication]openURL:urlToOpen]; 
+    }
+}
+
 @end

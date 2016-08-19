@@ -11,10 +11,13 @@
 #import "MarsData.h"
 #import "MarsTableViewCell.h"
 #import "Constants.h"
+#import "MarsDetailViewController.h"
 
 @interface MarsViewController ()
 
 @property (nonatomic, strong) NSArray *marsDataArray;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segControl;
+@property (nonatomic, strong) NSData *dataToSend;
 
 @end
 
@@ -33,15 +36,20 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-         [self getNasaInfo];
+         [self getNasaInfoAtIndex:0];
     });
 }
 
-- (void)getNasaInfo {
+- (void)getNasaInfoAtIndex:(NSInteger)index {
     
-    NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=%@", NASA_API_KEY];
+    //main url string for pages
     
-    [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
+    NSString *mainString = [NSString stringWithFormat:@"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=%ld&api_key=%@", (long)index, NASA_API_KEY];
+    
+
+    
+    
+    [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)mainString andCompletion:^(NSArray *nasaArray) {
         
         //NSLog(@"%@", nasaArray);
         
@@ -121,6 +129,40 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [_tableView deselectRowAtIndexPath:indexPath animated:true];
+    
+    MarsData *data = _marsDataArray[indexPath.row];
+    
+    NSURL *urlString = [NSURL URLWithString:data.imageURLString];
+    
+    NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
+    
+    _dataToSend = pictureData;
+    
+    [self performSegueWithIdentifier:@"detailSegue" sender:nil]; //self?
+}
+
+- (IBAction)segmentTapped:(id)sender {
+    
+    NSInteger page = self.segControl.selectedSegmentIndex;
+    
+    [self getNasaInfoAtIndex:page]; 
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+    if ([segue.identifier isEqualToString:@"detailSegue"]) {
+        
+        MarsDetailViewController *dvc = [segue destinationViewController];
+        
+        dvc.picData = _dataToSend;
+    }
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -135,5 +177,18 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma UNUSED RESOURCES
+
+//other nasa urls, might use in future
+
+//    NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=%@", NASA_API_KEY];
+
+//others
+
+//    NSString *stringTwo = [NSString stringWithFormat:@"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=fhaz&api_key=%@", NASA_API_KEY];
+
+//    NSString *stringFour = [NSString stringWithFormat:@"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-6-3&api_key=%@", NASA_API_KEY];
+
 
 @end

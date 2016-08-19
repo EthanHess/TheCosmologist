@@ -19,8 +19,8 @@
         self.name = dictionary[nameKey];
         self.jplURL = dictionary[jplURLKey];
         self.isHazardous = [dictionary[hazardKey] boolValue]; //might need to be extracted differently?
-        self.estimatedDiameterMilesMax = dictionary[estimatedDiameterDictKey][milesDictKey][diameterMaxKey];
-        self.estimatedDiameterKilometersMax = dictionary[estimatedDiameterDictKey][kilometersDictKey][diameterMaxKey];
+        self.estimatedDiameterMilesMax = [dictionary[estimatedDiameterDictKey][milesDictKey][diameterMaxKey] stringValue];
+        self.estimatedDiameterKilometersMax = [dictionary[estimatedDiameterDictKey][kilometersDictKey][diameterMaxKey] stringValue];
 //        self.velocityMilesPerHour = dictionary[approachDataKey][relativeVelocityDictKey][velocityMPHKey];
 //        self.velocityKilometersPerHour = dictionary[approachDataKey][relativeVelocityDictKey][velocityKPHKey];
         

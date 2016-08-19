@@ -22,7 +22,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.leftBarButton setTarget: self.revealViewController];
+        [self.leftBarButton setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -94,8 +102,14 @@
     
     AsteroidData *asteroid = _asteroidDataArray[indexPath.row];
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
     cell.nameLabel.text = asteroid.name;
     [cell.urlButton setTitle:asteroid.jplURL forState:UIControlStateNormal];
+    cell.data = asteroid;
+        
+    }); 
+    
     //cell.diameterLabel.text = asteroid.estimatedDiameterMilesMax;
     
     
