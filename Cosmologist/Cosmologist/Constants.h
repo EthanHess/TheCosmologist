@@ -10,6 +10,7 @@
 
 static NSString *const NASA_API_KEY = @"";
 static NSString *const SOUND_CLOUD_CLIENT_ID = @"";
+static NSString *const LOCATION_READY_NOTIFICATION = @"LocationReady";
 
 @interface Constants : NSObject
 

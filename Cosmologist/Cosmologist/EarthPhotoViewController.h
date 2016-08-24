@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWRevealViewController.h"
 
 @interface EarthPhotoViewController : UIViewController
+
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *leftButton;
 
 @end

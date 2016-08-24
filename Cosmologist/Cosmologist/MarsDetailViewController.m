@@ -23,11 +23,7 @@
     NSLog(@"%@ PIC DATA", _picData);
     
     _scrollView.contentSize = CGSizeMake(800, 600);
-    
-//    UIImageView *imageView = [[UIImageView alloc]initWithFrame:_scrollView.bounds];
-//    imageView.image = [UIImage imageWithData:_picData];
-//    [self.scrollView addSubview:imageView];
-    
+
     _theImageView.image = [UIImage imageWithData:_picData];
 }
 

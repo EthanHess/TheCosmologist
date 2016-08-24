@@ -8,9 +8,13 @@
 
 #import "EarthPhotoViewController.h"
 #import "LocationManagerController.h"
+#import "NasaDataController.h"
+#import "Constants.h"
 
 @interface EarthPhotoViewController ()
 
+@property (strong, nonatomic) IBOutlet UIImageView *pictureImageView;
+@property (nonatomic) CLLocationCoordinate2D location;
 @end
 
 @implementation EarthPhotoViewController
@@ -18,7 +22,80 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //activity view?
     
+    [self registerForNotifications];
+    
+    [LocationManagerController sharedInstance]; 
+    
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.leftButton setTarget: self.revealViewController];
+        [self.leftButton setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
+    
+}
+
+- (void)registerForNotifications {
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getInfo) name:LOCATION_READY_NOTIFICATION object:nil];
+}
+
+- (void)getInfo {
+    
+    [[LocationManagerController sharedInstance]getCurrentLocationWithCompletion:^(CLLocationCoordinate2D currentLocation, BOOL success) {
+        
+        if (success) {
+            
+            _location = currentLocation;
+            
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+            
+            NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
+            
+            
+            NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/planetary/earth/imagery?lon=%f&lat=%f&date=%@&cloud_score=True&api_key=%@", currentLocation.longitude, currentLocation.latitude, dateString, NASA_API_KEY];
+            
+            [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
+                
+                for (NSDictionary *dictionary in nasaArray) {
+                    
+                    NSString *urlString = dictionary[@"url"];
+                    NSURL *url = [NSURL URLWithString:urlString];
+                    
+                    NSData *data = [NSData dataWithContentsOfURL:url];
+                    
+                    _pictureImageView.image = [UIImage imageWithData:data];
+                    
+                    [self popAlert:@"This is what you look like to NASA! Rain or shine..." andMessage:nil];
+                    
+                }
+                
+            }];
+            
+        }
+        
+    }];
+    
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
+- (void)popAlert:(NSString *)title andMessage:(NSString *)message {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Cool!" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:okayAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
