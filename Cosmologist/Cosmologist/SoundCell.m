@@ -17,11 +17,11 @@
     _soundPlayButton.layer.cornerRadius = 10;
     _soundStopButton.layer.cornerRadius = 10;
     
-    _soundPlayButton.layer.borderColor = [[UIColor darkGrayColor]CGColor];
-    _soundPlayButton.layer.borderWidth = 5;
+    _soundPlayButton.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    _soundPlayButton.layer.borderWidth = 2;
     
-    _soundStopButton.layer.borderColor = [[UIColor darkGrayColor]CGColor];
-    _soundStopButton.layer.borderWidth = 5;
+    _soundStopButton.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    _soundStopButton.layer.borderWidth = 2;
     
 }
 

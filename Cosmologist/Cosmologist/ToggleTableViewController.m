@@ -28,6 +28,14 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"tableViewBG"]];
+    
+    [self.tableView setBackgroundView:imageView];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -45,6 +53,13 @@
     NSString *cellID = items[indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    
+    //TODO: make custom cell and add background
+    
+//    UIImageView *backgroundImageView = [[UIImageView alloc]initWithFrame:cell.bounds];
+//    backgroundImageView.image = [UIImage imageNamed:@"cosCellBackground"];
+//    [cell sendSubviewToBack:backgroundImageView];
+//    [cell addSubview:backgroundImageView];
     
     return cell;
 }

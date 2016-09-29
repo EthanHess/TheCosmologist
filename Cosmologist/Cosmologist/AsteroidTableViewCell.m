@@ -27,13 +27,13 @@
             
         case 0:
             
-            self.diameterLabel.text = _data.estimatedDiameterMilesMax;
+            self.diameterLabel.text = [self diameterString:_data.estimatedDiameterMilesMax];
             
             break;
             
         case 1:
             
-            self.diameterLabel.text = _data.estimatedDiameterKilometersMax;
+            self.diameterLabel.text = [self diameterString:_data.estimatedDiameterKilometersMax];
             
             break;
             
@@ -50,6 +50,20 @@
         
         [[UIApplication sharedApplication]openURL:urlToOpen]; 
     }
+}
+
+- (NSString *)diameterString:(NSString *)doubleValueString {
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setMaximumFractionDigits:2];
+    [formatter setRoundingMode: NSNumberFormatterRoundUp];
+    
+    NSString *numberString = [formatter stringFromNumber:[NSNumber numberWithFloat:[doubleValueString floatValue]]];
+    
+    return numberString;
+    
 }
 
 @end

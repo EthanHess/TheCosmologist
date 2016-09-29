@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270010AD1D9CC1F500C714A8 /* MediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270010AC1D9CC1F500C714A8 /* MediaController.m */; };
+		273B4F831D99D95600E1FE24 /* ArchivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B4F821D99D95600E1FE24 /* ArchivesViewController.m */; };
 		277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 277522D21D5547FB0099D511 /* MarsTableViewCell.m */; };
 		27CFF6101D494017003668BC /* NasaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CFF60F1D494017003668BC /* NasaData.m */; };
 		27CFF6131D496A52003668BC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CFF6121D496A52003668BC /* DetailViewController.m */; };
@@ -34,6 +36,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		270010AB1D9CC1F500C714A8 /* MediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaController.h; sourceTree = "<group>"; };
+		270010AC1D9CC1F500C714A8 /* MediaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaController.m; sourceTree = "<group>"; };
+		273B4F811D99D95600E1FE24 /* ArchivesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchivesViewController.h; sourceTree = "<group>"; };
+		273B4F821D99D95600E1FE24 /* ArchivesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivesViewController.m; sourceTree = "<group>"; };
 		277522D11D5547FB0099D511 /* MarsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarsTableViewCell.h; sourceTree = "<group>"; };
 		277522D21D5547FB0099D511 /* MarsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarsTableViewCell.m; sourceTree = "<group>"; };
 		27CFF60E1D494017003668BC /* NasaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NasaData.h; sourceTree = "<group>"; };
@@ -135,6 +141,8 @@
 				27F5040E1D67BF1E00C720B1 /* EarthPhotoViewController.m */,
 				27EEB7771D3D797600F46FBC /* SWRevealViewController.h */,
 				27EEB7781D3D797600F46FBC /* SWRevealViewController.m */,
+				273B4F811D99D95600E1FE24 /* ArchivesViewController.h */,
+				273B4F821D99D95600E1FE24 /* ArchivesViewController.m */,
 				27EB20D61D5E752B00213554 /* Constants.h */,
 				27F3A4A71D4C06B0002DC4DA /* Controllers */,
 				27F3A4A61D4C0680002DC4DA /* Models */,
@@ -178,6 +186,8 @@
 				27EEB7871D3D9D4F00F46FBC /* NasaDataController.m */,
 				27F5040A1D67BD5600C720B1 /* LocationManagerController.h */,
 				27F5040B1D67BD5600C720B1 /* LocationManagerController.m */,
+				270010AB1D9CC1F500C714A8 /* MediaController.h */,
+				270010AC1D9CC1F500C714A8 /* MediaController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -340,6 +350,7 @@
 				27EEB7201D3C82FB00F46FBC /* AppDelegate.m in Sources */,
 				27CFF6131D496A52003668BC /* DetailViewController.m in Sources */,
 				27F3A4A21D4A67CD002DC4DA /* SoundData.m in Sources */,
+				270010AD1D9CC1F500C714A8 /* MediaController.m in Sources */,
 				27F5040C1D67BD5600C720B1 /* LocationManagerController.m in Sources */,
 				27F3A4AF1D4D2F63002DC4DA /* MarsViewController.m in Sources */,
 				27F3A4AC1D4D2C0E002DC4DA /* MarsData.m in Sources */,
@@ -353,6 +364,7 @@
 				277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */,
 				27EEB71D1D3C82FB00F46FBC /* main.m in Sources */,
 				27EEB77F1D3D804F00F46FBC /* ToggleTableViewController.m in Sources */,
+				273B4F831D99D95600E1FE24 /* ArchivesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
