@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ArchivesCollectionViewCell.h"
+#import "MediaController.h"
+#import "Picture.h"
 
-@interface ArchivesViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface ArchivesViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 

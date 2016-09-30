@@ -19,22 +19,81 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.collectionView reloadData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    NSLog(@"Memory warning received");
 }
+
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    ArchivesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    
+    Picture *picture = [[MediaController sharedInstance] pictures][indexPath.row];
+    
+    [self configureCell:cell withImageData:picture.data];
     
     return cell;
 }
 
+- (void)configureCell:(ArchivesCollectionViewCell *)cell withImageData:(NSData *)data {
+    
+    cell.theImageView.image = [UIImage imageWithData:data];
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 1; 
+    return [[[MediaController sharedInstance] pictures]count];
+    
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Picture *picture = [[MediaController sharedInstance] pictures][indexPath.row];
+    
+    [self popAlertWithPicture:picture title:@"Options" andMessage:@"What would you like to do with this picture?"];
+    
+}
+
+- (void)popAlertWithPicture:(Picture *)picture title:(NSString *)title andMessage:(NSString *)message {
+    
+    UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [[MediaController sharedInstance]removePicture:picture];
+        
+        [self.collectionView reloadData];
+    }];
+    
+    UIAlertAction *share = [UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self shareContent:picture];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertCon addAction:delete];
+    [alertCon addAction:share];
+    [alertCon addAction:cancel];
+    
+    [self presentViewController:alertCon animated:YES completion:nil];
+    
+}
+
+- (void)shareContent:(Picture *)picture {
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[picture] applicationActivities:nil];
+    [self presentViewController:activityVC animated:YES completion:nil];
+}
+
 /*
 #pragma mark - Navigation
 

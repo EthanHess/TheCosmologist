@@ -992,21 +992,36 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5nF-cr-Wah">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hrr-wn-fBb">
-                                    <size key="itemSize" width="150" height="150"/>
+                                    <size key="itemSize" width="250" height="250"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="5" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="1ab-23-49p">
-                                        <rect key="frame" x="0.0" y="64" width="150" height="150"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="1ab-23-49p" customClass="ArchivesCollectionViewCell">
+                                        <rect key="frame" x="10" y="69" width="250" height="250"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6bn-vc-sJi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="6bn-vc-sJi" firstAttribute="leading" secondItem="1ab-23-49p" secondAttribute="leading" id="4jJ-qt-aTV"/>
+                                            <constraint firstItem="6bn-vc-sJi" firstAttribute="top" secondItem="1ab-23-49p" secondAttribute="top" id="MZ1-fW-Ebl"/>
+                                            <constraint firstAttribute="trailing" secondItem="6bn-vc-sJi" secondAttribute="trailing" id="Xp1-yY-1h1"/>
+                                            <constraint firstAttribute="bottom" secondItem="6bn-vc-sJi" secondAttribute="bottom" id="dPf-oO-P8h"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="theImageView" destination="6bn-vc-sJi" id="leB-qj-eJV"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

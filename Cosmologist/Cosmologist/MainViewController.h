@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MediaController.h"
 
 @interface MainViewController : UIViewController
 

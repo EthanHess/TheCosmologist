@@ -70,8 +70,6 @@
         
         for (NSDictionary *dictionary in nasaArray) {
             
-            //NSLog(@"DICTIONARY %@", dictionary);
-            
             NasaData *dataClass = [[NasaData alloc]initWithDictionary:dictionary];
             
             //NSURL *urlString = [NSURL URLWithString:dataClass.hdurlString];
@@ -96,7 +94,6 @@
             }
         }
     }];
-    
 }
 
 - (void)setUpViewForPicture {
@@ -141,11 +138,23 @@
     
     UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
+        UIImage *image = self.pictureView.image;
+        
+        if (image != nil) {
+            
+            [[MediaController sharedInstance]addImage:image];
+        
+        } else {
+        
+            NSLog(@"Only saving images for now"); //add alert and be able to save videos too
+        
+        }
+        
     }];
     
     UIAlertAction *shareAction = [UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-        [self shareContent];
+            
+            [self shareContent];
         
     }];
     
