@@ -90,8 +90,23 @@
 
 - (void)shareContent:(Picture *)picture {
     
-    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[picture] applicationActivities:nil];
+    //convert pic to uiimage
+
+    UIImage *image = [self imageFromPicture:picture];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[image] applicationActivities:nil];
     [self presentViewController:activityVC animated:YES completion:nil];
+}
+
+- (UIImage *)imageFromPicture:(Picture *)picture {
+    
+    if (picture.data) {
+        
+        return [UIImage imageWithData:picture.data];
+    } else {
+        NSLog(@"Something went wrong");
+        return nil;
+    }
 }
 
 /*

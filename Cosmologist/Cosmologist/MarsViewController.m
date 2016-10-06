@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSArray *marsDataArray;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (nonatomic, strong) NSData *dataToSend;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -40,15 +41,20 @@
     });
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+}
+
 - (void)getNasaInfoAtIndex:(NSInteger)index {
     
     //main url string for pages
     
     NSString *mainString = [NSString stringWithFormat:@"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=%ld&api_key=%@", (long)index, NASA_API_KEY];
-    
 
-    
-    
     [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)mainString andCompletion:^(NSArray *nasaArray) {
         
         //NSLog(@"%@", nasaArray);
@@ -64,20 +70,20 @@
             
             NSLog(@"Something went wrong");
         }
-        
     }];
-    
 }
 
 - (NSArray *)parseSearchResultsData:(NSArray *)arrayToParse {
     
     NSMutableArray *mutableDataArray = [NSMutableArray new];
     
+    self.marsDataArray = @[];
+    
     for (NSDictionary *dictionary in arrayToParse) {
         
         NSArray *dictArray = dictionary[@"photos"];
         
-        NSLog(@"DICTARRAY: %@", dictArray);
+        //NSLog(@"DICTARRAY: %@", dictArray);
         
         for (NSDictionary *dict in dictArray) {
             
@@ -95,6 +101,16 @@
     return mutableDataArray;
 }
 
+- (void)refresh {
+    
+    if (self.refreshControl.isRefreshing) {
+        
+        [self.refreshControl endRefreshing];
+    }
+    
+    [self.tableView reloadData];
+}
+
 #pragma Datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -106,6 +122,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     MarsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"marsCell"];
+    
+    //clear it out!
+    cell.marsImageView.image = nil;
+    cell.dateLabel.text = @""; 
     
     //get priority queue so table view doesn't freeze
     

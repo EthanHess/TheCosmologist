@@ -11,6 +11,7 @@
 #import "NasaDataController.h"
 #import "NasaData.h"
 #import "Constants.h"
+#import "DescriptionViewController.h"
 @import WebKit;
 
 @interface MainViewController () <UIWebViewDelegate>
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @property (nonatomic, strong) NSString *webViewURL;
+@property (nonatomic, strong) NSString *descriptionString;
 
 
 @end
@@ -90,16 +92,29 @@
                 self.pictureView.image = [UIImage imageWithData:pictureData];
                 self.pictureTitle.text = dataClass.title;
                 
+                //add description label
+                self.descriptionString = dataClass.explanation;
+                
                 [_activityIndicator stopAnimating];
             }
         }
     }];
 }
 
-- (void)setUpViewForPicture {
+- (IBAction)labelTapped:(id)sender {
     
+    DescriptionViewController *descVC = [self newFromStoryboard];
     
+    [descVC setString:self.descriptionString];
     
+    [self presentViewController:descVC animated:YES completion:nil]; 
+}
+
+- (DescriptionViewController *)newFromStoryboard {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    return [storyboard instantiateViewControllerWithIdentifier:@"Description"];
 }
 
 //use webview to play youtube videos

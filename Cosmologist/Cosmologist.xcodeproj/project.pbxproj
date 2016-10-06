@@ -13,6 +13,7 @@
 		270292201D9EF33C00A3B25D /* Picture+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702921D1D9EF33C00A3B25D /* Picture+CoreDataProperties.m */; };
 		270292211D9EF33C00A3B25D /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702921F1D9EF33C00A3B25D /* Picture.m */; };
 		270292241D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 270292231D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m */; };
+		270EAFA61DA592FA005E2723 /* DescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAFA51DA592FA005E2723 /* DescriptionViewController.m */; };
 		273B4F831D99D95600E1FE24 /* ArchivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B4F821D99D95600E1FE24 /* ArchivesViewController.m */; };
 		277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 277522D21D5547FB0099D511 /* MarsTableViewCell.m */; };
 		27CFF6101D494017003668BC /* NasaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CFF60F1D494017003668BC /* NasaData.m */; };
@@ -52,6 +53,8 @@
 		2702921F1D9EF33C00A3B25D /* Picture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Picture.m; path = ../Picture.m; sourceTree = "<group>"; };
 		270292221D9EF7CA00A3B25D /* ArchivesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchivesCollectionViewCell.h; sourceTree = "<group>"; };
 		270292231D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivesCollectionViewCell.m; sourceTree = "<group>"; };
+		270EAFA41DA592FA005E2723 /* DescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionViewController.h; sourceTree = "<group>"; };
+		270EAFA51DA592FA005E2723 /* DescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionViewController.m; sourceTree = "<group>"; };
 		273B4F811D99D95600E1FE24 /* ArchivesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchivesViewController.h; sourceTree = "<group>"; };
 		273B4F821D99D95600E1FE24 /* ArchivesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivesViewController.m; sourceTree = "<group>"; };
 		277522D11D5547FB0099D511 /* MarsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarsTableViewCell.h; sourceTree = "<group>"; };
@@ -141,6 +144,8 @@
 				27EEB71F1D3C82FB00F46FBC /* AppDelegate.m */,
 				27EEB7801D3D897300F46FBC /* MainViewController.h */,
 				27EEB7811D3D897300F46FBC /* MainViewController.m */,
+				270EAFA41DA592FA005E2723 /* DescriptionViewController.h */,
+				270EAFA51DA592FA005E2723 /* DescriptionViewController.m */,
 				27EEB77D1D3D804F00F46FBC /* ToggleTableViewController.h */,
 				27EEB77E1D3D804F00F46FBC /* ToggleTableViewController.m */,
 				27CFF6111D496A52003668BC /* DetailViewController.h */,
@@ -375,6 +380,7 @@
 				27CFF6131D496A52003668BC /* DetailViewController.m in Sources */,
 				270292181D9EEED400A3B25D /* CoreDataStack.m in Sources */,
 				27F3A4A21D4A67CD002DC4DA /* SoundData.m in Sources */,
+				270EAFA61DA592FA005E2723 /* DescriptionViewController.m in Sources */,
 				270010AD1D9CC1F500C714A8 /* MediaController.m in Sources */,
 				27F5040C1D67BD5600C720B1 /* LocationManagerController.m in Sources */,
 				27F3A4AF1D4D2F63002DC4DA /* MarsViewController.m in Sources */,

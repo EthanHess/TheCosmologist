@@ -71,15 +71,10 @@
                     _pictureImageView.image = [UIImage imageWithData:data];
                     
                     [self popAlert:@"This is what you look like to NASA! Rain or shine..." andMessage:nil];
-                    
                 }
-                
             }];
-            
         }
-        
     }];
-    
 }
 
 - (void)dealloc
