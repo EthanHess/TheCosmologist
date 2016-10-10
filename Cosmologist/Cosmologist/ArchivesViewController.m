@@ -31,6 +31,7 @@
     NSLog(@"Memory warning received");
 }
 
+//add current product module to model?
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     

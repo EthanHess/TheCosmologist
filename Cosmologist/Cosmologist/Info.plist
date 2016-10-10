@@ -22,6 +22,7 @@
 	<string>2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+    <!-- connects to anything, eventually make safer (i.e just NASA domain) -->
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

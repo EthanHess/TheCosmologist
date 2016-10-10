@@ -100,6 +100,14 @@
     
     AsteroidTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
+    //clear out views for dequeing
+    
+    cell.nameLabel.text = @"";
+    cell.diameterLabel.text = @"";
+    [cell.urlButton setTitle:@"" forState:UIControlStateNormal];
+    
+    //get the info
+    
     AsteroidData *asteroid = _asteroidDataArray[indexPath.row];
     
     dispatch_async(dispatch_get_main_queue(), ^{

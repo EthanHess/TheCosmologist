@@ -23,10 +23,7 @@
     self = [super init];
     if (self) {
         
-        self.isPresenting = YES;
-        
-        self.modalPresentationStyle = UIModalPresentationCurrentContext;
-        self.transitioningDelegate = self;
+        //TODO: implement
     }
     return self;
 }
@@ -39,6 +36,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.isPresenting = YES;
+    
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.transitioningDelegate = self;
     
     self.view.backgroundColor = [[UIColor darkGrayColor]colorWithAlphaComponent:0.3];
 }
@@ -100,7 +102,7 @@
         [containerView addSubview:[toViewController view]];
         toViewController.view.alpha = 0;
         
-        [UIView animateWithDuration:0.4 animations:^{
+        [UIView animateWithDuration:0.5 animations:^{
             
             toViewController.view.alpha = 1;
 

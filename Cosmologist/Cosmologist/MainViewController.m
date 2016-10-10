@@ -80,7 +80,11 @@
             
             NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
             
+            NSLog(@"DATA CLASS %@", dataClass);
+            
             if ([dataClass.mediaType isEqualToString:@"video"]) {
+            
+                self.descriptionString = dataClass.explanation;
                 
                 [self setUpViewForVideoWithURLString:urlString andTitle:dataClass.title];
                 
@@ -91,8 +95,6 @@
                 
                 self.pictureView.image = [UIImage imageWithData:pictureData];
                 self.pictureTitle.text = dataClass.title;
-                
-                //add description label
                 self.descriptionString = dataClass.explanation;
                 
                 [_activityIndicator stopAnimating];
@@ -192,6 +194,11 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     
     NSLog(@"WEB STRING: %@", webView.request.URL.absoluteString);
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    
+    NSLog(@"ERROR %@", error);
 }
 
 - (void)shareContent {

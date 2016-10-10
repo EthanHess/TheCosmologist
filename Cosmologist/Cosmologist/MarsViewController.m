@@ -47,7 +47,16 @@
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:self.refreshControl];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.tableView reloadData];
+    });
 }
+
+//API was returning separate arrays by page number but now just returns one long one of 800+, sub data function is a new way to separate them into various different arrays.
+
+//TODO: reconfigure.
 
 - (void)getNasaInfoAtIndex:(NSInteger)index {
     
@@ -71,6 +80,19 @@
             NSLog(@"Something went wrong");
         }
     }];
+}
+
+//Divides up massive array (856 objects) returned from request. 
+
+- (NSArray *)setMarsDataSubArray {
+    
+    NSInteger totalCount = _marsDataArray.count;
+    
+    NSInteger subArrayCount = totalCount / 10;
+    
+    int roundedOff = floor(subArrayCount);
+    
+    return [self.marsDataArray subarrayWithRange:NSMakeRange(roundedOff * self.segControl.selectedSegmentIndex, roundedOff)];
 }
 
 - (NSArray *)parseSearchResultsData:(NSArray *)arrayToParse {
@@ -115,7 +137,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return _marsDataArray.count;
+//    return _marsDataArray.count;
+    
+    return [self setMarsDataSubArray].count;
     
 }
 
@@ -131,7 +155,9 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        MarsData *data = _marsDataArray[indexPath.row];
+//        MarsData *data = _marsDataArray[indexPath.row];
+        
+        MarsData *data = [self setMarsDataSubArray][indexPath.row];
     
         NSURL *urlString = [NSURL URLWithString:data.imageURLString];
     
@@ -153,7 +179,9 @@
     
     [_tableView deselectRowAtIndexPath:indexPath animated:true];
     
-    MarsData *data = _marsDataArray[indexPath.row];
+//    MarsData *data = _marsDataArray[indexPath.row];
+    
+    MarsData *data = [self setMarsDataSubArray][indexPath.row];
     
     NSURL *urlString = [NSURL URLWithString:data.imageURLString];
     
