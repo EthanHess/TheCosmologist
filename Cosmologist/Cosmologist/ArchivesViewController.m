@@ -33,6 +33,8 @@
 
 //add current product module to model?
 
+//for MVP keep as is but add iCarousel for fancy collection view
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ArchivesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];

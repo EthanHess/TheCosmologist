@@ -14,10 +14,6 @@
 #import "SoundCell.h"
 #import "Constants.h"
 
-//eventually move to constants file
-
-//static NSString *const SOUND_CLOUD_CLIENT_ID = @"dfc6b54ca340285a93ce49a4cb3e6a6d";
-
 @interface DetailViewController ()
 
 @property (nonatomic, strong) AVPlayer *player;
@@ -37,6 +33,15 @@
         [self.sideBarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self getData]; 
+}
+
+- (void)getData {
     
     NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/planetary/sounds?q=apollo&api_key=%@", NASA_API_KEY];
     

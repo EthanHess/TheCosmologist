@@ -23,6 +23,8 @@
 
 //TODO: Can save video of the day as well
 
+//Allow external storage for better performance
+
 - (NSArray *)pictures {
     
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Picture"];

@@ -13,6 +13,7 @@
 
 @interface EarthPhotoViewController ()
 
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 @property (strong, nonatomic) IBOutlet UIImageView *pictureImageView;
 @property (nonatomic) CLLocationCoordinate2D location;
 @end
@@ -21,8 +22,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //activity view?
     
     [self registerForNotifications];
     
@@ -43,6 +42,15 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getInfo) name:LOCATION_READY_NOTIFICATION object:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    //[self getInfo];
+    
+    [self.activityView setHidesWhenStopped:YES]; 
+    [self.activityView startAnimating];
+}
+
 - (void)getInfo {
     
     [[LocationManagerController sharedInstance]getCurrentLocationWithCompletion:^(CLLocationCoordinate2D currentLocation, BOOL success) {
@@ -56,7 +64,6 @@
             
             NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
             
-            
             NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/planetary/earth/imagery?lon=%f&lat=%f&date=%@&cloud_score=True&api_key=%@", currentLocation.longitude, currentLocation.latitude, dateString, NASA_API_KEY];
             
             [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
@@ -67,6 +74,8 @@
                     NSURL *url = [NSURL URLWithString:urlString];
                     
                     NSData *data = [NSData dataWithContentsOfURL:url];
+                    
+                    [self.activityView stopAnimating];
                     
                     _pictureImageView.image = [UIImage imageWithData:data];
                     
