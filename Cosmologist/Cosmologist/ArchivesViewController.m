@@ -46,6 +46,17 @@
     return cell;
 }
 
+//- (void)organizeArray {
+//    
+//    NSMutableArray *array = [[[MediaController sharedInstance]pictures] mutableCopy];
+//    
+//    if (array.count > 10) {
+//        
+//        
+//        
+//    }
+//}
+
 - (void)configureCell:(ArchivesCollectionViewCell *)cell withImageData:(NSData *)data {
     
     cell.theImageView.image = [UIImage imageWithData:data];
@@ -64,6 +75,17 @@
     [self popAlertWithPicture:picture title:@"Options" andMessage:@"What would you like to do with this picture?"];
     
 }
+
+//- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+//    
+//    [UIView animateWithDuration:1 animations:^{
+//        
+//        attributes.size = CGSizeMake(300, 300);
+//        
+//    }];
+//}
 
 - (void)popAlertWithPicture:(Picture *)picture title:(NSString *)title andMessage:(NSString *)message {
     

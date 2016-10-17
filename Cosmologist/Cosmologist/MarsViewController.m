@@ -162,6 +162,8 @@
         NSURL *urlString = [NSURL URLWithString:data.imageURLString];
     
         NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
+        
+        //UIUpdate on main thread, obviously...
     
     dispatch_async(dispatch_get_main_queue(), ^{
                    

@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    items = @[@"Title", @"Home" ,@"Sounds", @"Mars Photos", @"Asteroids", @"Earth Photos", @"Credits"];
+    items = @[@"Title", @"Home" ,@"Sounds", @"Mars Photos", @"Asteroids", @"Earth Photos", @"Space Station", @"Credits"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -53,14 +53,7 @@
     NSString *cellID = items[indexPath.row];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
-    
-    //TODO: make custom cell and add background
-    
-//    UIImageView *backgroundImageView = [[UIImageView alloc]initWithFrame:cell.bounds];
-//    backgroundImageView.image = [UIImage imageNamed:@"cosCellBackground"];
-//    [cell sendSubviewToBack:backgroundImageView];
-//    [cell addSubview:backgroundImageView];
-    
+
     return cell;
 }
 

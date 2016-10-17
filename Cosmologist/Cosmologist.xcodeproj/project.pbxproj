@@ -14,8 +14,10 @@
 		270292211D9EF33C00A3B25D /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702921F1D9EF33C00A3B25D /* Picture.m */; };
 		270292241D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 270292231D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m */; };
 		270EAFA61DA592FA005E2723 /* DescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAFA51DA592FA005E2723 /* DescriptionViewController.m */; };
+		2718BE9C1DB41F950081C911 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718BE9B1DB41F950081C911 /* MapViewController.m */; };
 		273B4F831D99D95600E1FE24 /* ArchivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B4F821D99D95600E1FE24 /* ArchivesViewController.m */; };
 		277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 277522D21D5547FB0099D511 /* MarsTableViewCell.m */; };
+		27C41B9B1DB421150035123C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C41B9A1DB421150035123C /* MapKit.framework */; };
 		27CFF6101D494017003668BC /* NasaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CFF60F1D494017003668BC /* NasaData.m */; };
 		27CFF6131D496A52003668BC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CFF6121D496A52003668BC /* DetailViewController.m */; };
 		27EB20DB1D5E75E800213554 /* AsteroidsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27EB20DA1D5E75E800213554 /* AsteroidsViewController.m */; };
@@ -56,10 +58,13 @@
 		270292231D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivesCollectionViewCell.m; sourceTree = "<group>"; };
 		270EAFA41DA592FA005E2723 /* DescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionViewController.h; sourceTree = "<group>"; };
 		270EAFA51DA592FA005E2723 /* DescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionViewController.m; sourceTree = "<group>"; };
+		2718BE9A1DB41F950081C911 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		2718BE9B1DB41F950081C911 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		273B4F811D99D95600E1FE24 /* ArchivesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchivesViewController.h; sourceTree = "<group>"; };
 		273B4F821D99D95600E1FE24 /* ArchivesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivesViewController.m; sourceTree = "<group>"; };
 		277522D11D5547FB0099D511 /* MarsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarsTableViewCell.h; sourceTree = "<group>"; };
 		277522D21D5547FB0099D511 /* MarsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarsTableViewCell.m; sourceTree = "<group>"; };
+		27C41B9A1DB421150035123C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		27CFF60E1D494017003668BC /* NasaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NasaData.h; sourceTree = "<group>"; };
 		27CFF60F1D494017003668BC /* NasaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NasaData.m; sourceTree = "<group>"; };
 		27CFF6111D496A52003668BC /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -114,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C41B9B1DB421150035123C /* MapKit.framework in Frameworks */,
 				C72AE5AEC010BA1F1421C8D2 /* libPods-Cosmologist.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,6 +169,8 @@
 				27F5040E1D67BF1E00C720B1 /* EarthPhotoViewController.m */,
 				273B4F811D99D95600E1FE24 /* ArchivesViewController.h */,
 				273B4F821D99D95600E1FE24 /* ArchivesViewController.m */,
+				2718BE9A1DB41F950081C911 /* MapViewController.h */,
+				2718BE9B1DB41F950081C911 /* MapViewController.m */,
 				27EFE2331DAC347D00B5458F /* CreditsViewController.h */,
 				27EFE2341DAC347D00B5458F /* CreditsViewController.m */,
 				27EB20D61D5E752B00213554 /* Constants.h */,
@@ -241,6 +249,7 @@
 		3FBD56BDDFF9943BC29C22F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27C41B9A1DB421150035123C /* MapKit.framework */,
 				A5D20A8C4868DCE1693107C5 /* libPods-Cosmologist.a */,
 			);
 			name = Frameworks;
@@ -290,6 +299,11 @@
 					27EEB7171D3C82FB00F46FBC = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 63ARTNG4RQ;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -401,6 +415,7 @@
 				27EB20DB1D5E75E800213554 /* AsteroidsViewController.m in Sources */,
 				27F3A4A51D4C0675002DC4DA /* SoundCell.m in Sources */,
 				27F504091D67B58B00C720B1 /* MarsDetailViewController.m in Sources */,
+				2718BE9C1DB41F950081C911 /* MapViewController.m in Sources */,
 				27F5040F1D67BF1E00C720B1 /* EarthPhotoViewController.m in Sources */,
 				277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */,
 				27EEB71D1D3C82FB00F46FBC /* main.m in Sources */,

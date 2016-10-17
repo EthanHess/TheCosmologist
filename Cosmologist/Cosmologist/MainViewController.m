@@ -33,6 +33,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self renderBarButtonNicely];
+    
     [_activityIndicator setHidesWhenStopped:YES]; 
     [_activityIndicator startAnimating];
     self.pictureTitle.text = @"Loading";
@@ -42,6 +44,12 @@
         [self getImageData];
         
     });
+}
+
+- (void)renderBarButtonNicely {
+    
+    UIImage *image = [[UIImage imageNamed:@"mainGalaxy"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.leftBarButton.image = image;
 }
 
 - (void)viewDidLoad {

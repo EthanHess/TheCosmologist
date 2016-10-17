@@ -29,11 +29,29 @@
         [self.leftBarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-    
-    [self setUpViews];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self setUpViews];
+    
+    [self renderBarButtonNicely];
+}
+
+- (void)renderBarButtonNicely {
+    
+    UIImage *image = [[UIImage imageNamed:@"creditsButton"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.leftBarButton.image = image;
+}
+
+
 - (void)setUpViews {
+    
+    self.NASALabel.alpha = 0;
+    self.SWRLabel.alpha = 0;
+    
+    [self animateViewsIn];
     
     NSString *customStringOne = @"A special thanks to SWRevealController";
     
@@ -45,11 +63,25 @@
     
 }
 
+- (void)animateViewsIn {
+    
+    [UIView animateWithDuration:1.5 animations:^{
+        
+        self.SWRLabel.alpha = 1;
+    }];
+    
+    [UIView animateWithDuration:2.5 animations:^{
+        
+        self.NASALabel.alpha = 1;
+    }];
+}
+
 - (void)configureSWRLabel:(NSString *)string {
     
     NSMutableAttributedString *customAttStrOne = [[NSMutableAttributedString alloc]initWithString:string];
     
     [customAttStrOne addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(20, 18)];
+    [customAttStrOne addAttribute:NSFontAttributeName value:[UIFont italicSystemFontOfSize:21] range:NSMakeRange(20, 18)];
     
     self.SWRLabel.attributedText = customAttStrOne;
     
@@ -60,6 +92,7 @@
     NSMutableAttributedString *customAttStrTwo = [[NSMutableAttributedString alloc]initWithString:string];
     
     [customAttStrTwo addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(25, 4)];
+    [customAttStrTwo addAttribute:NSFontAttributeName value:[UIFont italicSystemFontOfSize:21] range:NSMakeRange(25, 4)];
     
     self.NASALabel.attributedText = customAttStrTwo;
 }
