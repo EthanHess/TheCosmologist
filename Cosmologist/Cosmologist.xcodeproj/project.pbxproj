@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		270010AD1D9CC1F500C714A8 /* MediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270010AC1D9CC1F500C714A8 /* MediaController.m */; };
+		2702289F1DCFCC8E0044FB68 /* ISSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702289E1DCFCC8E0044FB68 /* ISSModel.m */; };
+		270228A21DCFD2B60044FB68 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 270228A11DCFD2B60044FB68 /* UIImage+Resize.m */; };
+		270228A51DCFEBAC0044FB68 /* StationAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 270228A41DCFEBAC0044FB68 /* StationAnnotation.m */; };
+		270228A81DCFEEC10044FB68 /* SliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 270228A71DCFEEC10044FB68 /* SliderView.m */; };
 		270292181D9EEED400A3B25D /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 270292171D9EEED400A3B25D /* CoreDataStack.m */; };
 		2702921B1D9EF23900A3B25D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 270292191D9EF23900A3B25D /* Model.xcdatamodeld */; };
 		270292201D9EF33C00A3B25D /* Picture+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702921D1D9EF33C00A3B25D /* Picture+CoreDataProperties.m */; };
@@ -47,6 +51,14 @@
 /* Begin PBXFileReference section */
 		270010AB1D9CC1F500C714A8 /* MediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaController.h; sourceTree = "<group>"; };
 		270010AC1D9CC1F500C714A8 /* MediaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaController.m; sourceTree = "<group>"; };
+		2702289D1DCFCC8E0044FB68 /* ISSModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSModel.h; sourceTree = "<group>"; };
+		2702289E1DCFCC8E0044FB68 /* ISSModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSModel.m; sourceTree = "<group>"; };
+		270228A01DCFD2B60044FB68 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		270228A11DCFD2B60044FB68 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		270228A31DCFEBAC0044FB68 /* StationAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationAnnotation.h; sourceTree = "<group>"; };
+		270228A41DCFEBAC0044FB68 /* StationAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationAnnotation.m; sourceTree = "<group>"; };
+		270228A61DCFEEC10044FB68 /* SliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderView.h; sourceTree = "<group>"; };
+		270228A71DCFEEC10044FB68 /* SliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderView.m; sourceTree = "<group>"; };
 		270292161D9EEED400A3B25D /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
 		270292171D9EEED400A3B25D /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
 		2702921A1D9EF23900A3B25D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -205,6 +217,10 @@
 				27F3A4AB1D4D2C0E002DC4DA /* MarsData.m */,
 				27EF9F361D626D550063F907 /* AsteroidData.h */,
 				27EF9F371D626D550063F907 /* AsteroidData.m */,
+				270228A31DCFEBAC0044FB68 /* StationAnnotation.h */,
+				270228A41DCFEBAC0044FB68 /* StationAnnotation.m */,
+				2702289D1DCFCC8E0044FB68 /* ISSModel.h */,
+				2702289E1DCFCC8E0044FB68 /* ISSModel.m */,
 				270292161D9EEED400A3B25D /* CoreDataStack.h */,
 				270292171D9EEED400A3B25D /* CoreDataStack.m */,
 				2702921C1D9EF33C00A3B25D /* Picture+CoreDataProperties.h */,
@@ -233,6 +249,8 @@
 		27F3A4A81D4C06BD002DC4DA /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				270228A61DCFEEC10044FB68 /* SliderView.h */,
+				270228A71DCFEEC10044FB68 /* SliderView.m */,
 				27F3A4A31D4C0675002DC4DA /* SoundCell.h */,
 				27F3A4A41D4C0675002DC4DA /* SoundCell.m */,
 				277522D11D5547FB0099D511 /* MarsTableViewCell.h */,
@@ -241,6 +259,8 @@
 				27EF9F3A1D6294E60063F907 /* AsteroidTableViewCell.m */,
 				270292221D9EF7CA00A3B25D /* ArchivesCollectionViewCell.h */,
 				270292231D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m */,
+				270228A01DCFD2B60044FB68 /* UIImage+Resize.h */,
+				270228A11DCFD2B60044FB68 /* UIImage+Resize.m */,
 				270292191D9EF23900A3B25D /* Model.xcdatamodeld */,
 			);
 			name = "Custom Views";
@@ -393,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27EF9F3B1D6294E60063F907 /* AsteroidTableViewCell.m in Sources */,
+				270228A81DCFEEC10044FB68 /* SliderView.m in Sources */,
 				2702921B1D9EF23900A3B25D /* Model.xcdatamodeld in Sources */,
 				27CFF6101D494017003668BC /* NasaData.m in Sources */,
 				27EEB7791D3D797600F46FBC /* SWRevealViewController.m in Sources */,
@@ -403,16 +424,19 @@
 				270EAFA61DA592FA005E2723 /* DescriptionViewController.m in Sources */,
 				270010AD1D9CC1F500C714A8 /* MediaController.m in Sources */,
 				27F5040C1D67BD5600C720B1 /* LocationManagerController.m in Sources */,
+				270228A51DCFEBAC0044FB68 /* StationAnnotation.m in Sources */,
 				27F3A4AF1D4D2F63002DC4DA /* MarsViewController.m in Sources */,
 				27F3A4AC1D4D2C0E002DC4DA /* MarsData.m in Sources */,
 				27EEB7881D3D9D4F00F46FBC /* NasaDataController.m in Sources */,
 				27EEB7821D3D897300F46FBC /* MainViewController.m in Sources */,
 				270292201D9EF33C00A3B25D /* Picture+CoreDataProperties.m in Sources */,
 				270292241D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m in Sources */,
+				270228A21DCFD2B60044FB68 /* UIImage+Resize.m in Sources */,
 				27EF9F381D626D550063F907 /* AsteroidData.m in Sources */,
 				270292211D9EF33C00A3B25D /* Picture.m in Sources */,
 				27EFE2351DAC347D00B5458F /* CreditsViewController.m in Sources */,
 				27EB20DB1D5E75E800213554 /* AsteroidsViewController.m in Sources */,
+				2702289F1DCFCC8E0044FB68 /* ISSModel.m in Sources */,
 				27F3A4A51D4C0675002DC4DA /* SoundCell.m in Sources */,
 				27F504091D67B58B00C720B1 /* MarsDetailViewController.m in Sources */,
 				2718BE9C1DB41F950081C911 /* MapViewController.m in Sources */,

@@ -45,10 +45,16 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    //[self getInfo];
+    [self renderBarButtonNicely];
     
     [self.activityView setHidesWhenStopped:YES]; 
     [self.activityView startAnimating];
+}
+
+- (void)renderBarButtonNicely {
+    
+    UIImage *image = [[UIImage imageNamed:@"earthButton"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.leftButton.image = image;
 }
 
 - (void)getInfo {

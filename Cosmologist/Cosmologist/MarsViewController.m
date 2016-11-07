@@ -52,6 +52,14 @@
         
         [self.tableView reloadData];
     });
+    
+    [self renderBarButtonNicely]; 
+}
+
+- (void)renderBarButtonNicely {
+    
+    UIImage *image = [[UIImage imageNamed:@"Rocket"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.leftBarButton.image = image;
 }
 
 //API was returning separate arrays by page number but now just returns one long one of 800+, sub data function is a new way to separate them into various different arrays.

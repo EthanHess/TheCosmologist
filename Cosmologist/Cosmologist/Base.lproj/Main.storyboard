@@ -350,7 +350,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6u8-l2-8Yh">
-                        <barButtonItem key="leftBarButtonItem" title="Main Menu" style="done" id="xUT-e2-5D9"/>
+                        <barButtonItem key="leftBarButtonItem" image="earthButton" style="done" id="xUT-e2-5D9"/>
                     </navigationItem>
                     <connections>
                         <outlet property="activityView" destination="Sny-AC-TNx" id="cM7-Uy-JK0"/>
@@ -391,7 +391,7 @@
                                         <rect key="frame" x="0.0" y="172" width="375" height="230"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0J4-ZK-AgM" id="Dsd-dg-cND">
-                                            <frame key="frameInset" width="375" height="229"/>
+                                            <frame key="frameInset" width="375" height="229.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeF-Eb-mAS">
@@ -717,7 +717,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Azj-zn-MOf">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Main Menu" style="done" id="MN5-PK-Oz2">
+                        <barButtonItem key="leftBarButtonItem" image="Rocket" style="done" id="MN5-PK-Oz2">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                     </navigationItem>
@@ -911,7 +911,7 @@
         <scene sceneID="mYp-X2-bBE">
             <objects>
                 <navigationController id="z0x-ds-Iyn" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xmx-B7-Tth">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xmx-B7-Tth">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -941,23 +941,132 @@
                                     <outlet property="delegate" destination="7tL-yk-ZfC" id="odr-iN-c5j"/>
                                 </connections>
                             </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PHd-M4-KRG" customClass="SliderView">
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="94C-nG-pRn">
+                                        <color key="tintColor" red="0.99938076734542847" green="0.14085337519645691" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="redValueChanged:" destination="PHd-M4-KRG" eventType="valueChanged" id="cZS-sj-Vhc"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="XGW-sT-yX7">
+                                        <color key="tintColor" red="0.016520684584975243" green="0.98564833402633667" blue="0.20232492685317993" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="greenValueChanged:" destination="PHd-M4-KRG" eventType="valueChanged" id="kok-vI-3rB"/>
+                                        </connections>
+                                    </slider>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pNY-ey-m5b">
+                                        <connections>
+                                            <action selector="blueValueChanged:" destination="PHd-M4-KRG" eventType="valueChanged" id="EsR-Jg-9iX"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAv-ag-YDV">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="BAx-pP-kMH"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="G" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8YF-mP-kk0">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKU-xS-XOq">
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="O49-fN-NXw">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="mvK-ka-qxt"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Standard"/>
+                                            <segment title="Satellite"/>
+                                            <segment title="Hybrid"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.014054594561457634" green="0.063006468117237091" blue="0.98954242467880249" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="segmentControlTapped:" destination="PHd-M4-KRG" eventType="valueChanged" id="bWF-pS-3Jb"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dfr-Qb-hB9">
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleColor" red="0.97308224439620972" green="0.54286777973175049" blue="0.011990813538432121" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissSelf:" destination="PHd-M4-KRG" eventType="touchUpInside" id="Uwe-ah-d02"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="pNY-ey-m5b" firstAttribute="trailing" secondItem="O49-fN-NXw" secondAttribute="trailing" id="4BN-nX-9GS"/>
+                                    <constraint firstItem="O49-fN-NXw" firstAttribute="leading" secondItem="Dfr-Qb-hB9" secondAttribute="leading" id="4yv-Jz-5N4"/>
+                                    <constraint firstItem="Dfr-Qb-hB9" firstAttribute="bottom" secondItem="PHd-M4-KRG" secondAttribute="bottomMargin" id="701-Wg-MLL"/>
+                                    <constraint firstItem="pNY-ey-m5b" firstAttribute="top" secondItem="XGW-sT-yX7" secondAttribute="bottom" constant="8" symbolic="YES" id="893-Dc-qPz"/>
+                                    <constraint firstItem="94C-nG-pRn" firstAttribute="leading" secondItem="XGW-sT-yX7" secondAttribute="leading" id="8ib-ny-QQa"/>
+                                    <constraint firstItem="zKU-xS-XOq" firstAttribute="top" secondItem="8YF-mP-kk0" secondAttribute="bottom" constant="8" symbolic="YES" id="8xg-ma-wdy"/>
+                                    <constraint firstItem="bAv-ag-YDV" firstAttribute="top" secondItem="PHd-M4-KRG" secondAttribute="topMargin" id="9ue-u7-56E"/>
+                                    <constraint firstItem="XGW-sT-yX7" firstAttribute="leading" secondItem="pNY-ey-m5b" secondAttribute="leading" id="CLc-hp-nTt"/>
+                                    <constraint firstItem="XGW-sT-yX7" firstAttribute="leading" secondItem="8YF-mP-kk0" secondAttribute="trailing" constant="8" symbolic="YES" id="DXJ-hT-6Rz"/>
+                                    <constraint firstItem="94C-nG-pRn" firstAttribute="trailing" secondItem="XGW-sT-yX7" secondAttribute="trailing" id="JBO-2M-m5X"/>
+                                    <constraint firstItem="bAv-ag-YDV" firstAttribute="top" secondItem="94C-nG-pRn" secondAttribute="top" id="Nvw-qu-byU"/>
+                                    <constraint firstItem="8YF-mP-kk0" firstAttribute="top" secondItem="bAv-ag-YDV" secondAttribute="bottom" constant="8" symbolic="YES" id="UkN-dt-6VC"/>
+                                    <constraint firstItem="O49-fN-NXw" firstAttribute="top" secondItem="pNY-ey-m5b" secondAttribute="bottom" constant="8" symbolic="YES" id="WUH-sN-vff"/>
+                                    <constraint firstItem="bAv-ag-YDV" firstAttribute="leading" secondItem="PHd-M4-KRG" secondAttribute="leadingMargin" id="Zc7-QE-qZz"/>
+                                    <constraint firstItem="bAv-ag-YDV" firstAttribute="leading" secondItem="8YF-mP-kk0" secondAttribute="leading" id="ajP-Ch-ISw"/>
+                                    <constraint firstItem="94C-nG-pRn" firstAttribute="trailing" secondItem="PHd-M4-KRG" secondAttribute="trailingMargin" id="eVB-mv-pti"/>
+                                    <constraint firstItem="XGW-sT-yX7" firstAttribute="trailing" secondItem="pNY-ey-m5b" secondAttribute="trailing" id="eWd-Qb-5qp"/>
+                                    <constraint firstItem="O49-fN-NXw" firstAttribute="top" secondItem="zKU-xS-XOq" secondAttribute="bottom" constant="8" symbolic="YES" id="h1J-vb-P9j"/>
+                                    <constraint firstItem="Dfr-Qb-hB9" firstAttribute="top" secondItem="O49-fN-NXw" secondAttribute="bottom" constant="8" symbolic="YES" id="iL7-0B-9Ov"/>
+                                    <constraint firstItem="8YF-mP-kk0" firstAttribute="top" secondItem="XGW-sT-yX7" secondAttribute="top" id="oxo-Qd-afO"/>
+                                    <constraint firstItem="zKU-xS-XOq" firstAttribute="top" secondItem="pNY-ey-m5b" secondAttribute="top" id="qGE-8M-WlS"/>
+                                    <constraint firstItem="zKU-xS-XOq" firstAttribute="leading" secondItem="O49-fN-NXw" secondAttribute="leading" id="sX3-ti-HjR"/>
+                                    <constraint firstItem="94C-nG-pRn" firstAttribute="leading" secondItem="bAv-ag-YDV" secondAttribute="trailing" constant="8" symbolic="YES" id="uFh-ql-RVL"/>
+                                    <constraint firstItem="O49-fN-NXw" firstAttribute="trailing" secondItem="Dfr-Qb-hB9" secondAttribute="trailing" id="uXS-pS-Q4U"/>
+                                    <constraint firstItem="8YF-mP-kk0" firstAttribute="leading" secondItem="zKU-xS-XOq" secondAttribute="leading" id="wpH-lb-05y"/>
+                                    <constraint firstItem="XGW-sT-yX7" firstAttribute="top" secondItem="94C-nG-pRn" secondAttribute="bottom" constant="8" symbolic="YES" id="z7x-Tq-N2W"/>
+                                    <constraint firstItem="pNY-ey-m5b" firstAttribute="leading" secondItem="zKU-xS-XOq" secondAttribute="trailing" constant="8" symbolic="YES" id="zvb-L4-Kw3"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="blueSlider" destination="XGW-sT-yX7" id="8wH-Eg-6Ik"/>
+                                    <outlet property="greenSlider" destination="pNY-ey-m5b" id="juP-EL-nSU"/>
+                                    <outlet property="redSlider" destination="94C-nG-pRn" id="EAH-Xq-pL2"/>
+                                    <outlet property="segControl" destination="O49-fN-NXw" id="I3f-DV-Ns9"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="WSh-K2-7uH" secondAttribute="trailing" id="Gb8-7O-iqI"/>
-                            <constraint firstItem="WSh-K2-7uH" firstAttribute="bottom" secondItem="Ary-Jg-fpi" secondAttribute="top" id="HFA-le-u4c"/>
-                            <constraint firstItem="WSh-K2-7uH" firstAttribute="top" secondItem="S2k-pI-7Xs" secondAttribute="top" id="WRV-Cb-6aR"/>
-                            <constraint firstItem="WSh-K2-7uH" firstAttribute="leading" secondItem="S2k-pI-7Xs" secondAttribute="leading" id="ein-Qs-Zqa"/>
+                            <constraint firstAttribute="trailing" secondItem="WSh-K2-7uH" secondAttribute="trailing" id="3Az-Fw-vl6"/>
+                            <constraint firstItem="PHd-M4-KRG" firstAttribute="leading" secondItem="WSh-K2-7uH" secondAttribute="leading" id="KQh-Nu-DP3"/>
+                            <constraint firstItem="PHd-M4-KRG" firstAttribute="top" secondItem="guF-ek-dPq" secondAttribute="bottom" constant="394" id="SsD-N7-aOZ"/>
+                            <constraint firstItem="PHd-M4-KRG" firstAttribute="trailing" secondItem="WSh-K2-7uH" secondAttribute="trailing" id="eAg-dP-Ni4"/>
+                            <constraint firstItem="PHd-M4-KRG" firstAttribute="bottom" secondItem="Ary-Jg-fpi" secondAttribute="top" id="iDc-Yx-nRe"/>
+                            <constraint firstItem="WSh-K2-7uH" firstAttribute="top" secondItem="S2k-pI-7Xs" secondAttribute="top" id="mDJ-d6-U4s"/>
+                            <constraint firstItem="WSh-K2-7uH" firstAttribute="leading" secondItem="S2k-pI-7Xs" secondAttribute="leading" id="r0W-YC-2FE"/>
+                            <constraint firstItem="WSh-K2-7uH" firstAttribute="bottom" secondItem="Ary-Jg-fpi" secondAttribute="top" id="zJz-yj-LZI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Uie-17-FNd">
                         <barButtonItem key="leftBarButtonItem" title="Main Menu" style="done" id="KU3-yw-VOO">
                             <color key="tintColor" red="0.98427480459213257" green="0.98021703958511353" blue="0.9924735426902771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="ZTv-kn-Fn2">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="rightBarButtonTapped:" destination="7tL-yk-ZfC" id="pOf-c4-EFP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="leftBarButton" destination="KU3-yw-VOO" id="88B-dN-EHs"/>
                         <outlet property="mapView" destination="WSh-K2-7uH" id="K67-ed-rav"/>
+                        <outlet property="sliderView" destination="PHd-M4-KRG" id="3Y2-zs-9WD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J2I-ka-LUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1026,8 +1135,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mm-UG-X3g">
-                                <color key="backgroundColor" red="0.28958413004875183" green="0.31462949514389038" blue="0.32950475811958313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mm-UG-X3g">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </webView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Okm-Mk-Rff">
                                 <color key="color" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1186,8 +1295,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Rocket" width="50" height="50"/>
         <image name="cosCellBackground" width="400" height="63"/>
         <image name="creditsButton" width="50" height="50"/>
+        <image name="earthButton" width="50" height="50"/>
         <image name="mainGalaxy" width="50" height="50"/>
         <image name="soundCellBG" width="500" height="200"/>
         <image name="tableViewBG" width="300" height="500"/>

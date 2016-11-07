@@ -10,11 +10,18 @@
 @import MapKit;
 #import "SWRevealViewController.h"
 #import "NasaDataController.h"
+#import "ISSModel.h"
+#import "UIImage+Resize.h"
+#import "StationAnnotation.h"
+#import "SliderView.h"
 
-@interface MapViewController () <MKMapViewDelegate>
+@interface MapViewController () <MKMapViewDelegate, SliderValueUpdatedDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *leftBarButton;
+@property (strong, nonatomic) IBOutlet SliderView *sliderView;
+
+@property (nonatomic, strong) ISSModel *theModel;
 
 @end
 
@@ -37,7 +44,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    self.sliderView.hidden = YES;
+    self.sliderView.delegate = self;
+    
     [self ISSTest];
+    
+    self.mapView.alpha = 0.8;
+    self.view.backgroundColor = [UIColor redColor]; //make configurable
 }
 
 //TODO: Add own VC with ISS tracking feature
@@ -48,13 +61,110 @@
         
         NSLog(@"ISS TEST! %@", nasaArray);
         
+        NSDictionary *infoDict = nasaArray[0];
+        
+        ISSModel *theModel = [[ISSModel alloc]initializeWithDictionary:infoDict];
+        
+        [self setUpMapViewWithISSInfo:theModel];
+        
+        self.theModel = theModel;
     }];
 }
 
-//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-//    
-//    
-//}
+- (void)setUpMapViewWithISSInfo:(ISSModel *)theModel {
+    
+    MKCoordinateRegion region;
+    MKCoordinateSpan span;
+    
+    span.latitudeDelta = 50;
+    span.longitudeDelta = 50;
+    
+    region.span = span;
+    region.center.latitude = theModel.latitude;
+    region.center.longitude = theModel.longitude;
+    
+    [self.mapView setRegion:region];
+//    [self.mapView showAnnotations:self.mapView.annotations animated:TRUE];
+    
+    StationAnnotation *anno = [[StationAnnotation alloc]initWithLocation:CLLocationCoordinate2DMake(theModel.latitude, theModel.longitude)];
+    
+    [self.mapView addAnnotation:anno];
+    
+}
+
+- (IBAction)rightBarButtonTapped:(id)sender {
+    
+    [self fadeInSliderView];
+}
+
+- (void)fadeInSliderView {
+    
+    [UIView animateWithDuration:1.5 animations:^{
+        
+        self.sliderView.hidden = NO;
+        
+    }];
+}
+
+- (void)updateMapViewWithIndex:(NSInteger)index {
+    
+    switch (index) {
+            
+        case 0:
+            
+            self.mapView.mapType = MKMapTypeStandard;
+            
+        case 1:
+            
+           // self.mapView.mapType = MKMapTypeSatellite;
+            self.mapView.mapType = MKMapTypeHybridFlyover;
+
+        case 2:
+            
+            self.mapView.mapType = MKMapTypeHybrid;
+
+
+        default:
+            break;
+    }
+}
+
+- (void)updateColorWithRed:(float)red green:(float)green blue:(float)blue {
+    
+    float redToUpdate = red * 255;
+    float greenToUpdate = green * 255;
+    float blueToUpdate = blue * 255;
+    
+    UIColor *newBackgroundColor = [UIColor colorWithRed:(redToUpdate / 255) green:(greenToUpdate / 255) blue:(blueToUpdate / 255) alpha:1];
+    
+    self.view.backgroundColor = newBackgroundColor;
+    
+    //[self.view setNeedsDisplay];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    
+    MKAnnotationView *annView = [[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"theAnnotation"];
+    
+    //annView.center = CGPointMake(self.theModel.latitude, self.theModel.longitude);
+    
+    annView.center = self.view.center;
+    
+    //config image
+    CGSize newSize = CGSizeMake(100, 100);
+    
+    UIImage *spaceStationPic = [UIImage imageNamed:@"spaceStation"];
+    
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(-20, -20, 80, 80)];
+    imageView.image = [spaceStationPic resize:newSize];
+    imageView.layer.cornerRadius = imageView.frame.size.height / 2;
+    imageView.layer.masksToBounds = YES;
+    
+    [annView addSubview:imageView];
+    
+    return annView;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
