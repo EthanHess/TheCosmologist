@@ -20,5 +20,13 @@
 
     // Configure the view for the selected state
 }
+    
+- (void)setImageWithMarsData:(MarsData *)theData {
+    
+    if (theData.imageURLString) {
+        
+        self.marsImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:theData.imageURLString]]]; 
+    }
+}
 
 @end

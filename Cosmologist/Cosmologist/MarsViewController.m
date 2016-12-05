@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (nonatomic, strong) NSData *dataToSend;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 @end
 
@@ -37,8 +38,12 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
+        [self.activityView startAnimating];
+        
          [self getNasaInfoAtIndex:0];
     });
+    
+    [self.activityView setHidesWhenStopped:YES]; 
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -81,6 +86,9 @@
             self.marsDataArray = [self parseSearchResultsData:nasaArray];
             
             NSLog(@"DATA ARRAY %@", _marsDataArray);
+            
+            [self.activityView stopAnimating];
+            
         }
         
         else {
@@ -138,7 +146,10 @@
         [self.refreshControl endRefreshing];
     }
     
-    [self.tableView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.tableView reloadData];
+    });
 }
 
 #pragma Datasource
@@ -161,21 +172,22 @@
     
     //get priority queue so table view doesn't freeze
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ //try both high and default
         
 //        MarsData *data = _marsDataArray[indexPath.row];
         
         MarsData *data = [self setMarsDataSubArray][indexPath.row];
     
-        NSURL *urlString = [NSURL URLWithString:data.imageURLString];
-    
-        NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
+//        NSURL *urlString = [NSURL URLWithString:data.imageURLString];
+//    
+//        NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
         
-        //UIUpdate on main thread, obviously...
+        //UIUpdate on main thread
     
     dispatch_async(dispatch_get_main_queue(), ^{
                    
-        cell.marsImageView.image = [UIImage imageWithData:pictureData];
+//        cell.marsImageView.image = [UIImage imageWithData:pictureData];
+        [cell setImageWithMarsData:data];
         cell.dateLabel.text = data.landingDateString;
         
     });

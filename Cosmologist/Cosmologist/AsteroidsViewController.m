@@ -50,6 +50,14 @@
         
         [self getData];
     });
+    
+    [self makeBarButtonLookNice]; 
+}
+    
+- (void)makeBarButtonLookNice {
+    
+    UIImage *image = [[UIImage imageNamed:@"asteroidIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.leftBarButton.image = image;
 }
 
 - (void)getData {

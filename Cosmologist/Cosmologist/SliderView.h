@@ -13,23 +13,24 @@
 @required
 
 - (void)updateColorWithRed:(float)red green:(float)green blue:(float)blue;
-- (void)updateMapViewWithIndex:(NSInteger)index;
 
 @end
 
 @interface SliderView : UIView
+    
+//make weak to avoid retain cycles, but maybe should be strong so objects stay alive through vc life?
 
-@property (strong, nonatomic) IBOutlet UISlider *redSlider;
-@property (strong, nonatomic) IBOutlet UISlider *blueSlider;
-@property (strong, nonatomic) IBOutlet UISlider *greenSlider;
+@property (weak, nonatomic) IBOutlet UISlider *redSlider;
+@property (weak, nonatomic) IBOutlet UISlider *blueSlider;
+@property (weak, nonatomic) IBOutlet UISlider *greenSlider;
+    
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
 @property (nonatomic) float redValue;
 @property (nonatomic) float greenValue;
 @property (nonatomic) float blueValue;
 
-@property (nonatomic, strong) id <SliderValueUpdatedDelegate> delegate;
-
-@property (strong, nonatomic) IBOutlet UISegmentedControl *segControl;
+@property (nonatomic, weak) id <SliderValueUpdatedDelegate> delegate;
 
 
 @end

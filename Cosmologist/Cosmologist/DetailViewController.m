@@ -38,7 +38,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self getData]; 
+    [self getData];
+    [self renderBarButton]; 
+}
+    
+- (void)renderBarButton {
+    
+    UIImage *image = [[UIImage imageNamed:@"soundIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.sideBarButton.image = image;
 }
 
 - (void)getData {

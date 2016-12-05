@@ -22,14 +22,23 @@
     
     NSLog(@"%@ PIC DATA", _picData);
     
-    _scrollView.contentSize = CGSizeMake(800, 600);
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    
     _theImageView.image = [UIImage imageWithData:_picData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setUpScrollView {
+    
+    
 }
 
 /*

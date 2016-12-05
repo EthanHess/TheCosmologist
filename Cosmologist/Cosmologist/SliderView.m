@@ -24,6 +24,8 @@
     self.redValue = self.redSlider.value;
     self.greenValue = self.greenSlider.value;
     self.blueValue = self.blueSlider.value;
+    
+    self.doneButton.layer.cornerRadius = 10;
 }
 
 
@@ -35,26 +37,6 @@
     }];
 }
 
-- (IBAction)segmentControlTapped:(id)sender {
-    
-    switch (self.segControl.selectedSegmentIndex) {
-            
-        case 0:
-            
-            [self.delegate updateMapViewWithIndex:0];
-            
-        case 1:
-            
-            [self.delegate updateMapViewWithIndex:1];
-            
-        case 2:
-            
-            [self.delegate updateMapViewWithIndex:2];
-
-        default:
-            break;
-    }
-}
 
 - (IBAction)redValueChanged:(UISlider *)sender {
     

@@ -29,6 +29,8 @@
 @end
 
 @implementation MainViewController
+    
+#pragma Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -38,6 +40,10 @@
     [_activityIndicator setHidesWhenStopped:YES]; 
     [_activityIndicator startAnimating];
     self.pictureTitle.text = @"Loading";
+    
+    self.pictureTitle.layer.cornerRadius = 40;
+    self.pictureTitle.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.pictureTitle.layer.borderWidth = 2;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
@@ -172,6 +178,8 @@
         } else {
         
             NSLog(@"Only saving images for now"); //add alert and be able to save videos too
+            
+            [self onlySavingImagesAlert];
         
         }
         
@@ -198,6 +206,20 @@
     
     [self presentViewController:alertController animated:YES completion:nil];
 }
+
+- (void)onlySavingImagesAlert {
+    
+    UIAlertController *imageAlertController = [UIAlertController alertControllerWithTitle:@"Only saving images for now" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:nil];
+    
+    [imageAlertController addAction:okayAction];
+    
+    [self presentViewController:imageAlertController animated:YES completion:nil];
+    
+}
+
+#pragma WebView
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     

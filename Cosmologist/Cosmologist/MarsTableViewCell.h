@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MarsData.h"
 
 @interface MarsTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *marsImageView;
+    
+- (void)setImageWithMarsData:(MarsData *)theData;
 
 @end

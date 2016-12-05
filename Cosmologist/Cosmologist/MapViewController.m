@@ -50,10 +50,17 @@
     [self ISSTest];
     
     self.mapView.alpha = 0.8;
+    self.mapView.mapType = MKMapTypeHybrid;
     self.view.backgroundColor = [UIColor redColor]; //make configurable
+    
+    [self renderTheButtonNicely]; 
 }
-
-//TODO: Add own VC with ISS tracking feature
+    
+- (void)renderTheButtonNicely {
+    
+    UIImage *image = [[UIImage imageNamed:@"spaceStationIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    self.leftBarButton.image = image;
+}
 
 - (void)ISSTest {
     
@@ -67,7 +74,7 @@
         
         [self setUpMapViewWithISSInfo:theModel];
         
-        self.theModel = theModel;
+        self.theModel = theModel; //might not need this
     }];
 }
 
@@ -84,7 +91,6 @@
     region.center.longitude = theModel.longitude;
     
     [self.mapView setRegion:region];
-//    [self.mapView showAnnotations:self.mapView.annotations animated:TRUE];
     
     StationAnnotation *anno = [[StationAnnotation alloc]initWithLocation:CLLocationCoordinate2DMake(theModel.latitude, theModel.longitude)];
     
@@ -106,29 +112,7 @@
     }];
 }
 
-- (void)updateMapViewWithIndex:(NSInteger)index {
     
-    switch (index) {
-            
-        case 0:
-            
-            self.mapView.mapType = MKMapTypeStandard;
-            
-        case 1:
-            
-           // self.mapView.mapType = MKMapTypeSatellite;
-            self.mapView.mapType = MKMapTypeHybridFlyover;
-
-        case 2:
-            
-            self.mapView.mapType = MKMapTypeHybrid;
-
-
-        default:
-            break;
-    }
-}
-
 - (void)updateColorWithRed:(float)red green:(float)green blue:(float)blue {
     
     float redToUpdate = red * 255;
@@ -145,8 +129,6 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     
     MKAnnotationView *annView = [[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"theAnnotation"];
-    
-    //annView.center = CGPointMake(self.theModel.latitude, self.theModel.longitude);
     
     annView.center = self.view.center;
     
