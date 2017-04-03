@@ -17,6 +17,7 @@
 		270292201D9EF33C00A3B25D /* Picture+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702921D1D9EF33C00A3B25D /* Picture+CoreDataProperties.m */; };
 		270292211D9EF33C00A3B25D /* Picture.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702921F1D9EF33C00A3B25D /* Picture.m */; };
 		270292241D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 270292231D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m */; };
+		27081C3C1E725F9400BE4A5E /* CachedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 27081C3B1E725F9400BE4A5E /* CachedImage.m */; };
 		270EAFA61DA592FA005E2723 /* DescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAFA51DA592FA005E2723 /* DescriptionViewController.m */; };
 		2718BE9C1DB41F950081C911 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718BE9B1DB41F950081C911 /* MapViewController.m */; };
 		273B4F831D99D95600E1FE24 /* ArchivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B4F821D99D95600E1FE24 /* ArchivesViewController.m */; };
@@ -68,6 +69,8 @@
 		2702921F1D9EF33C00A3B25D /* Picture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Picture.m; path = ../Picture.m; sourceTree = "<group>"; };
 		270292221D9EF7CA00A3B25D /* ArchivesCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchivesCollectionViewCell.h; sourceTree = "<group>"; };
 		270292231D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivesCollectionViewCell.m; sourceTree = "<group>"; };
+		27081C3A1E725F9400BE4A5E /* CachedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CachedImage.h; sourceTree = "<group>"; };
+		27081C3B1E725F9400BE4A5E /* CachedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CachedImage.m; sourceTree = "<group>"; };
 		270EAFA41DA592FA005E2723 /* DescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DescriptionViewController.h; sourceTree = "<group>"; };
 		270EAFA51DA592FA005E2723 /* DescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionViewController.m; sourceTree = "<group>"; };
 		2718BE9A1DB41F950081C911 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 				2718BE9B1DB41F950081C911 /* MapViewController.m */,
 				27EFE2331DAC347D00B5458F /* CreditsViewController.h */,
 				27EFE2341DAC347D00B5458F /* CreditsViewController.m */,
+				27081C3A1E725F9400BE4A5E /* CachedImage.h */,
+				27081C3B1E725F9400BE4A5E /* CachedImage.m */,
 				27EB20D61D5E752B00213554 /* Constants.h */,
 				27F3A4A71D4C06B0002DC4DA /* Controllers */,
 				27F3A4A61D4C0680002DC4DA /* Models */,
@@ -429,6 +434,7 @@
 				27F3A4AC1D4D2C0E002DC4DA /* MarsData.m in Sources */,
 				27EEB7881D3D9D4F00F46FBC /* NasaDataController.m in Sources */,
 				27EEB7821D3D897300F46FBC /* MainViewController.m in Sources */,
+				27081C3C1E725F9400BE4A5E /* CachedImage.m in Sources */,
 				270292201D9EF33C00A3B25D /* Picture+CoreDataProperties.m in Sources */,
 				270292241D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m in Sources */,
 				270228A21DCFD2B60044FB68 /* UIImage+Resize.m in Sources */,

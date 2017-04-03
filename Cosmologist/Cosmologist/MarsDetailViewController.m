@@ -27,6 +27,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
+    _scrollView.contentSize = CGSizeMake(self.theImageView.frame.size.width, self.theImageView.frame.size.height);
     
     _theImageView.image = [UIImage imageWithData:_picData];
 }

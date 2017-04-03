@@ -12,6 +12,7 @@
 #import "NasaData.h"
 #import "Constants.h"
 #import "DescriptionViewController.h"
+#import "CachedImage.h"
 @import WebKit;
 
 @interface MainViewController () <UIWebViewDelegate>
@@ -45,11 +46,14 @@
     self.pictureTitle.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.pictureTitle.layer.borderWidth = 2;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    //dispatch_async(dispatch_get_main_queue(), ^{
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         [self getImageData];
-        
     });
+        
+    //});
 }
 
 - (void)renderBarButtonNicely {
@@ -107,14 +111,35 @@
             
             else {
                 
-                self.pictureView.image = [UIImage imageWithData:pictureData];
+                UIImage *cachedImage = [[CachedImage sharedInstance]imageForKey:dataClass.title];
+                
+                if (cachedImage) {
+                    [self setImage:cachedImage];
+                }
+                
+                else {
+                    
+                    UIImage *imageFromData = [UIImage imageWithData:pictureData];
+                    
+                    [self setImage:imageFromData];
+                    [[CachedImage sharedInstance]setImage:imageFromData forKey:dataClass.title];
+                }
+                
                 self.pictureTitle.text = dataClass.title;
                 self.descriptionString = dataClass.explanation;
-                
-                [_activityIndicator stopAnimating];
             }
         }
     }];
+}
+
+- (void)setImage:(UIImage *)image {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        self.pictureView.image = image;
+        
+        [_activityIndicator stopAnimating];
+    });
 }
 
 - (IBAction)labelTapped:(id)sender {

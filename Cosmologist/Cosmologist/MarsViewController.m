@@ -29,19 +29,22 @@
     [super viewDidLoad];
     
     SWRevealViewController *revealViewController = self.revealViewController;
+    
     if ( revealViewController )
     {
         [self.leftBarButton setTarget: self.revealViewController];
         [self.leftBarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
         
         [self.activityView startAnimating];
+    
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-         [self getNasaInfoAtIndex:0];
-    });
+            [self getNasaInfoAtIndex:0];
+            
+        });
+
     
     [self.activityView setHidesWhenStopped:YES]; 
 }
@@ -79,8 +82,6 @@
 
     [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)mainString andCompletion:^(NSArray *nasaArray) {
         
-        //NSLog(@"%@", nasaArray);
-        
         if (nasaArray) {
             
             self.marsDataArray = [self parseSearchResultsData:nasaArray];
@@ -88,6 +89,11 @@
             NSLog(@"DATA ARRAY %@", _marsDataArray);
             
             [self.activityView stopAnimating];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [_tableView reloadData];
+            });
             
         }
         
@@ -121,8 +127,6 @@
         
         NSArray *dictArray = dictionary[@"photos"];
         
-        //NSLog(@"DICTARRAY: %@", dictArray);
-        
         for (NSDictionary *dict in dictArray) {
             
             MarsData *marsData = [[MarsData alloc]initWithDictionary:dict];
@@ -133,8 +137,6 @@
             
         }
     }
-    
-    [_tableView reloadData];
     
     return mutableDataArray;
 }
@@ -173,21 +175,13 @@
     //get priority queue so table view doesn't freeze
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ //try both high and default
-        
-//        MarsData *data = _marsDataArray[indexPath.row];
-        
+
         MarsData *data = [self setMarsDataSubArray][indexPath.row];
-    
-//        NSURL *urlString = [NSURL URLWithString:data.imageURLString];
-//    
-//        NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
         
-        //UIUpdate on main thread
+        [cell setImageWithMarsData:data];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-                   
-//        cell.marsImageView.image = [UIImage imageWithData:pictureData];
-        [cell setImageWithMarsData:data];
+
         cell.dateLabel.text = data.landingDateString;
         
     });
@@ -200,9 +194,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [_tableView deselectRowAtIndexPath:indexPath animated:true];
-    
-//    MarsData *data = _marsDataArray[indexPath.row];
-    
+
     MarsData *data = [self setMarsDataSubArray][indexPath.row];
     
     NSURL *urlString = [NSURL URLWithString:data.imageURLString];

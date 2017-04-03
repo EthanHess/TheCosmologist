@@ -7,6 +7,7 @@
 //
 
 #import "ArchivesViewController.h"
+#import "CachedImage.h"
 
 @interface ArchivesViewController ()
 
@@ -59,7 +60,21 @@
 
 - (void)configureCell:(ArchivesCollectionViewCell *)cell withImageData:(NSData *)data {
     
-    cell.theImageView.image = [UIImage imageWithData:data];
+    NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    NSURL *picURL = [NSURL URLWithString:dataString];
+    
+    UIImage *cahcedImage = [[CachedImage sharedInstance]imageForKey:(NSString *)picURL];
+    
+    if (cahcedImage) {
+        
+        cell.theImageView.image = cahcedImage;
+    }
+    
+    else {
+    
+        cell.theImageView.image = [UIImage imageWithData:data];
+        [[CachedImage sharedInstance]setImage:[UIImage imageWithData:data] forKey:(NSString *)picURL];
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
