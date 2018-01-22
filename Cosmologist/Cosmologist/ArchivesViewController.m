@@ -8,6 +8,7 @@
 
 #import "ArchivesViewController.h"
 #import "CachedImage.h"
+#import "UIImage+Resize.h"
 
 @interface ArchivesViewController ()
 
@@ -39,48 +40,41 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ArchivesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    
     Picture *picture = [[MediaController sharedInstance] pictures][indexPath.row];
-    
     [self configureCell:cell withImageData:picture.data];
     
     return cell;
 }
 
 //- (void)organizeArray {
-//    
 //    NSMutableArray *array = [[[MediaController sharedInstance]pictures] mutableCopy];
-//    
 //    if (array.count > 10) {
-//        
-//        
-//        
 //    }
 //}
 
 - (void)configureCell:(ArchivesCollectionViewCell *)cell withImageData:(NSData *)data {
+    
+    //Resizing images but perhaps should store separate thumbnails to make fetching faster, collection view is a bit choppy
     
     NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSURL *picURL = [NSURL URLWithString:dataString];
     
     UIImage *cahcedImage = [[CachedImage sharedInstance]imageForKey:(NSString *)picURL];
     
-    if (cahcedImage) {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (cahcedImage) {
+            cell.theImageView.image = [cahcedImage resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
+        }
         
-        cell.theImageView.image = cahcedImage;
-    }
-    
-    else {
-    
-        cell.theImageView.image = [UIImage imageWithData:data];
-        [[CachedImage sharedInstance]setImage:[UIImage imageWithData:data] forKey:(NSString *)picURL];
-    }
+        else {
+            cell.theImageView.image = [[UIImage imageWithData:data]resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
+            [[CachedImage sharedInstance]setImage:[[UIImage imageWithData:data]resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)] forKey:(NSString *)picURL];
+        }
+    });
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
     return [[[MediaController sharedInstance] pictures]count];
-    
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {

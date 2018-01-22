@@ -46,14 +46,9 @@
     self.pictureTitle.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.pictureTitle.layer.borderWidth = 2;
     
-    //dispatch_async(dispatch_get_main_queue(), ^{
-    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
         [self getImageData];
     });
-        
-    //});
 }
 
 - (void)renderBarButtonNicely {
@@ -74,8 +69,6 @@
         [self.leftBarButton setTarget:self.revealViewController];
         [self.leftBarButton setAction:@selector(revealToggle:)];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-        
-        //[self getImageData];
     }
     
 }
@@ -85,17 +78,12 @@
     NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/planetary/apod?api_key=%@", NASA_API_KEY];
     
     [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
-        
-        //NSLog(@"ARRAY %@", nasaArray);
-        
+
         for (NSDictionary *dictionary in nasaArray) {
             
             NasaData *dataClass = [[NasaData alloc]initWithDictionary:dictionary];
             
-            //NSURL *urlString = [NSURL URLWithString:dataClass.hdurlString];
-            
             NSURL *urlString = [NSURL URLWithString:dataClass.urlString];
-            
             NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
             
             NSLog(@"DATA CLASS %@", dataClass);
@@ -103,9 +91,7 @@
             if ([dataClass.mediaType isEqualToString:@"video"]) {
             
                 self.descriptionString = dataClass.explanation;
-                
                 [self setUpViewForVideoWithURLString:urlString andTitle:dataClass.title];
-                
                 [_activityIndicator stopAnimating];
             }
             
@@ -135,9 +121,7 @@
 - (void)setImage:(UIImage *)image {
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        
         self.pictureView.image = image;
-        
         [_activityIndicator stopAnimating];
     });
 }

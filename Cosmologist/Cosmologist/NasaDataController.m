@@ -38,17 +38,13 @@
             id result = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
             
             NSDictionary *resultDictionary = result;
-            
             NSMutableArray *temporaryArray = [[NSMutableArray alloc]init];
-            
             [temporaryArray addObject:resultDictionary];
             
             completion(temporaryArray);
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            
             NSLog(@"%@", error.localizedDescription);
-            
         }];
     
 }

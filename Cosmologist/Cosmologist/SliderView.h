@@ -17,8 +17,6 @@
 @end
 
 @interface SliderView : UIView
-    
-//make weak to avoid retain cycles, but maybe should be strong so objects stay alive through vc life?
 
 @property (weak, nonatomic) IBOutlet UISlider *redSlider;
 @property (weak, nonatomic) IBOutlet UISlider *blueSlider;
@@ -31,6 +29,7 @@
 @property (nonatomic) float blueValue;
 
 @property (nonatomic, weak) id <SliderValueUpdatedDelegate> delegate;
+
 
 
 @end
