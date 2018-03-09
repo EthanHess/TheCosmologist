@@ -65,15 +65,10 @@
 - (void)ISSTest {
     
     [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)@"http://api.open-notify.org/iss-now.json"andCompletion:^(NSArray *nasaArray) {
-        
         NSLog(@"ISS TEST! %@", nasaArray);
-        
         NSDictionary *infoDict = nasaArray[0];
-        
         ISSModel *theModel = [[ISSModel alloc]initializeWithDictionary:infoDict];
-        
         [self setUpMapViewWithISSInfo:theModel];
-        
         self.theModel = theModel; //might not need this
     }];
 }
@@ -104,11 +99,8 @@
 }
 
 - (void)fadeInSliderView {
-    
     [UIView animateWithDuration:1.5 animations:^{
-        
         self.sliderView.hidden = NO;
-        
     }];
 }
 

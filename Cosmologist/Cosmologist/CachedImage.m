@@ -27,7 +27,6 @@
     self = [super init];
     
     if (self) {
-        
         self.imageCache = [NSCache new];
     }
     

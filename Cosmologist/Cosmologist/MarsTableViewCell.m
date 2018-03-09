@@ -29,24 +29,18 @@
         UIImage *theImage = [[CachedImage sharedInstance]imageForKey:theData.imageURLString];
         
         if (theImage) {
-            
             dispatch_async(dispatch_get_main_queue(), ^{
-                
                 self.marsImageView.image = theImage;
             });
-            
         }
         
         else {
             
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:theData.imageURLString]];
-            
         UIImage *imageFromData = [UIImage imageWithData:imageData];
-            
         UIImage *scaledImage = [UIImage imageWithData:[self compressedImageData:imageFromData]];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            
             self.marsImageView.image = scaledImage;
         });
             
@@ -60,9 +54,7 @@
 -(NSData *)compressedImageData:(UIImage *)image {
     
     NSData *imageData = UIImageJPEGRepresentation(image,1.0);
-    
     float compressionRate = 10;
-    
     while (imageData.length > 1024)
     {
         if (compressionRate > 0.5)
@@ -79,9 +71,7 @@
 }
 
 - (void)prepareForReuse {
-    
     [super prepareForReuse];
-    
     self.marsImageView.image = nil;
 }
 

@@ -46,10 +46,7 @@
     
     self.inTwentyFour = aDayFromNow;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        [self getData];
-    });
+    [self getData];
     
     [self makeBarButtonLookNice]; 
 }
@@ -71,11 +68,8 @@
     NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/neo/rest/v1/feed?start_date=%@&end_date=%@&api_key=%@", _dateOne, _dateTwo, NASA_API_KEY];
     
     [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
-        
         self.asteroidDataArray = [self parseArray:nasaArray];
-        
         [_tableView reloadData];
-        
     }];
 }
 
@@ -84,24 +78,15 @@
         NSMutableArray *mutableDataArray = [NSMutableArray new];
         
         for (NSDictionary *dictionary in arrayToParse) {
-            
             NSArray *dictArray = dictionary[@"near_earth_objects"][_dateOne];
             
-            //NSLog(@"DICTARRAY: %@", dictArray);
-            
             for (NSDictionary *dict in dictArray) {
-                
                 AsteroidData *aData = [[AsteroidData alloc]initWithDictionary:dict];
-                
                 NSLog(@"DATA ARRAY %@", aData);
-                
                 [mutableDataArray addObject:aData];
             }
         }
-        
-        
         return mutableDataArray;
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -119,27 +104,20 @@
     AsteroidData *asteroid = _asteroidDataArray[indexPath.row];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        
-    cell.nameLabel.text = asteroid.name;
-    [cell.urlButton setTitle:asteroid.jplURL forState:UIControlStateNormal];
-    cell.data = asteroid;
-        
+        cell.nameLabel.text = asteroid.name;
+        [cell.urlButton setTitle:asteroid.jplURL forState:UIControlStateNormal];
+        cell.data = asteroid;
     }); 
     
     //cell.diameterLabel.text = asteroid.estimatedDiameterMilesMax;
-    
-    
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     return _asteroidDataArray.count;
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES]; 
 }
 

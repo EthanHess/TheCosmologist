@@ -54,11 +54,9 @@
     [self animateViewsIn];
     
     NSString *customStringOne = @"A special thanks to SWRevealController";
-    
     [self configureSWRLabel:customStringOne];
-    
+
     NSString *customStringTwo = @"Also a special thanks to NASA for their awesome API";
-    
     [self configureNasaLabel:customStringTwo];
     
 }
@@ -66,12 +64,9 @@
 - (void)animateViewsIn {
     
     [UIView animateWithDuration:1.5 animations:^{
-        
         self.SWRLabel.alpha = 1;
     }];
-    
     [UIView animateWithDuration:2.5 animations:^{
-        
         self.NASALabel.alpha = 1;
     }];
 }

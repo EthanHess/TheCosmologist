@@ -195,15 +195,11 @@
     }];
     
     UIAlertAction *shareAction = [UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
             [self shareContent];
-        
     }];
     
     UIAlertAction *seeAction = [UIAlertAction actionWithTitle:@"See Saved Content" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
         [self performSegueWithIdentifier:@"archiveSegue" sender:nil];
-        
     }];
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Nevermind" style:UIAlertActionStyleCancel handler:nil];
@@ -231,12 +227,10 @@
 #pragma WebView
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
     NSLog(@"WEB STRING: %@", webView.request.URL.absoluteString);
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    
     NSLog(@"ERROR %@", error);
 }
 
