@@ -118,10 +118,8 @@
             fromViewController.view.alpha = 0;
             
         } completion:^(BOOL finished) {
-            
             [transitionContext completeTransition:YES];
             [[fromViewController view]removeFromSuperview];
-        
         }];
     }
 }

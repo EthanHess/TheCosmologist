@@ -40,11 +40,8 @@
         [self.activityView startAnimating];
     
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
             [self getNasaInfoAtIndex:0];
-            
         });
-
     
     [self.activityView setHidesWhenStopped:YES]; 
 }
@@ -57,7 +54,6 @@
     [self.tableView addSubview:self.refreshControl];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        
         [self.tableView reloadData];
     });
     
@@ -83,22 +79,14 @@
     [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)mainString andCompletion:^(NSArray *nasaArray) {
         
         if (nasaArray) {
-            
             self.marsDataArray = [self parseSearchResultsData:nasaArray];
-            
             NSLog(@"DATA ARRAY %@", _marsDataArray);
-            
             [self.activityView stopAnimating];
-            
             dispatch_async(dispatch_get_main_queue(), ^{
-                
                 [_tableView reloadData];
             });
-            
         }
-        
         else {
-            
             NSLog(@"Something went wrong");
         }
     }];
@@ -109,47 +97,31 @@
 - (NSArray *)setMarsDataSubArray {
     
     NSInteger totalCount = _marsDataArray.count;
-    
     NSInteger subArrayCount = totalCount / 10;
-    
     int roundedOff = floor(subArrayCount);
-    
     return [self.marsDataArray subarrayWithRange:NSMakeRange(roundedOff * self.segControl.selectedSegmentIndex, roundedOff)];
 }
 
 - (NSArray *)parseSearchResultsData:(NSArray *)arrayToParse {
     
     NSMutableArray *mutableDataArray = [NSMutableArray new];
-    
     self.marsDataArray = @[];
-    
     for (NSDictionary *dictionary in arrayToParse) {
-        
         NSArray *dictArray = dictionary[@"photos"];
-        
         for (NSDictionary *dict in dictArray) {
-            
             MarsData *marsData = [[MarsData alloc]initWithDictionary:dict];
-            
             [mutableDataArray addObject:marsData];
-            
             _marsDataArray = mutableDataArray;
-            
         }
     }
-    
     return mutableDataArray;
 }
 
 - (void)refresh {
-    
     if (self.refreshControl.isRefreshing) {
-        
         [self.refreshControl endRefreshing];
     }
-    
     dispatch_async(dispatch_get_main_queue(), ^{
-        
         [self.tableView reloadData];
     });
 }
@@ -157,11 +129,7 @@
 #pragma Datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-//    return _marsDataArray.count;
-    
     return [self setMarsDataSubArray].count;
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -175,17 +143,11 @@
     //get priority queue so table view doesn't freeze
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ //try both high and default
-
         MarsData *data = [self setMarsDataSubArray][indexPath.row];
-        
         [cell setImageWithMarsData:data];
-    
     dispatch_async(dispatch_get_main_queue(), ^{
-
         cell.dateLabel.text = data.landingDateString;
-        
     });
-        
     });
     
     return cell;
@@ -194,35 +156,25 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [_tableView deselectRowAtIndexPath:indexPath animated:true];
-
     MarsData *data = [self setMarsDataSubArray][indexPath.row];
-    
     NSURL *urlString = [NSURL URLWithString:data.imageURLString];
-    
     NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
-    
     _dataToSend = pictureData;
-    
     [self performSegueWithIdentifier:@"detailSegue" sender:nil]; //self?
 }
 
 - (IBAction)segmentTapped:(id)sender {
     
     NSInteger page = self.segControl.selectedSegmentIndex;
-    
     [self getNasaInfoAtIndex:page]; 
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    
     if ([segue.identifier isEqualToString:@"detailSegue"]) {
-        
         MarsDetailViewController *dvc = [segue destinationViewController];
-        
         dvc.picData = _dataToSend;
     }
-    
 }
 
 - (void)didReceiveMemoryWarning {

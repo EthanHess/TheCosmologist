@@ -44,24 +44,20 @@
 }
 
 - (IBAction)stopPlaying:(id)sender {
-    
     [self.player replaceCurrentItemWithPlayerItem:nil]; 
 }
 
 - (void)playAudioFileAtURL:(NSURL *)url {
     
     if (url) {
-        
         AVPlayerItem *item = [AVPlayerItem playerItemWithURL: url];
         self.player = [AVPlayer playerWithPlayerItem: item];
         
         [self.player play];
-    
-    } else {
         
+    } else {
         NSLog(@"Something went wrong");
     }
-    
 }
 
 @end

@@ -42,10 +42,8 @@
 - (void)getCurrentLocationWithCompletion:(void (^)(CLLocationCoordinate2D currentLocation, BOOL success))completion {
     
     if (self.currentLocation) {
-        
         completion(*(_currentLocation), YES);
     }
-    
 }
 
 

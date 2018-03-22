@@ -57,25 +57,16 @@
     [[NasaDataController sharedInstance]getNasaInfoWithURL:url andCompletion:^(NSArray *nasaArray) {
         
         for (NSDictionary *dictionary in nasaArray) {
-            
             NSArray *dictArray = dictionary[@"results"];
-            
             NSMutableArray *mutableDataArray = [NSMutableArray new];
-            
+        
             for (NSDictionary *dict in dictArray) {
-                
                 SoundData *data = [[SoundData alloc]initWithDictionary:dict];
-                
                 [mutableDataArray addObject:data];
-                
                 self.soundDataArary = mutableDataArray;
-                
             }
-            
         };
-        
         [_tableView reloadData];
-        
     }];
 }
 
@@ -93,7 +84,6 @@
 #pragma Datasource/Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     return _soundDataArary.count;
 }
 
@@ -117,7 +107,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

@@ -104,9 +104,7 @@
                 }
                 
                 else {
-                    
                     UIImage *imageFromData = [UIImage imageWithData:pictureData];
-                    
                     [self setImage:imageFromData];
                     [[CachedImage sharedInstance]setImage:imageFromData forKey:dataClass.title];
                 }
@@ -119,7 +117,6 @@
 }
 
 - (void)setImage:(UIImage *)image {
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         self.pictureView.image = image;
         [_activityIndicator stopAnimating];
@@ -127,18 +124,13 @@
 }
 
 - (IBAction)labelTapped:(id)sender {
-    
     DescriptionViewController *descVC = [self newFromStoryboard];
-    
     [descVC setString:self.descriptionString];
-    
     [self presentViewController:descVC animated:YES completion:nil]; 
 }
 
 - (DescriptionViewController *)newFromStoryboard {
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
     return [storyboard instantiateViewControllerWithIdentifier:@"Description"];
 }
 
@@ -167,9 +159,7 @@
 
 
 - (IBAction)optionsButtonTapped:(id)sender {
-    
     [self popAlertWithString:@"Options" andMessage:@""];
-    
 }
 
 - (void)popAlertWithString:(NSString *)title andMessage:(NSString *)message {
@@ -181,17 +171,11 @@
         UIImage *image = self.pictureView.image;
         
         if (image != nil) {
-            
             [[MediaController sharedInstance]addImage:image];
-        
         } else {
-        
             NSLog(@"Only saving images for now"); //add alert and be able to save videos too
-            
             [self onlySavingImagesAlert];
-        
         }
-        
     }];
     
     UIAlertAction *shareAction = [UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -219,9 +203,7 @@
     UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:nil];
     
     [imageAlertController addAction:okayAction];
-    
     [self presentViewController:imageAlertController animated:YES completion:nil];
-    
 }
 
 #pragma WebView
@@ -241,19 +223,16 @@
     UIImage *image = self.pictureView.image;
     
     if (image != nil) {
-        
         UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[image] applicationActivities:nil];
         [self presentViewController:activityVC animated:YES completion:nil];
     }
     
     else if (self.webViewURL != nil) {
-        
         UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[self.webViewURL] applicationActivities:nil];
         [self presentViewController:activityVC animated:YES completion:nil];
     }
     
     else {
-        
         NSLog(@"nada...");
     }
 }
@@ -268,7 +247,6 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if ([segue.identifier isEqualToString:@"archiveSegue"]) {
         
         

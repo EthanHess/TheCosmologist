@@ -32,7 +32,6 @@
 - (IBAction)dismissSelf:(id)sender {
     
     [UIView animateWithDuration:1.5 animations:^{
-        
         [self setHidden:YES];
     }];
 }
