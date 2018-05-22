@@ -62,14 +62,14 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     
-    _dateOne = [dateFormatter stringFromDate:self.now];
-    _dateTwo = [dateFormatter stringFromDate:self.inTwentyFour];
+    self.dateOne = [dateFormatter stringFromDate:self.now];
+    self.dateTwo = [dateFormatter stringFromDate:self.inTwentyFour];
     
     NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/neo/rest/v1/feed?start_date=%@&end_date=%@&api_key=%@", _dateOne, _dateTwo, NASA_API_KEY];
     
     [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
         self.asteroidDataArray = [self parseArray:nasaArray];
-        [_tableView reloadData];
+        [self.tableView reloadData];
     }];
 }
 
@@ -114,7 +114,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _asteroidDataArray.count;
+    return self.asteroidDataArray.count;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

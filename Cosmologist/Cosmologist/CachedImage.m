@@ -10,7 +10,7 @@
 
 @implementation CachedImage
 
-+(CachedImage *)sharedInstance {
++ (CachedImage *)sharedInstance {
     
     static CachedImage *sharedInstance = nil;
     static dispatch_once_t onceToken;

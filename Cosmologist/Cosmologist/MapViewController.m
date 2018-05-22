@@ -7,13 +7,15 @@
 //
 
 #import "MapViewController.h"
-@import MapKit;
+
 #import "SWRevealViewController.h"
 #import "NasaDataController.h"
 #import "ISSModel.h"
 #import "UIImage+Resize.h"
 #import "StationAnnotation.h"
 #import "SliderView.h"
+
+@import MapKit;
 
 @interface MapViewController () <MKMapViewDelegate, SliderValueUpdatedDelegate>
 
@@ -33,11 +35,9 @@
     SWRevealViewController *revealController = self.revealViewController;
     
     if (revealController) {
-        
         [self.leftBarButton setTarget:self.revealViewController];
         [self.leftBarButton setAction:@selector(revealToggle:)];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-        
     }
 }
 
@@ -113,9 +113,9 @@
     
     UIColor *newBackgroundColor = [UIColor colorWithRed:(redToUpdate / 255) green:(greenToUpdate / 255) blue:(blueToUpdate / 255) alpha:1];
     
-    self.view.backgroundColor = newBackgroundColor;
-    
-    //[self.view setNeedsDisplay];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.view.backgroundColor = newBackgroundColor;
+    });
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {

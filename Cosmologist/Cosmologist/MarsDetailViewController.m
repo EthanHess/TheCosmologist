@@ -20,16 +20,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"%@ PIC DATA", _picData);
+    NSLog(@"%@ PIC DATA", self.picData);
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    _scrollView.contentSize = CGSizeMake(self.theImageView.frame.size.width, self.theImageView.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(self.theImageView.frame.size.width, self.theImageView.frame.size.height);
     
-    _theImageView.image = [UIImage imageWithData:_picData];
+    self.theImageView.image = [UIImage imageWithData:_picData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,10 +37,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setUpScrollView {
-    
-    
-}
 
 /*
 #pragma mark - Navigation

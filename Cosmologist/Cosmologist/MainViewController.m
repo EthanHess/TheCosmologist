@@ -38,8 +38,8 @@
     
     [self renderBarButtonNicely];
     
-    [_activityIndicator setHidesWhenStopped:YES]; 
-    [_activityIndicator startAnimating];
+    [self.activityIndicator setHidesWhenStopped:YES];
+    [self.activityIndicator startAnimating];
     self.pictureTitle.text = @"Loading";
     
     self.pictureTitle.layer.cornerRadius = 40;
@@ -60,7 +60,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _webView.hidden = YES;
+    self.webView.hidden = YES;
     
     SWRevealViewController *revealController = self.revealViewController;
     
@@ -89,25 +89,15 @@
             NSLog(@"DATA CLASS %@", dataClass);
             
             if ([dataClass.mediaType isEqualToString:@"video"]) {
-            
                 self.descriptionString = dataClass.explanation;
                 [self setUpViewForVideoWithURLString:urlString andTitle:dataClass.title];
-                [_activityIndicator stopAnimating];
+                [self.activityIndicator stopAnimating];
             }
             
             else {
-                
-                UIImage *cachedImage = [[CachedImage sharedInstance]imageForKey:dataClass.title];
-                
-                if (cachedImage) {
-                    [self setImage:cachedImage];
-                }
-                
-                else {
-                    UIImage *imageFromData = [UIImage imageWithData:pictureData];
-                    [self setImage:imageFromData];
-                    [[CachedImage sharedInstance]setImage:imageFromData forKey:dataClass.title];
-                }
+
+                UIImage *imageFromData = [UIImage imageWithData:pictureData];
+                [self setImage:imageFromData];
                 
                 self.pictureTitle.text = dataClass.title;
                 self.descriptionString = dataClass.explanation;
@@ -119,7 +109,7 @@
 - (void)setImage:(UIImage *)image {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.pictureView.image = image;
-        [_activityIndicator stopAnimating];
+        [self.activityIndicator stopAnimating];
     });
 }
 
@@ -140,18 +130,18 @@
     
     self.webViewURL = (NSString *)urlString;
     
-    _webView.hidden = NO;
-    _webView.delegate = self;
+    self.webView.hidden = NO;
+    self.webView.delegate = self;
 
     CGFloat width = self.pictureView.frame.size.width;
     CGFloat height = self.pictureView.frame.size.height;
     
     NSString *htmlString = [NSString stringWithFormat:@"<iframe width=\"%f\" height=\"%f\" src=\"%@/\" frameborder=\"0\" allowfullscreen></iframe>", width, height, (NSString *)urlString];
 
-    [_webView loadHTMLString:htmlString baseURL:nil];
-    _webView.mediaPlaybackRequiresUserAction = NO;
-    _webView.allowsInlineMediaPlayback = YES;
-    [_webView setContentMode:UIViewContentModeScaleAspectFit];
+    [self.webView loadHTMLString:htmlString baseURL:nil];
+    self.webView.mediaPlaybackRequiresUserAction = NO;
+    self.webView.allowsInlineMediaPlayback = YES;
+    [self.webView setContentMode:UIViewContentModeScaleAspectFit];
     
     self.pictureTitle.text = title;
     self.imageOrVideoLabel.text = @"Video of the day!"; 

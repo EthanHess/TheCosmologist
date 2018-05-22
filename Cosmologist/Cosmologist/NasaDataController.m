@@ -44,7 +44,7 @@
             completion(temporaryArray);
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSLog(@"%@", error.localizedDescription);
+            NSLog(@"--- ERROR FETCHING DATA --- %@", error.localizedDescription);
         }];
 }
 

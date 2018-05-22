@@ -66,11 +66,9 @@
                 self.soundDataArary = mutableDataArray;
             }
         };
-        [_tableView reloadData];
+        [self.tableView reloadData];
     }];
 }
-
-//require soundcloud api access to play NASA sound files until API is updated
 
 - (void)playAudioFileAtURL:(NSURL *)url {
     
@@ -84,14 +82,14 @@
 #pragma Datasource/Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _soundDataArary.count;
+    return self.soundDataArary.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     SoundCell *cell = [tableView dequeueReusableCellWithIdentifier:@"soundCell"];
     
-    SoundData *data = _soundDataArary[indexPath.row];
+    SoundData *data = self.soundDataArary[indexPath.row];
     
     cell.soundTitleLabel.text = data.title;
     cell.soundURL = [NSURL URLWithString:data.streamURL];
@@ -101,7 +99,6 @@
     } else {
         cell.soundDescLabel.text = @"No description available."; 
     }
-    
     
     return cell;
 }

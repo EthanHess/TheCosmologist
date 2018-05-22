@@ -27,13 +27,13 @@
             
         case 0:
             
-            self.diameterLabel.text = [self diameterString:_data.estimatedDiameterMilesMax];
+            self.diameterLabel.text = [self diameterString:self.data.estimatedDiameterMilesMax];
             
             break;
             
         case 1:
             
-            self.diameterLabel.text = [self diameterString:_data.estimatedDiameterKilometersMax];
+            self.diameterLabel.text = [self diameterString:self.data.estimatedDiameterKilometersMax];
             
             break;
             
@@ -47,7 +47,6 @@
     NSURL* urlToOpen = [NSURL URLWithString:[self.urlButton titleForState:UIControlStateNormal]];
     
     if ([[UIApplication sharedApplication]canOpenURL:urlToOpen]) {
-        
         [[UIApplication sharedApplication]openURL:urlToOpen]; 
     }
 }

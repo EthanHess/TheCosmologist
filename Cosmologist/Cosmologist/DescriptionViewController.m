@@ -97,8 +97,6 @@
     
     if (self.isPresenting == YES) {
         
-        //animate views here (maybe animate text view?)
-        
         [containerView addSubview:[toViewController view]];
         toViewController.view.alpha = 0;
         
@@ -125,12 +123,10 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)dismiss:(id)sender {
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -193,7 +193,7 @@
 				27EB20D61D5E752B00213554 /* Constants.h */,
 				27F3A4A71D4C06B0002DC4DA /* Controllers */,
 				27F3A4A61D4C0680002DC4DA /* Models */,
-				27F3A4A81D4C06BD002DC4DA /* Custom Views */,
+				27F3A4A81D4C06BD002DC4DA /* Custom Views + Cells */,
 				27EEB7241D3C82FB00F46FBC /* Main.storyboard */,
 				27EEB7271D3C82FB00F46FBC /* Assets.xcassets */,
 				27EEB7291D3C82FB00F46FBC /* LaunchScreen.storyboard */,
@@ -251,7 +251,7 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		27F3A4A81D4C06BD002DC4DA /* Custom Views */ = {
+		27F3A4A81D4C06BD002DC4DA /* Custom Views + Cells */ = {
 			isa = PBXGroup;
 			children = (
 				270228A61DCFEEC10044FB68 /* SliderView.h */,
@@ -268,7 +268,7 @@
 				270228A11DCFD2B60044FB68 /* UIImage+Resize.m */,
 				270292191D9EF23900A3B25D /* Model.xcdatamodeld */,
 			);
-			name = "Custom Views";
+			name = "Custom Views + Cells";
 			sourceTree = "<group>";
 		};
 		3FBD56BDDFF9943BC29C22F2 /* Frameworks */ = {

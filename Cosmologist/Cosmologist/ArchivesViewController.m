@@ -74,7 +74,8 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [[[MediaController sharedInstance] pictures]count];
+    NSArray *pictureArray = [[MediaController sharedInstance] pictures];
+    return pictureArray != nil ? pictureArray.count : 0;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -135,7 +136,6 @@
 - (UIImage *)imageFromPicture:(Picture *)picture {
     
     if (picture.data) {
-        
         return [UIImage imageWithData:picture.data];
     } else {
         NSLog(@"Something went wrong");

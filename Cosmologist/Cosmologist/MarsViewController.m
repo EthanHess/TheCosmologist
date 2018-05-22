@@ -49,13 +49,13 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.refreshControl = [[UIRefreshControl alloc]init];
-    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:self.refreshControl];
+    if (self.refreshControl == nil) {
+        self.refreshControl = [[UIRefreshControl alloc]init];
+        [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+        [self.tableView addSubview:self.refreshControl];
+    }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-    });
+    [self refresh];
     
     [self renderBarButtonNicely]; 
 }
@@ -80,14 +80,14 @@
         
         if (nasaArray) {
             self.marsDataArray = [self parseSearchResultsData:nasaArray];
-            NSLog(@"DATA ARRAY %@", _marsDataArray);
-            [self.activityView stopAnimating];
+            NSLog(@"--- DATA ARRAY ---%@", self.marsDataArray);
             dispatch_async(dispatch_get_main_queue(), ^{
-                [_tableView reloadData];
+                [self.activityView stopAnimating];
+                [self.tableView reloadData];
             });
         }
         else {
-            NSLog(@"Something went wrong");
+            NSLog(@"--- Something went wrong --- %s", __PRETTY_FUNCTION__);
         }
     }];
 }
@@ -96,7 +96,7 @@
 
 - (NSArray *)setMarsDataSubArray {
     
-    NSInteger totalCount = _marsDataArray.count;
+    NSInteger totalCount = self.marsDataArray.count;
     NSInteger subArrayCount = totalCount / 10;
     int roundedOff = floor(subArrayCount);
     return [self.marsDataArray subarrayWithRange:NSMakeRange(roundedOff * self.segControl.selectedSegmentIndex, roundedOff)];
@@ -111,7 +111,7 @@
         for (NSDictionary *dict in dictArray) {
             MarsData *marsData = [[MarsData alloc]initWithDictionary:dict];
             [mutableDataArray addObject:marsData];
-            _marsDataArray = mutableDataArray;
+            self.marsDataArray = mutableDataArray;
         }
     }
     return mutableDataArray;
@@ -136,44 +136,42 @@
     
     MarsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"marsCell"];
     
-    //clear it out!
+    //clear it out
     cell.marsImageView.image = nil;
     cell.dateLabel.text = @""; 
     
-    //get priority queue so table view doesn't freeze
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ //try both high and default
+    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         MarsData *data = [self setMarsDataSubArray][indexPath.row];
         [cell setImageWithMarsData:data];
     dispatch_async(dispatch_get_main_queue(), ^{
         cell.dateLabel.text = data.landingDateString;
     });
-    });
+    //});
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [_tableView deselectRowAtIndexPath:indexPath animated:true];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:true];
+    
     MarsData *data = [self setMarsDataSubArray][indexPath.row];
     NSURL *urlString = [NSURL URLWithString:data.imageURLString];
     NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
-    _dataToSend = pictureData;
+    self.dataToSend = pictureData;
+    
     [self performSegueWithIdentifier:@"detailSegue" sender:nil]; //self?
 }
 
 - (IBAction)segmentTapped:(id)sender {
-    
     NSInteger page = self.segControl.selectedSegmentIndex;
     [self getNasaInfoAtIndex:page]; 
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if ([segue.identifier isEqualToString:@"detailSegue"]) {
         MarsDetailViewController *dvc = [segue destinationViewController];
-        dvc.picData = _dataToSend;
+        dvc.picData = self.dataToSend;
     }
 }
 

@@ -25,7 +25,6 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
     
     if ([[url absoluteString]containsString:@"nasa"]) {
-        
         return true;
     }
     

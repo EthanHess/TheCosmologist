@@ -63,7 +63,7 @@
         
         if (success) {
             
-            _location = currentLocation;
+            self.location = currentLocation;
             
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:@"yyyy-MM-dd"];
@@ -83,7 +83,7 @@
                     
                     [self.activityView stopAnimating];
                     
-                    _pictureImageView.image = [UIImage imageWithData:data];
+                    self.pictureImageView.image = [UIImage imageWithData:data];
                     
                     [self popAlert:@"This is what you look like to NASA! Rain or shine..." andMessage:nil];
                 }
@@ -92,8 +92,7 @@
     }];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
