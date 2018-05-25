@@ -90,8 +90,10 @@
             
             if ([dataClass.mediaType isEqualToString:@"video"]) {
                 self.descriptionString = dataClass.explanation;
-                [self setUpViewForVideoWithURLString:urlString andTitle:dataClass.title];
-                [self.activityIndicator stopAnimating];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self setUpViewForVideoWithURLString:urlString andTitle:dataClass.title];
+                    [self.activityIndicator stopAnimating];
+                });
             }
             
             else {
@@ -99,8 +101,10 @@
                 UIImage *imageFromData = [UIImage imageWithData:pictureData];
                 [self setImage:imageFromData];
                 
-                self.pictureTitle.text = dataClass.title;
-                self.descriptionString = dataClass.explanation;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.pictureTitle.text = dataClass.title;
+                    self.descriptionString = dataClass.explanation;
+                });
             }
         }
     }];
