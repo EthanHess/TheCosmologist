@@ -139,14 +139,13 @@
     //clear it out
     cell.marsImageView.image = nil;
     cell.dateLabel.text = @""; 
+
+    MarsData *data = [self setMarsDataSubArray][indexPath.row];
+    [cell setImageWithMarsData:data];
     
-    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        MarsData *data = [self setMarsDataSubArray][indexPath.row];
-        [cell setImageWithMarsData:data];
     dispatch_async(dispatch_get_main_queue(), ^{
         cell.dateLabel.text = data.landingDateString;
     });
-    //});
     
     return cell;
 }

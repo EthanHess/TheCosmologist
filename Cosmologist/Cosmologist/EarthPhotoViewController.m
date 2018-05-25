@@ -74,36 +74,42 @@
             
             [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
                 
+                if (nasaArray.count > 0) {
+                
                 for (NSDictionary *dictionary in nasaArray) {
-                    
-                    NSString *urlString = dictionary[@"url"];
-                    NSURL *url = [NSURL URLWithString:urlString];
-                    
-                    NSData *data = [NSData dataWithContentsOfURL:url];
-                    
-                    [self.activityView stopAnimating];
-                    
-                    self.pictureImageView.image = [UIImage imageWithData:data];
-                    
-                    [self popAlert:@"This is what you look like to NASA! Rain or shine..." andMessage:nil];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self setUpViewsWithDictionary:dictionary];
+                    });
+                }
+                } else {
+                    NSLog(@"NO NASA ARRAY %s", __PRETTY_FUNCTION__);
                 }
             }];
         }
     }];
 }
 
+- (void)setUpViewsWithDictionary:(NSDictionary *)dictionary {
+    
+    NSString *urlString = dictionary[@"url"];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    [self.activityView stopAnimating];
+    self.pictureImageView.image = [UIImage imageWithData:data];
+    [self popAlert:@"This is what you look like to NASA! Rain or shine..." andMessage:nil];
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
+//TODO, have global function for alert
+
 - (void)popAlert:(NSString *)title andMessage:(NSString *)message {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    
     UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Cool!" style:UIAlertActionStyleCancel handler:nil];
-    
     [alertController addAction:okayAction];
-    
     [self presentViewController:alertController animated:YES completion:nil];
 }
 

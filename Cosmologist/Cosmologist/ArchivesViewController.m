@@ -40,6 +40,8 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     ArchivesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+
+    //Check count first <>
     Picture *picture = [[MediaController sharedInstance] pictures][indexPath.row];
     [self configureCell:cell withImageData:picture.data];
     
@@ -129,8 +131,12 @@
 
     UIImage *image = [self imageFromPicture:picture];
     
-    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[image] applicationActivities:nil];
-    [self presentViewController:activityVC animated:YES completion:nil];
+    if (image) {
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[image] applicationActivities:nil];
+        [self presentViewController:activityVC animated:YES completion:nil];
+    } else {
+        NSLog(@"COULD NOT GET IMAGE %s", __PRETTY_FUNCTION__);
+    }
 }
 
 - (UIImage *)imageFromPicture:(Picture *)picture {

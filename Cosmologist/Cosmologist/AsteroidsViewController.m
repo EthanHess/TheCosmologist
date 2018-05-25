@@ -45,9 +45,7 @@
     NSDate *aDayFromNow = [calendar dateByAddingComponents:dayComponent toDate:self.now options:0];
     
     self.inTwentyFour = aDayFromNow;
-    
     [self getData];
-    
     [self makeBarButtonLookNice]; 
 }
     
@@ -68,8 +66,12 @@
     NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/neo/rest/v1/feed?start_date=%@&end_date=%@&api_key=%@", _dateOne, _dateTwo, NASA_API_KEY];
     
     [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
-        self.asteroidDataArray = [self parseArray:nasaArray];
-        [self.tableView reloadData];
+        if (nasaArray.count > 0) {
+            self.asteroidDataArray = [self parseArray:nasaArray];
+            [self.tableView reloadData];
+        } else {
+            NSLog(@"NO NASA ARRAY %s", __PRETTY_FUNCTION__);
+        }
     }];
 }
 
@@ -101,7 +103,7 @@
     
     //get the info
     
-    AsteroidData *asteroid = _asteroidDataArray[indexPath.row];
+    AsteroidData *asteroid = self.asteroidDataArray[indexPath.row];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         cell.nameLabel.text = asteroid.name;
@@ -114,7 +116,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.asteroidDataArray.count;
+    return self.asteroidDataArray != nil ? self.asteroidDataArray.count : 0;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
