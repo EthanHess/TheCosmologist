@@ -18,11 +18,9 @@
 
 @implementation DescriptionViewController
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
-        
         //TODO: implement
     }
     return self;
@@ -30,7 +28,6 @@
 
 
 - (void)setString:(NSString *)descString {
-    
     self.descriptionString = descString;
 }
 
@@ -38,10 +35,8 @@
     [super viewDidLoad];
     
     self.isPresenting = YES;
-    
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
     self.transitioningDelegate = self;
-    
     self.view.backgroundColor = [[UIColor darkGrayColor]colorWithAlphaComponent:0.3];
 }
 
@@ -52,9 +47,7 @@
     
     if (self.descriptionString) {
         self.theTextView.text = self.descriptionString;
-    }
-    
-    else {
+    } else {
         NSLog(@"No string, darn it.");
     }
 }
@@ -85,7 +78,6 @@
 }
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
-    
     return 0.5;
 }
 
@@ -96,25 +88,16 @@
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
     if (self.isPresenting == YES) {
-        
         [containerView addSubview:[toViewController view]];
         toViewController.view.alpha = 0;
-        
         [UIView animateWithDuration:0.5 animations:^{
-            
             toViewController.view.alpha = 1;
-
         } completion:^(BOOL finished) {
-            
             [transitionContext completeTransition:YES];
         }];
-    }
-    
-    else {
-        
+    } else {
         [UIView animateWithDuration:0.4 animations:^{
             fromViewController.view.alpha = 0;
-            
         } completion:^(BOOL finished) {
             [transitionContext completeTransition:YES];
             [[fromViewController view]removeFromSuperview];

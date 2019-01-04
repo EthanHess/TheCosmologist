@@ -15,7 +15,6 @@
     self = [super init];
     
     if (self) {
-        
         self.name = dictionary[nameKey];
         self.jplURL = dictionary[jplURLKey];
         self.isHazardous = [dictionary[hazardKey] boolValue]; //might need to be extracted differently?
@@ -23,7 +22,6 @@
         self.estimatedDiameterKilometersMax = [dictionary[estimatedDiameterDictKey][kilometersDictKey][diameterMaxKey] stringValue];
 //        self.velocityMilesPerHour = dictionary[approachDataKey][relativeVelocityDictKey][velocityMPHKey];
 //        self.velocityKilometersPerHour = dictionary[approachDataKey][relativeVelocityDictKey][velocityKPHKey];
-        
     }
     
     return self;

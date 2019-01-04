@@ -22,24 +22,18 @@
     dispatch_once(&onceToken, ^{
         sharedInstance = [CoreDataStack new];
     });
-    
     return sharedInstance;
-    
 }
 
 - (id)init {
     self = [super init];
-    
     if (self) {
-        
         [self setUpManagedObjectContext];
     }
-    
     return self;
 }
 
 - (void)setUpManagedObjectContext {
-    
     self.managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     self.managedObjectContext.persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
     

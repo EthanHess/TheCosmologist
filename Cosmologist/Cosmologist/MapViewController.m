@@ -57,13 +57,11 @@
 }
     
 - (void)renderTheButtonNicely {
-    
     UIImage *image = [[UIImage imageNamed:@"spaceStationIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.leftBarButton.image = image;
 }
 
 - (void)ISSTest {
-    
     [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)@"http://api.open-notify.org/iss-now.json"andCompletion:^(NSArray *nasaArray) {
         NSLog(@"ISS TEST! %@", nasaArray);
         NSDictionary *infoDict = nasaArray[0];
@@ -94,7 +92,6 @@
 }
 
 - (IBAction)rightBarButtonTapped:(id)sender {
-    
     [self fadeInSliderView];
 }
 
@@ -113,6 +110,7 @@
     
     UIColor *newBackgroundColor = [UIColor colorWithRed:(redToUpdate / 255) green:(greenToUpdate / 255) blue:(blueToUpdate / 255) alpha:1];
     
+    //Make sure not already on main queue
     dispatch_async(dispatch_get_main_queue(), ^{
         self.view.backgroundColor = newBackgroundColor;
     });

@@ -11,23 +11,19 @@
 @implementation CachedImage
 
 + (CachedImage *)sharedInstance {
-    
     static CachedImage *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [CachedImage new];
     });
-    
     return sharedInstance;
 }
 
 - (instancetype)init {
     self = [super init];
-    
     if (self) {
         self.imageCache = [NSCache new];
     }
-    
     return self;
 }
 

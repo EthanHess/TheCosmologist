@@ -23,18 +23,13 @@
 }
     
 - (void)setImageWithMarsData:(MarsData *)theData { //do outside of cell?
-    
     if (theData.imageURLString) {
-        
         UIImage *theImage = [[CachedImage sharedInstance]imageForKey:theData.imageURLString];
-        
         if (theImage) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.marsImageView.image = theImage;
             });
-        }
-        
-        else {
+        } else {
             
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:theData.imageURLString]];
         UIImage *imageFromData = [UIImage imageWithData:imageData];
@@ -52,7 +47,6 @@
 //Make table view scroll smoothly
 
 -(NSData *)compressedImageData:(UIImage *)image {
-    
     NSData *imageData = UIImageJPEGRepresentation(image,1.0);
     float compressionRate = 10;
     while (imageData.length > 1024)

@@ -21,14 +21,12 @@
     [super viewDidLoad];
     
     NSLog(@"%@ PIC DATA", self.picData);
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
     self.scrollView.contentSize = CGSizeMake(self.theImageView.frame.size.width, self.theImageView.frame.size.height);
-    
     self.theImageView.image = [UIImage imageWithData:_picData];
 }
 

@@ -24,8 +24,7 @@
     [super viewDidLoad];
     
     SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController )
-    {
+    if (revealViewController) {
         [self.leftBarButton setTarget: self.revealViewController];
         [self.leftBarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
@@ -50,7 +49,6 @@
 }
     
 - (void)makeBarButtonLookNice {
-    
     UIImage *image = [[UIImage imageNamed:@"asteroidIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.leftBarButton.image = image;
 }
@@ -76,12 +74,9 @@
 }
 
 - (NSArray *)parseArray:(NSArray *)arrayToParse {
-        
         NSMutableArray *mutableDataArray = [NSMutableArray new];
-        
         for (NSDictionary *dictionary in arrayToParse) {
             NSArray *dictArray = dictionary[@"near_earth_objects"][_dateOne];
-            
             for (NSDictionary *dict in dictArray) {
                 AsteroidData *aData = [[AsteroidData alloc]initWithDictionary:dict];
                 NSLog(@"DATA ARRAY %@", aData);
@@ -96,15 +91,12 @@
     AsteroidTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     //clear out views for dequeing
-    
     cell.nameLabel.text = @"";
     cell.diameterLabel.text = @"";
     [cell.urlButton setTitle:@"" forState:UIControlStateNormal];
     
     //get the info
-    
     AsteroidData *asteroid = self.asteroidDataArray[indexPath.row];
-    
     dispatch_async(dispatch_get_main_queue(), ^{
         cell.nameLabel.text = asteroid.name;
         [cell.urlButton setTitle:asteroid.jplURL forState:UIControlStateNormal];

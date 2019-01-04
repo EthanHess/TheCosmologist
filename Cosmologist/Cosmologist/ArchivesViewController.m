@@ -23,13 +23,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
     NSLog(@"Memory warning received");
 }
 
@@ -60,15 +58,12 @@
     
     NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSURL *picURL = [NSURL URLWithString:dataString];
-    
     UIImage *cahcedImage = [[CachedImage sharedInstance]imageForKey:(NSString *)picURL];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if (cahcedImage) {
             cell.theImageView.image = [cahcedImage resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
-        }
-        
-        else {
+        } else {
             cell.theImageView.image = [[UIImage imageWithData:data]resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
             [[CachedImage sharedInstance]setImage:[[UIImage imageWithData:data]resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)] forKey:(NSString *)picURL];
         }
@@ -83,7 +78,6 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     Picture *picture = [[MediaController sharedInstance] pictures][indexPath.row];
-    
     [self popAlertWithPicture:picture title:@"Options" andMessage:@"What would you like to do with this picture?"];
     
 }
@@ -104,14 +98,11 @@
     UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
         [[MediaController sharedInstance]removePicture:picture];
-        
         [self.collectionView reloadData];
     }];
     
     UIAlertAction *share = [UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
         [self shareContent:picture];
     }];
     
@@ -122,15 +113,12 @@
     [alertCon addAction:cancel];
     
     [self presentViewController:alertCon animated:YES completion:nil];
-    
 }
 
 - (void)shareContent:(Picture *)picture {
     
     //convert pic to uiimage
-
     UIImage *image = [self imageFromPicture:picture];
-    
     if (image) {
         UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[image] applicationActivities:nil];
         [self presentViewController:activityVC animated:YES completion:nil];
@@ -140,7 +128,6 @@
 }
 
 - (UIImage *)imageFromPicture:(Picture *)picture {
-    
     if (picture.data) {
         return [UIImage imageWithData:picture.data];
     } else {

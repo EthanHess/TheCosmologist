@@ -13,7 +13,6 @@
 - (id)initializeWithDictionary:(NSDictionary * __nullable)dictionary {
     
     if (self) { //configure properties
-        
         self.latitude = [dictionary[latLongWrapperKey][kLat] doubleValue];
         self.longitude = [dictionary[latLongWrapperKey][kLong] doubleValue];
     }

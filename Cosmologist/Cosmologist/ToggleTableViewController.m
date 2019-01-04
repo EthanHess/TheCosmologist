@@ -32,7 +32,6 @@
     [super viewWillAppear:animated];
     
     UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"tableViewBG"]];
-    
     [self.tableView setBackgroundView:imageView];
 }
 
@@ -44,26 +43,21 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
     return items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *cellID = items[indexPath.row];
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
 
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (indexPath == 0) {
-        
         return 90;
     } else {
-        
         return 60;
     }
 }
@@ -113,11 +107,8 @@
     UINavigationController *destinationViewController = (UINavigationController*)segue.destinationViewController;
     
     destinationViewController.title = [[items objectAtIndex:indexPath.row] capitalizedString];
-    
     if ([segue.identifier isEqualToString:@"showDetail"]) {
-        
         //do stuff
-        
     }
 }
 

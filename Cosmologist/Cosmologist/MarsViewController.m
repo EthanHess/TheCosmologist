@@ -16,9 +16,10 @@
 @interface MarsViewController ()
 
 @property (nonatomic, strong) NSArray *marsDataArray;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (nonatomic, strong) NSData *dataToSend;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segControl;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 
 @end
@@ -30,20 +31,19 @@
     
     SWRevealViewController *revealViewController = self.revealViewController;
     
-    if ( revealViewController )
-    {
+    if (revealViewController) {
         [self.leftBarButton setTarget: self.revealViewController];
         [self.leftBarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-        
-        [self.activityView startAnimating];
     
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self getNasaInfoAtIndex:0];
-        });
+    //AFNetworking now takes care of this?
     
-    [self.activityView setHidesWhenStopped:YES]; 
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//
+//    });
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,12 +56,13 @@
     }
     
     [self refresh];
-    
-    [self renderBarButtonNicely]; 
+    [self renderBarButtonNicely];
+    [self.activityView startAnimating];
+    [self getNasaInfoAtIndex:0];
+    [self.activityView setHidesWhenStopped:YES];
 }
 
 - (void)renderBarButtonNicely {
-    
     UIImage *image = [[UIImage imageNamed:@"Rocket"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.leftBarButton.image = image;
 }
@@ -73,11 +74,9 @@
 - (void)getNasaInfoAtIndex:(NSInteger)index {
     
     //main url string for pages
-    
     NSString *mainString = [NSString stringWithFormat:@"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=%ld&api_key=%@", (long)index, NASA_API_KEY];
 
     [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)mainString andCompletion:^(NSArray *nasaArray) {
-        
         if (nasaArray) {
             self.marsDataArray = [self parseSearchResultsData:nasaArray];
             NSLog(@"--- DATA ARRAY ---%@", self.marsDataArray);
@@ -95,7 +94,6 @@
 //Divides up massive array (856 objects) returned from request. 
 
 - (NSArray *)setMarsDataSubArray {
-    
     NSInteger totalCount = self.marsDataArray.count;
     NSInteger subArrayCount = totalCount / 10;
     int roundedOff = floor(subArrayCount);
@@ -103,7 +101,6 @@
 }
 
 - (NSArray *)parseSearchResultsData:(NSArray *)arrayToParse {
-    
     NSMutableArray *mutableDataArray = [NSMutableArray new];
     self.marsDataArray = @[];
     for (NSDictionary *dictionary in arrayToParse) {
@@ -118,7 +115,7 @@
 }
 
 - (void)refresh {
-    if (self.refreshControl.isRefreshing) {
+    if (self.refreshControl.isRefreshing) { //already on main queue?
         [self.refreshControl endRefreshing];
     }
     dispatch_async(dispatch_get_main_queue(), ^{

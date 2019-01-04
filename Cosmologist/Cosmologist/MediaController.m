@@ -16,9 +16,7 @@
     dispatch_once(&onceToken, ^{
         sharedInstance = [MediaController new];
     });
-    
     return sharedInstance;
-    
 }
 
 //TODO: Can save video of the day as well
@@ -26,19 +24,15 @@
 //Allow external storage for better performance
 
 - (NSArray *)pictures {
-    
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Picture"];
     NSArray *objects = [[CoreDataStack sharedInstance].managedObjectContext executeFetchRequest:fetchRequest error:NULL];
-    
     return objects;
 }
 
 - (void)addImage:(UIImage *)image {
-    
     NSData *data = [self imageToData:image];
     Picture *picture = [NSEntityDescription insertNewObjectForEntityForName:@"Picture" inManagedObjectContext:[CoreDataStack sharedInstance].managedObjectContext];
     picture.data = data;
-    
     [self synchronize];
 }
 

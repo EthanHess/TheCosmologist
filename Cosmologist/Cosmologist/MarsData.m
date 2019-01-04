@@ -15,10 +15,8 @@
     self = [super init];
     
     if (self) {
-        
         self.imageURLString = dictionary[imageSourceKey];
         self.landingDateString = dictionary[roverKey][landingKey]; 
-        
         //TODO: Add camera properties
     }
     

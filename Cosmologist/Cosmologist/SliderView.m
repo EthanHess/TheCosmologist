@@ -24,13 +24,11 @@
     self.redValue = self.redSlider.value;
     self.greenValue = self.greenSlider.value;
     self.blueValue = self.blueSlider.value;
-    
     self.doneButton.layer.cornerRadius = 10;
 }
 
 
 - (IBAction)dismissSelf:(id)sender {
-    
     [UIView animateWithDuration:1.5 animations:^{
         [self setHidden:YES];
     }];
@@ -38,23 +36,17 @@
 
 
 - (IBAction)redValueChanged:(UISlider *)sender {
-    
     self.redValue = sender.value;
-    
     [self.delegate updateColorWithRed:_redValue green:_greenValue blue:_blueValue];
 }
 
 - (IBAction)greenValueChanged:(UISlider *)sender {
-    
     self.greenValue = sender.value;
-    
     [self.delegate updateColorWithRed:_redValue green:_greenValue blue:_blueValue];
 }
 
 - (IBAction)blueValueChanged:(UISlider *)sender {
-    
     self.blueValue = sender.value;
-    
     [self.delegate updateColorWithRed:_redValue green:_greenValue blue:_blueValue];
 }
 

@@ -24,21 +24,17 @@
     [super viewDidLoad];
     
     [self registerForNotifications];
-    
-    [LocationManagerController sharedInstance]; 
+    [LocationManagerController sharedInstance];
     
     SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController )
-    {
+    if (revealViewController) {
         [self.leftButton setTarget: self.revealViewController];
         [self.leftButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-    
 }
 
 - (void)registerForNotifications {
-    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getInfo) name:LOCATION_READY_NOTIFICATION object:nil];
 }
 
@@ -46,36 +42,29 @@
     [super viewWillAppear:animated];
     
     [self renderBarButtonNicely];
-    
     [self.activityView setHidesWhenStopped:YES]; 
     [self.activityView startAnimating];
 }
 
 - (void)renderBarButtonNicely {
-    
     UIImage *image = [[UIImage imageNamed:@"earthButton"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.leftButton.image = image;
 }
 
 - (void)getInfo {
-    
     [[LocationManagerController sharedInstance]getCurrentLocationWithCompletion:^(CLLocationCoordinate2D currentLocation, BOOL success) {
         
         if (success) {
-            
+    
             self.location = currentLocation;
-            
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:@"yyyy-MM-dd"];
             
             NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
-            
             NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/planetary/earth/imagery?lon=%f&lat=%f&date=%@&cloud_score=True&api_key=%@", currentLocation.longitude, currentLocation.latitude, dateString, NASA_API_KEY];
             
             [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
-                
                 if (nasaArray.count > 0) {
-                
                 for (NSDictionary *dictionary in nasaArray) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self setUpViewsWithDictionary:dictionary];
@@ -90,7 +79,6 @@
 }
 
 - (void)setUpViewsWithDictionary:(NSDictionary *)dictionary {
-    
     NSString *urlString = dictionary[@"url"];
     NSURL *url = [NSURL URLWithString:urlString];
     NSData *data = [NSData dataWithContentsOfURL:url];
@@ -106,7 +94,6 @@
 //TODO, have global function for alert
 
 - (void)popAlert:(NSString *)title andMessage:(NSString *)message {
-    
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Cool!" style:UIAlertActionStyleCancel handler:nil];
     [alertController addAction:okayAction];

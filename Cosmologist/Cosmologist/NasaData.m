@@ -13,19 +13,15 @@
 - (id)initWithDictionary:(NSDictionary *)dictionary {
     
     self = [super init];
-    
     if (self) {
-        
         self.title = dictionary[titleKey];
         self.copyright = dictionary[copyrightKey];
         self.explanation = dictionary[explanationKey];
         self.dateString = dictionary[dateKey];
         self.urlString = dictionary[urlKey];
         self.hdurlString = dictionary[hdurlKey];
-        self.mediaType = dictionary[mediaTypeKey]; 
-        
+        self.mediaType = dictionary[mediaTypeKey];
     }
-    
     return self;
 }
 

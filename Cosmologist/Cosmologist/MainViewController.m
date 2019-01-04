@@ -46,13 +46,15 @@
     self.pictureTitle.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.pictureTitle.layer.borderWidth = 2;
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self getImageData];
-    });
+    [self getImageData];
+    
+    //May not need if AFNetworking sends task to bg thread
+    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
+    //});
 }
 
 - (void)renderBarButtonNicely {
-    
     UIImage *image = [[UIImage imageNamed:@"mainGalaxy"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     self.leftBarButton.image = image;
 }
@@ -63,9 +65,7 @@
     self.webView.hidden = YES;
     
     SWRevealViewController *revealController = self.revealViewController;
-    
     if (revealController) {
-        
         [self.leftBarButton setTarget:self.revealViewController];
         [self.leftBarButton setAction:@selector(revealToggle:)];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
@@ -78,14 +78,14 @@
     NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/planetary/apod?api_key=%@", NASA_API_KEY];
     
     [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
+        
+        //Can just grab first element of array since they'll be one, if not one we'll log it and see what's happening
 
         for (NSDictionary *dictionary in nasaArray) {
-            
             NasaData *dataClass = [[NasaData alloc]initWithDictionary:dictionary];
             
             NSURL *urlString = [NSURL URLWithString:dataClass.urlString];
             NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
-            
             NSLog(@"DATA CLASS %@", dataClass);
             
             if ([dataClass.mediaType isEqualToString:@"video"]) {
@@ -94,13 +94,9 @@
                     [self setUpViewForVideoWithURLString:urlString andTitle:dataClass.title];
                     [self.activityIndicator stopAnimating];
                 });
-            }
-            
-            else {
-
+            } else {
                 UIImage *imageFromData = [UIImage imageWithData:pictureData];
                 [self setImage:imageFromData];
-                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.pictureTitle.text = dataClass.title;
                     self.descriptionString = dataClass.explanation;
@@ -123,6 +119,7 @@
     [self presentViewController:descVC animated:YES completion:nil]; 
 }
 
+//Modal pop would be better
 - (DescriptionViewController *)newFromStoryboard {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     return [storyboard instantiateViewControllerWithIdentifier:@"Description"];
@@ -133,7 +130,6 @@
 - (void)setUpViewForVideoWithURLString:(NSURL *)urlString andTitle:(NSString *)title {
     
     self.webViewURL = (NSString *)urlString;
-    
     self.webView.hidden = NO;
     self.webView.delegate = self;
 
@@ -159,11 +155,9 @@
 - (void)popAlertWithString:(NSString *)title andMessage:(NSString *)message {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    
     UIAlertAction *saveAction = [UIAlertAction actionWithTitle:@"Save" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         UIImage *image = self.pictureView.image;
-        
         if (image != nil) {
             [[MediaController sharedInstance]addImage:image];
         } else {
@@ -191,11 +185,8 @@
 }
 
 - (void)onlySavingImagesAlert {
-    
     UIAlertController *imageAlertController = [UIAlertController alertControllerWithTitle:@"Only saving images for now" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    
     UIAlertAction *okayAction = [UIAlertAction actionWithTitle:@"Okay" style:UIAlertActionStyleCancel handler:nil];
-    
     [imageAlertController addAction:okayAction];
     [self presentViewController:imageAlertController animated:YES completion:nil];
 }
@@ -211,29 +202,21 @@
 }
 
 - (void)shareContent {
-    
     //add pop up to add title and cosmologist mark
-    
     UIImage *image = self.pictureView.image;
-    
     if (image != nil) {
         UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[image] applicationActivities:nil];
         [self presentViewController:activityVC animated:YES completion:nil];
-    }
-    
-    else if (self.webViewURL != nil) {
+    } else if (self.webViewURL != nil) {
         UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[self.webViewURL] applicationActivities:nil];
         [self presentViewController:activityVC animated:YES completion:nil];
-    }
-    
-    else {
+    } else {
         NSLog(@"nada...");
     }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
     NSLog(@"Memory warning received");
 }
 
@@ -242,7 +225,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"archiveSegue"]) {
-        
         
     }
 }

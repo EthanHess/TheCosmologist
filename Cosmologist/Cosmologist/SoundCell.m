@@ -14,15 +14,14 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    _soundPlayButton.layer.cornerRadius = 10;
-    _soundStopButton.layer.cornerRadius = 10;
+    self.soundPlayButton.layer.cornerRadius = 10;
+    self.soundStopButton.layer.cornerRadius = 10;
     
-    _soundPlayButton.layer.borderColor = [[UIColor lightGrayColor]CGColor];
-    _soundPlayButton.layer.borderWidth = 2;
+    self.soundPlayButton.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    self.soundPlayButton.layer.borderWidth = 2;
     
-    _soundStopButton.layer.borderColor = [[UIColor lightGrayColor]CGColor];
-    _soundStopButton.layer.borderWidth = 2;
-    
+    self.soundStopButton.layer.borderColor = [[UIColor lightGrayColor]CGColor];
+    self.soundStopButton.layer.borderWidth = 2;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -32,15 +31,10 @@
 }
 
 - (IBAction)playSound:(id)sender {
-    
     //NASA's beta version requires sound cloud api key
-    
     NSString *fullUrlString = [NSString stringWithFormat:@"%@%@%@", self.soundURL, CLIENT_PREFIX, SOUND_CLOUD_CLIENT_ID];
-    
     NSURL *fullUrl = [NSURL URLWithString:fullUrlString];
-    
     [self playAudioFileAtURL:fullUrl];
-    
 }
 
 - (IBAction)stopPlaying:(id)sender {
@@ -48,13 +42,10 @@
 }
 
 - (void)playAudioFileAtURL:(NSURL *)url {
-    
     if (url) {
         AVPlayerItem *item = [AVPlayerItem playerItemWithURL: url];
         self.player = [AVPlayer playerWithPlayerItem: item];
-        
         [self.player play];
-        
     } else {
         NSLog(@"Something went wrong");
     }
