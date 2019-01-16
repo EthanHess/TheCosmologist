@@ -20,24 +20,46 @@
 }
 
 //TODO: Can save video of the day as well
-
 //Allow external storage for better performance
 
-- (NSArray *)pictures {
-    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Picture"];
+- (NSArray *)albums {
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Album"];
     NSArray *objects = [[CoreDataStack sharedInstance].managedObjectContext executeFetchRequest:fetchRequest error:NULL];
     return objects;
 }
 
-- (void)addImage:(UIImage *)image {
-    NSData *data = [self imageToData:image];
+
+//If there are no albums,
+- (void)addPictureToAlbum:(UIImage *)image about:(NSString *)desc new:(BOOL)createNew {
+    
+    NSData *data = [self imageToData:image]; //Throw?
     Picture *picture = [NSEntityDescription insertNewObjectForEntityForName:@"Picture" inManagedObjectContext:[CoreDataStack sharedInstance].managedObjectContext];
+    picture.about = desc;
     picture.data = data;
-    [self synchronize];
+    
+    if (createNew == YES) {
+        Album *newAlbum = [NSEntityDescription insertNewObjectForEntityForName:@"Album" inManagedObjectContext:[CoreDataStack sharedInstance].managedObjectContext];
+        newAlbum.name = [self newAlbumTitle];
+        picture.album = newAlbum;
+        [self synchronize];
+    } else {
+        Album *currentAlbum = self.albums.lastObject;
+        picture.album = currentAlbum;
+        [self synchronize];
+    }
+}
+
+- (NSString *)newAlbumTitle {
+    return [NSString stringWithFormat:@"Album %lu", self.albums.count + 1];
 }
 
 - (void)removePicture:(Picture *)picture {
     [[picture managedObjectContext]deleteObject:picture];
+    [self synchronize];
+}
+
+- (void)removeAlbum:(Album *)album {
+    [[album managedObjectContext]deleteObject:album];
     [self synchronize];
 }
 

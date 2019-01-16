@@ -1,19 +1,19 @@
 //
-//  Picture.h
-//  Cosmologist
+//  Picture+CoreDataClass.h
+//  
 //
-//  Created by Ethan Hess on 9/30/16.
-//  Copyright © 2016 Ethan Hess. All rights reserved.
+//  Created by Ethan Hess on 1/15/19.
+//
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Album;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Picture : NSManagedObject
-
-// Insert code here to declare functionality of your managed object subclass
 
 @end
 

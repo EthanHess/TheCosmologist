@@ -8,17 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "Picture.h"
+#import "Picture+CoreDataClass.h"
+#import "Album+CoreDataClass.h"
 #import "CoreDataStack.h"
 
 @interface MediaController : NSObject
 
-@property (nonatomic, strong) NSArray *pictures;
+@property (nonatomic, strong) NSArray *albums; //Jan 15
 
 + (MediaController *)sharedInstance;
 
-- (void)addImage:(UIImage *)image;
-
-- (void)removePicture:(Picture *)picture; 
+- (void)removePicture:(Picture *)picture;
+- (void)removeAlbum:(Album *)album;
+- (void)addPictureToAlbum:(UIImage *)image about:(NSString *)desc new:(BOOL)createNew;
 
 @end

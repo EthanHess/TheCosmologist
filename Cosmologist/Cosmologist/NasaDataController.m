@@ -22,6 +22,7 @@
 
 - (void)getNasaInfoWithURL:(NSURL *)url andCompletion:(void (^)(NSArray *nasaArray))completion {
     
+    //Completion can just be NSDictionary now, although array works too
     NSString *urlString = (NSString *)url;
     AFHTTPSessionManager * manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];

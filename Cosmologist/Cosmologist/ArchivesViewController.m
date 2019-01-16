@@ -9,8 +9,11 @@
 #import "ArchivesViewController.h"
 #import "CachedImage.h"
 #import "UIImage+Resize.h"
+#import "AlbumDetailViewController.h"
 
 @interface ArchivesViewController ()
+
+@property (nonatomic, strong) Album *selectedAlbum;
 
 @end
 
@@ -23,7 +26,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.collectionView reloadData];
+    [self.collectionView reloadData]; //move? 
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,26 +34,18 @@
     NSLog(@"Memory warning received");
 }
 
-//add current product module to model?
-
-//for MVP keep as is but add iCarousel for fancy collection view
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    //Check if nil?
     ArchivesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-
-    //Check count first <>
-    Picture *picture = [[MediaController sharedInstance] pictures][indexPath.row];
-    [self configureCell:cell withImageData:picture.data];
+    
+    Album *album = [[MediaController sharedInstance]albums][indexPath.row];
+    NSData *data = album.pictures[0].data; //first for cover?
+    [self configureCell:cell withImageData:data];
     
     return cell;
 }
 
-//- (void)organizeArray {
-//    NSMutableArray *array = [[[MediaController sharedInstance]pictures] mutableCopy];
-//    if (array.count > 10) {
-//    }
-//}
 
 - (void)configureCell:(ArchivesCollectionViewCell *)cell withImageData:(NSData *)data {
     
@@ -71,15 +66,14 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSArray *pictureArray = [[MediaController sharedInstance] pictures];
-    return pictureArray != nil ? pictureArray.count : 0;
+    NSArray *albumArray = [[MediaController sharedInstance]albums];
+    return albumArray != nil ? albumArray.count : 0;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    Picture *picture = [[MediaController sharedInstance] pictures][indexPath.row];
-    [self popAlertWithPicture:picture title:@"Options" andMessage:@"What would you like to do with this picture?"];
-    
+
+    Album *album = [[MediaController sharedInstance] albums][indexPath.row];
+    [self popAlertWthAlbum:album title:@"Options" andMessage:@"What would you like to do?"];
 }
 
 //- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -93,57 +87,45 @@
 //    }];
 //}
 
-- (void)popAlertWithPicture:(Picture *)picture title:(NSString *)title andMessage:(NSString *)message {
+- (void)popAlertWthAlbum:(Album *)album title:(NSString *)title andMessage:(NSString *)message {
     
     UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[MediaController sharedInstance]removePicture:picture];
+        [[MediaController sharedInstance]removeAlbum:album];
         [self.collectionView reloadData];
     }];
     
-    UIAlertAction *share = [UIAlertAction actionWithTitle:@"Share" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self shareContent:picture];
+    UIAlertAction *view = [UIAlertAction actionWithTitle:@"View" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self goToAlbum:album];
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
     
     [alertCon addAction:delete];
-    [alertCon addAction:share];
+    [alertCon addAction:view];
     [alertCon addAction:cancel];
     
     [self presentViewController:alertCon animated:YES completion:nil];
 }
 
-- (void)shareContent:(Picture *)picture {
-    
-    //convert pic to uiimage
-    UIImage *image = [self imageFromPicture:picture];
-    if (image) {
-        UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:@[image] applicationActivities:nil];
-        [self presentViewController:activityVC animated:YES completion:nil];
-    } else {
-        NSLog(@"COULD NOT GET IMAGE %s", __PRETTY_FUNCTION__);
-    }
+- (void)goToAlbum:(Album *)album {
+    self.selectedAlbum = album;
+    [self performSegueWithIdentifier:@"toDetail" sender:nil];
 }
 
-- (UIImage *)imageFromPicture:(Picture *)picture {
-    if (picture.data) {
-        return [UIImage imageWithData:picture.data];
-    } else {
-        NSLog(@"Something went wrong");
-        return nil;
-    }
-}
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"toDetail"]) {
+        AlbumDetailViewController *dvc = [segue destinationViewController];
+        dvc.album = self.selectedAlbum;
+    }
 }
-*/
+
 
 @end

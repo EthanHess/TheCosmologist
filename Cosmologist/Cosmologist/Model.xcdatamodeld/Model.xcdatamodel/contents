@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G31" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="17G65" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Album" representedClassName="Album" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Picture" inverseName="album" inverseEntity="Picture" syncable="YES"/>
+    </entity>
     <entity name="Picture" representedClassName="Picture" syncable="YES">
+        <attribute name="about" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="pictures" inverseEntity="Album" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Picture" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="Album" positionX="-63" positionY="-9" width="128" height="75"/>
+        <element name="Picture" positionX="-298.66796875" positionY="-49.8515625" width="128" height="90"/>
     </elements>
 </model>

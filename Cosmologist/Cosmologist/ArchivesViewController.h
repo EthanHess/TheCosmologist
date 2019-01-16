@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ArchivesCollectionViewCell.h"
 #import "MediaController.h"
-#import "Picture.h"
+#import "Picture+CoreDataClass.h"
+#import "Album+CoreDataClass.h"
 
 @interface ArchivesViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 

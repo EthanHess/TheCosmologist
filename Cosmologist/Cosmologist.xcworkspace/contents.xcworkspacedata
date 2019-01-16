@@ -2,6 +2,30 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Picture+CoreDataProperties.h">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Picture+CoreDataClass.h">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Picture+CoreDataClass.m">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Picture+CoreDataProperties.m">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Album+CoreDataProperties.h">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Album+CoreDataClass.h">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Album+CoreDataClass.m">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Album+CoreDataProperties.m">
+   </FileRef>
+   <FileRef
       location = "group:Cosmologist.xcodeproj">
    </FileRef>
    <FileRef

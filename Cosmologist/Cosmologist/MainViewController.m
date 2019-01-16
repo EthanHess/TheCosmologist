@@ -13,6 +13,8 @@
 #import "Constants.h"
 #import "DescriptionViewController.h"
 #import "CachedImage.h"
+#import "Album+CoreDataClass.h"
+
 @import WebKit;
 
 @interface MainViewController () <UIWebViewDelegate>
@@ -159,7 +161,15 @@
         
         UIImage *image = self.pictureView.image;
         if (image != nil) {
-            [[MediaController sharedInstance]addImage:image];
+            //[[MediaController sharedInstance]addImage:image];
+            Album *album = [[[MediaController sharedInstance]albums]lastObject];
+            //Can DRY (one line)
+            if (album != nil && album.pictures.count < 11) {
+                [[MediaController sharedInstance]addPictureToAlbum:image about:self.descriptionString new:NO];
+            } else {
+                //Add to new album here
+                [[MediaController sharedInstance]addPictureToAlbum:image about:self.descriptionString new:YES];
+            }
         } else {
             NSLog(@"Only saving images for now"); //add alert and be able to save videos too
             [self onlySavingImagesAlert];
