@@ -14,6 +14,7 @@
 #import "DescriptionViewController.h"
 #import "CachedImage.h"
 #import "Album+CoreDataClass.h"
+#import "AlbumV+CoreDataClass.h"
 
 @import WebKit;
 
@@ -131,7 +132,7 @@
 
 - (void)setUpViewForVideoWithURLString:(NSURL *)urlString andTitle:(NSString *)title {
     
-    self.webViewURL = (NSString *)urlString;
+    self.webViewURL = urlString.absoluteString;
     self.webView.hidden = NO;
     self.webView.delegate = self;
 
@@ -161,7 +162,6 @@
         
         UIImage *image = self.pictureView.image;
         if (image != nil) {
-            //[[MediaController sharedInstance]addImage:image];
             Album *album = [[[MediaController sharedInstance]albums]lastObject];
             //Can DRY (one line)
             if (album != nil && album.pictures.count < 11) {
@@ -171,8 +171,16 @@
                 [[MediaController sharedInstance]addPictureToAlbum:image about:self.descriptionString new:YES];
             }
         } else {
-            NSLog(@"Only saving images for now"); //add alert and be able to save videos too
-            [self onlySavingImagesAlert];
+            if (!self.webViewURL) {
+                NSLog(@"No Web View"); //Alert, also make sure it's checking for desc. string
+                return;
+            }
+            AlbumV *vAlbum = [[[MediaController sharedInstance]videoAlbums]lastObject];
+            if (vAlbum != nil && vAlbum.videos.count < 11) {
+                [[MediaController sharedInstance]addURLtoAlbum:self.webViewURL about:self.descriptionString andCreateNew:NO];
+            } else {
+                [[MediaController sharedInstance]addURLtoAlbum:self.webViewURL about:self.descriptionString andCreateNew:YES];
+            }
         }
     }];
     

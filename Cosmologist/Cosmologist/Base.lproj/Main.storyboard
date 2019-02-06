@@ -1239,7 +1239,7 @@
             </objects>
             <point key="canvasLocation" x="1140" y="1060.1199400299852"/>
         </scene>
-        <!--Archives View Controller-->
+        <!--Archives-->
         <scene sceneID="fHy-Za-gvS">
             <objects>
                 <viewController id="R98-y8-dZG" customClass="ArchivesViewController" sceneMemberID="viewController">
@@ -1293,6 +1293,13 @@
                             <constraint firstItem="5nF-cr-Wah" firstAttribute="top" secondItem="qQj-Bf-kcz" secondAttribute="bottom" id="x0t-z1-Uka"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Archives" id="VKd-Pt-xn6">
+                        <barButtonItem key="rightBarButtonItem" title="Videos" id="SLD-X3-2yd">
+                            <connections>
+                                <action selector="videoImageToggle:" destination="R98-y8-dZG" id="6TP-Dj-dPV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="5nF-cr-Wah" id="IwO-w0-rzQ"/>
                         <segue destination="VNA-Lk-rpg" kind="show" identifier="toDetail" id="nzt-4O-hi3"/>

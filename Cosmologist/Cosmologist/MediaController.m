@@ -28,6 +28,13 @@
     return objects;
 }
 
+- (NSArray *)videoAlbums {
+    NSFetchRequest *fetcher = [NSFetchRequest fetchRequestWithEntityName:@"AlbumV"];
+    NSArray *videos = [[CoreDataStack sharedInstance].managedObjectContext executeFetchRequest:fetcher error:NULL];
+    return videos;
+}
+
+#pragma Images
 
 //If there are no albums,
 - (void)addPictureToAlbum:(UIImage *)image about:(NSString *)desc new:(BOOL)createNew {
@@ -69,6 +76,40 @@
 
 - (void)synchronize {
     [[CoreDataStack sharedInstance].managedObjectContext save:NULL];
+}
+
+#pragma Videos
+
+- (void)addURLtoAlbum:(NSString *)videoURL about:(NSString *)about andCreateNew:(BOOL)createNew {
+    
+    Video *video = [NSEntityDescription insertNewObjectForEntityForName:@"Video" inManagedObjectContext:[CoreDataStack sharedInstance].managedObjectContext];
+    video.about = about;
+    video.url = videoURL;
+    
+    if (createNew == YES) {
+        AlbumV *newAlbum = [NSEntityDescription insertNewObjectForEntityForName:@"AlbumV" inManagedObjectContext:[CoreDataStack sharedInstance].managedObjectContext];
+        newAlbum.name = [self newVideoAlbumTitle];
+        video.albumV = newAlbum;
+        [self synchronize];
+    } else {
+        AlbumV *current = self.videoAlbums.lastObject;
+        video.albumV = current;
+        [self synchronize];
+    }
+}
+
+- (NSString *)newVideoAlbumTitle {
+    return [NSString stringWithFormat:@"Album %lu", self.videoAlbums.count + 1];
+}
+
+- (void)removeVideo:(Video *)video {
+    [[video managedObjectContext]deleteObject:video];
+    [self synchronize];
+}
+
+- (void)removeVideoAlbum:(AlbumV *)albumV {
+    [[albumV managedObjectContext]deleteObject:albumV];
+    [self synchronize];
 }
 
 @end

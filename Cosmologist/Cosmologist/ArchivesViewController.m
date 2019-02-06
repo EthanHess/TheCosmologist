@@ -14,6 +14,7 @@
 @interface ArchivesViewController ()
 
 @property (nonatomic, strong) Album *selectedAlbum;
+@property (nonatomic) BOOL videoMode;
 
 @end
 
@@ -26,7 +27,26 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.collectionView reloadData]; //move? 
+    [self.collectionView reloadData]; //move?
+    
+    AlbumV *videoAlbum = [[MediaController sharedInstance]videoAlbums][0];
+    Video *first = videoAlbum.videos[0];
+    NSLog(@"--- VA --- %@", videoAlbum.name);
+    NSLog(@"--- FA --- FU %@ %@", first.about, first.url);
+    
+    self.videoMode = NO;
+}
+
+
+- (IBAction)videoImageToggle:(id)sender {
+    self.videoMode = !self.videoMode;
+    [self refresh];
+}
+
+- (void)refresh {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.collectionView reloadData];
+    });
 }
 
 - (void)didReceiveMemoryWarning {
