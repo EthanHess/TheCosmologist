@@ -29,10 +29,12 @@
     [super viewWillAppear:animated];
     [self.collectionView reloadData]; //move?
     
-    AlbumV *videoAlbum = [[MediaController sharedInstance]videoAlbums][0];
-    Video *first = videoAlbum.videos[0];
-    NSLog(@"--- VA --- %@", videoAlbum.name);
-    NSLog(@"--- FA --- FU %@ %@", first.about, first.url);
+    if ([[MediaController sharedInstance]videoAlbums].count > 0) {
+        AlbumV *videoAlbum = [[MediaController sharedInstance]videoAlbums][0];
+        Video *first = videoAlbum.videos[0];
+        NSLog(@"--- VA --- %@", videoAlbum.name);
+        NSLog(@"--- FA --- FU %@ %@", first.about, first.url);
+    }
     
     self.videoMode = NO;
 }
@@ -53,6 +55,8 @@
     [super didReceiveMemoryWarning];
     NSLog(@"Memory warning received");
 }
+
+//TODO update for video mode, most are YouTube URLS
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     

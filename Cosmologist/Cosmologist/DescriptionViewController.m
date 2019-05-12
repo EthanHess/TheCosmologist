@@ -18,12 +18,18 @@
 
 @implementation DescriptionViewController
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        //TODO: implement
-    }
-    return self;
+- (void)textViewConfigureProperties {
+    self.theTextView.layer.masksToBounds = NO;
+    self.theTextView.clipsToBounds = NO;
+    self.theTextView.layer.cornerRadius = 5;
+    self.theTextView.layer.shadowRadius = 3.0;
+    self.theTextView.layer.shadowColor = [[UIColor cyanColor]CGColor];
+    self.theTextView.layer.shadowOffset = CGSizeMake(3.0, 3.0);
+    self.theTextView.layer.shadowOpacity = 0.8;
+}
+
+- (void)changeShadowColor {
+    //TODO we'll add a timer to change the shadow color every second or so
 }
 
 
@@ -37,7 +43,8 @@
     self.isPresenting = YES;
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
     self.transitioningDelegate = self;
-    self.view.backgroundColor = [[UIColor darkGrayColor]colorWithAlphaComponent:0.3];
+    self.view.backgroundColor = [[UIColor darkGrayColor]colorWithAlphaComponent:0.6];
+    [self textViewConfigureProperties];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
