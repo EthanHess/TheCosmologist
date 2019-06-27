@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) Album *selectedAlbum;
 @property (nonatomic) BOOL videoMode;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *videosBarButton;
 
 @end
 
@@ -37,11 +38,18 @@
     }
     
     self.videoMode = NO;
+    [self barButtonTitle];
 }
 
 
+- (void)barButtonTitle {
+    NSString *theTitle = self.videoMode == YES ? @"Videos" : @"Images";
+    [self.videosBarButton setTitle:theTitle];
+}
+
 - (IBAction)videoImageToggle:(id)sender {
     self.videoMode = !self.videoMode;
+    [self barButtonTitle];
     [self refresh];
 }
 
@@ -57,19 +65,32 @@
 }
 
 //TODO update for video mode, most are YouTube URLS
+//Will also want to save description
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     //Check if nil?
     ArchivesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-    Album *album = [[MediaController sharedInstance]albums][indexPath.row];
-    NSData *data = album.pictures[0].data; //first for cover?
-    [self configureCell:cell withImageData:data];
+    //Does this need to be safer?
+    if (self.videoMode == NO) {
+        Album *album = [[MediaController sharedInstance]albums][indexPath.row];
+        NSData *data = album.pictures[0].data; //first for cover?
+        [self configureCell:cell withImageData:data];
+    } else {
+        AlbumV *videoAlbum = [[MediaController sharedInstance]videoAlbums][indexPath.row];
+        Video *theVideo = videoAlbum.videos[0];
+        [self configureCell:cell withVideoURL:theVideo.url andAbout:theVideo.about];
+    }
     
     return cell;
 }
 
+//TODO, consider doing inside of cell or having two separate cells
+
+- (void)configureCell:(ArchivesCollectionViewCell *)cell withVideoURL:(NSString *)theURL andAbout:(NSString *)about {
+    
+}
 
 - (void)configureCell:(ArchivesCollectionViewCell *)cell withImageData:(NSData *)data {
     
@@ -90,14 +111,19 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    NSArray *albumArray = [[MediaController sharedInstance]albums];
+    NSArray *albumArray = self.videoMode == NO ? [[MediaController sharedInstance]albums] : [[MediaController sharedInstance]videoAlbums];
     return albumArray != nil ? albumArray.count : 0;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
-    Album *album = [[MediaController sharedInstance] albums][indexPath.row];
-    [self popAlertWthAlbum:album title:@"Options" andMessage:@"What would you like to do?"];
+    
+    if (self.videoMode == NO) {
+        Album *album = [[MediaController sharedInstance] albums][indexPath.row];
+        [self popAlertWthAlbum:album title:@"Options" andMessage:@"What would you like to do?"];
+    } else {
+        AlbumV *videoAlbum = [[MediaController sharedInstance] videoAlbums][indexPath.row];
+        NSLog(@"SELECTED VIDEO ALBUM %@", videoAlbum);
+    }
 }
 
 //- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {

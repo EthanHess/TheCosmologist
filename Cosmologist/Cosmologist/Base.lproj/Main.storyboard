@@ -1302,6 +1302,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="5nF-cr-Wah" id="IwO-w0-rzQ"/>
+                        <outlet property="videosBarButton" destination="SLD-X3-2yd" id="NVz-fi-sCY"/>
                         <segue destination="VNA-Lk-rpg" kind="show" identifier="toDetail" id="nzt-4O-hi3"/>
                     </connections>
                 </viewController>
