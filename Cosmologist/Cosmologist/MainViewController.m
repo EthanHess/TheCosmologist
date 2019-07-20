@@ -55,6 +55,23 @@
     //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     
     //});
+    
+    //[self youtubeThumbnailTest];
+    //[self deleteYoutubeTest];
+}
+
+- (void)youtubeThumbnailTest {
+    //NSString *urlOne = @"https://www.youtube.com/watch?v=FEmoqRp8_dw";
+    NSString *urlTwo = @"https://www.youtube.com/watch?v=pKSVYwl6-Mk"; ;
+    NSString *urlThree = @"https://www.youtube.com/watch?v=_X7i1ALXh8E"; ;
+    //[[MediaController sharedInstance]addURLtoAlbum:urlOne about:@"One" andCreateNew:YES];
+    [[MediaController sharedInstance]addURLtoAlbum:urlTwo about:@"Two" andCreateNew:NO];
+    [[MediaController sharedInstance]addURLtoAlbum:urlThree about:@"Three" andCreateNew:NO];
+}
+
+- (void)deleteYoutubeTest {
+    AlbumV *theAlbum = [[MediaController sharedInstance]videoAlbums][0];
+    [[MediaController sharedInstance]removeVideoAlbum:theAlbum];
 }
 
 - (void)renderBarButtonNicely {

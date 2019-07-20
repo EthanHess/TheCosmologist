@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@import WebKit;
 
-@interface ArchivesCollectionViewCell : UICollectionViewCell
+@interface ArchivesCollectionViewCell : UICollectionViewCell <UIWebViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *theImageView;
+@property (strong, nonatomic) UIWebView *theWebView; //For test, make IBOutlet just for consistency?
+@property (strong, nonatomic) NSString *videoURL;
+
+- (void)setUpWebView; 
 
 @end

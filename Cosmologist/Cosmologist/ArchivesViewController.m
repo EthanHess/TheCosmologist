@@ -90,6 +90,13 @@
 
 - (void)configureCell:(ArchivesCollectionViewCell *)cell withVideoURL:(NSString *)theURL andAbout:(NSString *)about {
     
+//    NSURL *youtubeURL = [NSURL URLWithString:theURL];    
+//    NSData *imageData = [NSData dataWithContentsOfURL:youtubeURL];
+//    UIImage *thumbnailImage = [UIImage imageWithData:imageData];
+    
+    NSLog(@"-- MAIN THREAD -- %@", [NSThread currentThread] == [NSThread mainThread] ? @"YES" : @"NO");
+    cell.videoURL = theURL;
+    [cell setUpWebView];
 }
 
 - (void)configureCell:(ArchivesCollectionViewCell *)cell withImageData:(NSData *)data {
@@ -100,14 +107,16 @@
     NSURL *picURL = [NSURL URLWithString:dataString];
     UIImage *cahcedImage = [[CachedImage sharedInstance]imageForKey:(NSString *)picURL];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    //dispatch_async(dispatch_get_main_queue(), ^{
         if (cahcedImage) {
+            cell.theImageView.hidden = NO;
             cell.theImageView.image = [cahcedImage resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
         } else {
+            cell.theImageView.hidden = NO;
             cell.theImageView.image = [[UIImage imageWithData:data]resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
             [[CachedImage sharedInstance]setImage:[[UIImage imageWithData:data]resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)] forKey:(NSString *)picURL];
         }
-    });
+    //});
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
