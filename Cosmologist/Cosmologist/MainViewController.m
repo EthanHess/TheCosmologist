@@ -47,8 +47,10 @@
     
     self.pictureTitle.layer.cornerRadius = 40;
     self.pictureTitle.layer.borderColor = [[UIColor whiteColor] CGColor];
-    self.pictureTitle.layer.borderWidth = 2;
+    self.pictureTitle.layer.borderWidth = 1;
     
+    [self labelPulsate];
+    [self addShadowToView:self.pictureTitle andColor:[self shadowColorsForLabel][0]];
     [self getImageData];
     
     //May not need if AFNetworking sends task to bg thread
@@ -58,6 +60,39 @@
     
     //[self youtubeThumbnailTest];
     //[self deleteYoutubeTest];
+}
+
+
+
+- (void)labelPulsate {
+    CABasicAnimation *pulsate = [CABasicAnimation animationWithKeyPath:@"transform"];
+    pulsate.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)];
+    pulsate.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(.5, .5, .5)];
+    [pulsate setDuration:1.5];
+    [pulsate setAutoreverses:YES];
+    [pulsate setRepeatCount:HUGE_VALF];
+    [self.pictureTitle.layer addAnimation:pulsate forKey:@"transform"];
+}
+
+- (void)addShadowToView:(UIView *)view andColor:(UIColor *)shadowColor {
+    view.layer.shadowColor = shadowColor.CGColor;
+    view.layer.shadowOffset = CGSizeMake(0, 3);
+    view.layer.shadowOpacity = 1;
+    view.layer.shadowRadius = 5.0;
+    view.clipsToBounds = NO;
+}
+
+//TODO cycle through
+- (NSArray *)shadowColorsForLabel {
+    UIColor *colorOne = [UIColor colorWithRed:124.0f/255.0f green:247.0f/255.0f blue:252.0f/255.0f alpha:1.0];
+    UIColor *colorTwo = [UIColor colorWithRed:124.0f/255.0f green:252.0f/255.0f blue:230.0f/255.0f alpha:1.0];
+    UIColor *colorThree = [UIColor colorWithRed:124.0f/255.0f green:199.0f/255.0f blue:252.0f/255.0f alpha:1.0];
+    UIColor *colorFour = [UIColor colorWithRed:13.0f/255.0f green:236.0f/255.0f blue:194.0f/255.0f alpha:1.0];
+    UIColor *colorFive = [UIColor colorWithRed:13.0f/255.0f green:126.0f/255.0f blue:236.0f/255.0f alpha:1.0];
+    UIColor *colorSix = [UIColor colorWithRed:176.0f/255.0f green:175.0f/255.0f blue:248.0f/255.0f alpha:1.0];
+    UIColor *colorSeven = [UIColor colorWithRed:227.0f/255.0f green:175.0f/255.0f blue:248.0f/255.0f alpha:1.0];
+    UIColor *colorEight = [UIColor colorWithRed:246.0f/255.0f green:101.0f/255.0f blue:159.0f/255.0f alpha:1.0];
+    return @[colorOne, colorTwo, colorThree, colorFour, colorFive, colorSix, colorSeven, colorEight];
 }
 
 - (void)youtubeThumbnailTest {
