@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D16EC8189F3F6F1D6C2597CE164875CA"
-               BlueprintName = "Pods-Cosmologist"
+               BlueprintIdentifier = "6B65FADAA97F3A411B498157CB3ECB26"
+               BlueprintName = "youtube-ios-player-helper"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "libPods-Cosmologist.a">
+               BuildableName = "libyoutube-ios-player-helper.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

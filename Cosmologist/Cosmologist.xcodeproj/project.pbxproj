@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		258A37E3DDADB905F0E9FB70 /* libPods-Cosmologist.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE52ECE196A7F0FCC0EB9945 /* libPods-Cosmologist.a */; };
 		270010AD1D9CC1F500C714A8 /* MediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270010AC1D9CC1F500C714A8 /* MediaController.m */; };
 		2702289F1DCFCC8E0044FB68 /* ISSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2702289E1DCFCC8E0044FB68 /* ISSModel.m */; };
 		270228A21DCFD2B60044FB68 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 270228A11DCFD2B60044FB68 /* UIImage+Resize.m */; };
@@ -53,7 +54,6 @@
 		27F504091D67B58B00C720B1 /* MarsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F504081D67B58B00C720B1 /* MarsDetailViewController.m */; };
 		27F5040C1D67BD5600C720B1 /* LocationManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F5040B1D67BD5600C720B1 /* LocationManagerController.m */; };
 		27F5040F1D67BF1E00C720B1 /* EarthPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F5040E1D67BF1E00C720B1 /* EarthPhotoViewController.m */; };
-		C72AE5AEC010BA1F1421C8D2 /* libPods-Cosmologist.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D20A8C4868DCE1693107C5 /* libPods-Cosmologist.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,9 +145,9 @@
 		27F5040B1D67BD5600C720B1 /* LocationManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManagerController.m; sourceTree = "<group>"; };
 		27F5040D1D67BF1D00C720B1 /* EarthPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EarthPhotoViewController.h; sourceTree = "<group>"; };
 		27F5040E1D67BF1E00C720B1 /* EarthPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EarthPhotoViewController.m; sourceTree = "<group>"; };
-		620DCD7D5BEACBC2B8D1CD56 /* Pods-Cosmologist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmologist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cosmologist/Pods-Cosmologist.debug.xcconfig"; sourceTree = "<group>"; };
-		7B9E0C4039BF3EAF1D37FADC /* Pods-Cosmologist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmologist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cosmologist/Pods-Cosmologist.release.xcconfig"; sourceTree = "<group>"; };
-		A5D20A8C4868DCE1693107C5 /* libPods-Cosmologist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cosmologist.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6901FB677DDDB0000D78935C /* Pods-Cosmologist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmologist.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cosmologist/Pods-Cosmologist.release.xcconfig"; sourceTree = "<group>"; };
+		AE52ECE196A7F0FCC0EB9945 /* libPods-Cosmologist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Cosmologist.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E70BBCA69F14CBFC8F5B84BD /* Pods-Cosmologist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cosmologist.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cosmologist/Pods-Cosmologist.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27C41B9B1DB421150035123C /* MapKit.framework in Frameworks */,
-				C72AE5AEC010BA1F1421C8D2 /* libPods-Cosmologist.a in Frameworks */,
+				258A37E3DDADB905F0E9FB70 /* libPods-Cosmologist.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,8 +199,8 @@
 				27EEB7321D3C834800F46FBC /* Podfile */,
 				27EEB71A1D3C82FB00F46FBC /* Cosmologist */,
 				27EEB7191D3C82FB00F46FBC /* Products */,
-				C8A03CF54B208F7AB7590EB6 /* Pods */,
 				3FBD56BDDFF9943BC29C22F2 /* Frameworks */,
+				A9AB6AB17E7E25871A8D326D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -326,16 +326,16 @@
 			isa = PBXGroup;
 			children = (
 				27C41B9A1DB421150035123C /* MapKit.framework */,
-				A5D20A8C4868DCE1693107C5 /* libPods-Cosmologist.a */,
+				AE52ECE196A7F0FCC0EB9945 /* libPods-Cosmologist.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C8A03CF54B208F7AB7590EB6 /* Pods */ = {
+		A9AB6AB17E7E25871A8D326D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				620DCD7D5BEACBC2B8D1CD56 /* Pods-Cosmologist.debug.xcconfig */,
-				7B9E0C4039BF3EAF1D37FADC /* Pods-Cosmologist.release.xcconfig */,
+				E70BBCA69F14CBFC8F5B84BD /* Pods-Cosmologist.debug.xcconfig */,
+				6901FB677DDDB0000D78935C /* Pods-Cosmologist.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -347,12 +347,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27EEB72F1D3C82FB00F46FBC /* Build configuration list for PBXNativeTarget "Cosmologist" */;
 			buildPhases = (
-				6067456CBE7DAB7BDA9D9C9C /* Check Pods Manifest.lock */,
+				C18B276E6661696BB10CCDC3 /* [CP] Check Pods Manifest.lock */,
 				27EEB7141D3C82FB00F46FBC /* Sources */,
 				27EEB7151D3C82FB00F46FBC /* Frameworks */,
 				27EEB7161D3C82FB00F46FBC /* Resources */,
-				EC8CD7935B7101A261747F4C /* Embed Pods Frameworks */,
-				09E4C4E47DDFAFAAD0A64501 /* Copy Pods Resources */,
+				ED85E4D7A679F1C1E1020E76 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -416,49 +415,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09E4C4E47DDFAFAAD0A64501 /* Copy Pods Resources */ = {
+		C18B276E6661696BB10CCDC3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cosmologist-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED85E4D7A679F1C1E1020E76 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Cosmologist/Pods-Cosmologist-resources.sh",
+				"${PODS_ROOT}/youtube-ios-player-helper/youtube-ios-player-helper/Assets.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Assets.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cosmologist/Pods-Cosmologist-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6067456CBE7DAB7BDA9D9C9C /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		EC8CD7935B7101A261747F4C /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cosmologist/Pods-Cosmologist-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -618,7 +608,7 @@
 		};
 		27EEB7301D3C82FB00F46FBC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 620DCD7D5BEACBC2B8D1CD56 /* Pods-Cosmologist.debug.xcconfig */;
+			baseConfigurationReference = E70BBCA69F14CBFC8F5B84BD /* Pods-Cosmologist.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 63ARTNG4RQ;
@@ -631,7 +621,7 @@
 		};
 		27EEB7311D3C82FB00F46FBC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B9E0C4039BF3EAF1D37FADC /* Pods-Cosmologist.release.xcconfig */;
+			baseConfigurationReference = 6901FB677DDDB0000D78935C /* Pods-Cosmologist.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 63ARTNG4RQ;

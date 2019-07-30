@@ -28,6 +28,7 @@
 
 @property (nonatomic, strong) NSString *webViewURL;
 @property (nonatomic, strong) NSString *descriptionString;
+@property (nonatomic, strong) NSTimer *labelTimer;
 
 
 @end
@@ -46,12 +47,15 @@
     self.pictureTitle.text = @"Loading";
     
     self.pictureTitle.layer.cornerRadius = 40;
-    self.pictureTitle.layer.borderColor = [[UIColor whiteColor] CGColor];
-    self.pictureTitle.layer.borderWidth = 1;
-    
-    [self labelPulsate];
-    [self addShadowToView:self.pictureTitle andColor:[self shadowColorsForLabel][0]];
+    UIColor *theColor = [self shadowColorsForLabel][0];
+    self.pictureTitle.layer.borderColor = [theColor CGColor];
+    self.pictureTitle.textColor = theColor;
+    self.pictureTitle.layer.borderWidth = 2;
+    self.pictureTitle.layer.masksToBounds = NO;
+    self.pictureTitle.clipsToBounds = YES;
+        
     [self getImageData];
+    [self labelTimerSetup];
     
     //May not need if AFNetworking sends task to bg thread
     //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -62,12 +66,31 @@
     //[self deleteYoutubeTest];
 }
 
+- (void)labelTimerSetup {
+    if (self.labelTimer == nil) {
+        self.labelTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeLabelColor) userInfo:nil repeats:YES];
+        //[self.labelTimer fire];
+    }
+}
+
+- (void)changeLabelColor {
+    int x = arc4random() % 8;
+    UIColor *borderColor = [self shadowColorsForLabel][x];
+    self.pictureTitle.layer.borderColor = borderColor.CGColor;
+    self.pictureTitle.textColor = borderColor;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self labelPulsate];
+    //[self addShadowToView:self.pictureTitle andColor:[self shadowColorsForLabel][0]];
+}
 
 
 - (void)labelPulsate {
     CABasicAnimation *pulsate = [CABasicAnimation animationWithKeyPath:@"transform"];
     pulsate.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)];
-    pulsate.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(.5, .5, .5)];
+    pulsate.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(.75, .75, .75)];
     [pulsate setDuration:1.5];
     [pulsate setAutoreverses:YES];
     [pulsate setRepeatCount:HUGE_VALF];
@@ -76,8 +99,8 @@
 
 - (void)addShadowToView:(UIView *)view andColor:(UIColor *)shadowColor {
     view.layer.shadowColor = shadowColor.CGColor;
-    view.layer.shadowOffset = CGSizeMake(0, 3);
-    view.layer.shadowOpacity = 1;
+    view.layer.shadowOffset = CGSizeMake(3.0, 3.0);
+    view.layer.shadowOpacity = 0.8;
     view.layer.shadowRadius = 5.0;
     view.clipsToBounds = NO;
 }
@@ -288,6 +311,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     NSLog(@"Memory warning received");
+}
+
+//Do in disappear?
+- (void)dealloc {
+    if (self.labelTimer != nil) {
+        [self.labelTimer invalidate];
+    }
 }
 
 

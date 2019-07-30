@@ -11,7 +11,7 @@
 @interface DescriptionViewController ()
 
 @property (nonatomic) BOOL isPresenting;
-@property (nonatomic, strong) NSString *descriptionString; 
+@property (strong, nonatomic) NSString *descriptionString;
 @property (strong, nonatomic) IBOutlet UITextView *theTextView;
 
 @end
