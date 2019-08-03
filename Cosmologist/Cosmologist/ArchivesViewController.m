@@ -14,7 +14,8 @@
 @interface ArchivesViewController ()
 
 @property (nonatomic, strong) Album *selectedAlbum;
-@property (nonatomic) BOOL videoMode;
+@property (nonatomic, strong) AlbumV *selectedVideoAlbum;
+@property (nonatomic, assign) BOOL videoMode;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *videosBarButton;
 
 @end
@@ -96,6 +97,7 @@
     
     NSLog(@"-- MAIN THREAD -- %@", [NSThread currentThread] == [NSThread mainThread] ? @"YES" : @"NO");
     cell.videoURL = theURL;
+    cell.contentView.userInteractionEnabled = NO; //Will just display thumbnail of first video
     [cell setUpWebView];
 }
 
@@ -132,6 +134,7 @@
     } else {
         AlbumV *videoAlbum = [[MediaController sharedInstance] videoAlbums][indexPath.row];
         NSLog(@"SELECTED VIDEO ALBUM %@", videoAlbum);
+        [self popAlertWithVideoAlbum:videoAlbum title:@"Options" andMessage:@"What would you like to do?"];
     }
 }
 
@@ -145,6 +148,30 @@
 //        
 //    }];
 //}
+
+- (void)popAlertWithVideoAlbum:(AlbumV *)videoAlbum title:(NSString *)title andMessage:(NSString *)message {
+    
+    UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *delete = [UIAlertAction actionWithTitle:@"Delete" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[MediaController sharedInstance]removeVideoAlbum:videoAlbum];
+        [self.collectionView reloadData];
+    }];
+    
+    UIAlertAction *view = [UIAlertAction actionWithTitle:@"View" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self goToVideoAlbum:videoAlbum];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertCon addAction:delete];
+    [alertCon addAction:view];
+    [alertCon addAction:cancel];
+    
+    [self presentViewController:alertCon animated:YES completion:nil];
+}
+
+//Can DRY these two
 
 - (void)popAlertWthAlbum:(Album *)album title:(NSString *)title andMessage:(NSString *)message {
     
@@ -173,6 +200,11 @@
     [self performSegueWithIdentifier:@"toDetail" sender:nil];
 }
 
+- (void)goToVideoAlbum:(AlbumV *)videoAlbum {
+    self.selectedVideoAlbum = videoAlbum;
+    [self performSegueWithIdentifier:@"toDetailVideo" sender:nil];
+}
+
 
 #pragma mark - Navigation
 
@@ -183,6 +215,12 @@
     if ([segue.identifier isEqualToString:@"toDetail"]) {
         AlbumDetailViewController *dvc = [segue destinationViewController];
         dvc.album = self.selectedAlbum;
+        dvc.vMode = self.videoMode;
+    }
+    if ([segue.identifier isEqualToString:@"toDetailVideo"]) {
+        AlbumDetailViewController *dvcv = [segue destinationViewController];
+        dvcv.videoAlbum = self.selectedVideoAlbum;
+        dvcv.vMode = self.videoMode;
     }
 }
 

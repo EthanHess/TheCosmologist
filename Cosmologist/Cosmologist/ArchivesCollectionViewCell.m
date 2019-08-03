@@ -15,14 +15,21 @@
     
 }
 
+- (NSString *)cutYoutubeURLforIDOnly:(NSString *)fullURlString {
+    return [fullURlString stringByReplacingOccurrencesOfString:@"https://www.youtube.com/watch?v=" withString:@""];
+}
+
 - (void)setUpWebView {
     if (!self.videoURL) {
         return;
     }
     
+    NSString *videoID = [self cutYoutubeURLforIDOnly:self.videoURL];
+    
     self.thePlayer = [[YTPlayerView alloc]initWithFrame:self.contentView.bounds];
     [self.contentView addSubview:self.thePlayer];
-    [self.thePlayer loadWithVideoId:@"3CccfnRpPtM"];
+    //[self.thePlayer loadWithVideoId:@"3CccfnRpPtM"];
+    [self.thePlayer loadWithVideoId:videoID];
     
     //[self.thePlayer playVideo];
     //Stop?

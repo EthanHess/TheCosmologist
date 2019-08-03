@@ -1304,6 +1304,7 @@
                         <outlet property="collectionView" destination="5nF-cr-Wah" id="IwO-w0-rzQ"/>
                         <outlet property="videosBarButton" destination="SLD-X3-2yd" id="NVz-fi-sCY"/>
                         <segue destination="VNA-Lk-rpg" kind="show" identifier="toDetail" id="nzt-4O-hi3"/>
+                        <segue destination="VNA-Lk-rpg" kind="show" identifier="toDetailVideo" id="Tf0-5O-z1I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRK-CQ-L2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1439,6 +1440,7 @@
         <image name="tableViewBG" width="300" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Tf0-5O-z1I"/>
         <segue reference="cLl-ao-vlo"/>
     </inferredMetricsTieBreakers>
 </document>

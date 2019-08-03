@@ -38,23 +38,37 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.album.pictures.count;
+    return self.vMode == YES ? self.videoAlbum.videos.count : self.album.pictures.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *ri = @"pCell";
     ArchivesCollectionViewCell *ac = [collectionView dequeueReusableCellWithReuseIdentifier:ri forIndexPath:indexPath];
-    Picture *pic = self.album.pictures[indexPath.row];
-    [self configureCell:ac withImageData:pic.data];
+    if (self.vMode == YES) {
+        Video *video = self.videoAlbum.videos[indexPath.row];
+        [self configureVideoCell:ac withVideo:video];
+    } else {
+        Picture *pic = self.album.pictures[indexPath.row];
+        [self configureCell:ac withImageData:pic.data];
+    }
     return ac;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    Picture *picture = self.album.pictures[indexPath.row];
-    [self popAlertWithPicture:picture title:@"" andMessage:@""]; //share/delete etc.
+    if (self.vMode == YES) {
+        
+    } else {
+        Picture *picture = self.album.pictures[indexPath.row];
+        [self popAlertWithPicture:picture title:@"" andMessage:@""]; //share/delete etc.
+    }
 }
 
 // D.R.Y. this doesn't need to be in two VCs
+
+- (void)configureVideoCell:(ArchivesCollectionViewCell *)cell withVideo:(Video *)video {
+    cell.videoURL = video.url;
+    [cell setUpWebView];
+}
 
 - (void)configureCell:(ArchivesCollectionViewCell *)cell withImageData:(NSData *)data {
     
