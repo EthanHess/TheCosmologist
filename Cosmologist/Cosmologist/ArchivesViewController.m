@@ -76,8 +76,12 @@
     //Does this need to be safer?
     if (self.videoMode == NO) {
         Album *album = [[MediaController sharedInstance]albums][indexPath.row];
-        NSData *data = album.pictures[0].data; //first for cover?
-        [self configureCell:cell withImageData:data];
+        if (album.pictures.count == 1) {
+            NSData *data = album.pictures[0].data; //first for cover?
+            [self configureCell:cell withImageData:data];
+        } else {
+            [self configureCellForMultipleImages:cell andCount:album.pictures.count andAlbum:album];
+        }
     } else {
         AlbumV *videoAlbum = [[MediaController sharedInstance]videoAlbums][indexPath.row];
         Video *theVideo = videoAlbum.videos[0];
@@ -90,15 +94,25 @@
 //TODO, consider doing inside of cell or having two separate cells
 
 - (void)configureCell:(ArchivesCollectionViewCell *)cell withVideoURL:(NSString *)theURL andAbout:(NSString *)about {
-    
-//    NSURL *youtubeURL = [NSURL URLWithString:theURL];    
-//    NSData *imageData = [NSData dataWithContentsOfURL:youtubeURL];
-//    UIImage *thumbnailImage = [UIImage imageWithData:imageData];
-    
+
     NSLog(@"-- MAIN THREAD -- %@", [NSThread currentThread] == [NSThread mainThread] ? @"YES" : @"NO");
     cell.videoURL = theURL;
     cell.contentView.userInteractionEnabled = NO; //Will just display thumbnail of first video
     [cell setUpWebView];
+}
+
+//Ideally should do inside of cell
+- (void)configureCellForMultipleImages:(ArchivesCollectionViewCell *)cell andCount:(NSInteger)count andAlbum:(Album *)album {
+    NSData *firstData = album.pictures[0].data;
+    NSData *secontData = album.pictures[1].data;
+    cell.firstData = firstData;
+    cell.secondData = secontData;
+    if (count > 2) {
+        NSData *thirdData = album.pictures[2].data;
+        cell.thirdData = thirdData;
+    }
+    
+    [cell setUpMultiple:count];
 }
 
 - (void)configureCell:(ArchivesCollectionViewCell *)cell withImageData:(NSData *)data {

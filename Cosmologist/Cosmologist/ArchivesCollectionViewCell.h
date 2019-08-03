@@ -17,6 +17,11 @@
 @property (strong, nonatomic) NSString *videoURL;
 @property (strong, nonatomic) YTPlayerView *thePlayer;
 
-- (void)setUpWebView; 
+@property (strong, nonatomic) NSData *firstData;
+@property (strong, nonatomic) NSData *secondData;
+@property (strong, nonatomic) NSData *thirdData;
+
+- (void)setUpWebView;
+- (void)setUpMultiple:(NSInteger)count; //show first few images of album, deck of cards stlye :)
 
 @end
