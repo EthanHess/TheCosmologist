@@ -27,12 +27,22 @@
     return [fullURlString stringByReplacingOccurrencesOfString:@"https://www.youtube.com/watch?v=" withString:@""];
 }
 
+- (NSString *)cutYoutubeEmbedURL:(NSString *)fullUrlString {
+    return [fullUrlString stringByReplacingOccurrencesOfString:@"https://www.youtube.com/embed/" withString:@""];
+}
+
 - (void)setUpWebView {
     if (!self.videoURL) {
         return;
     }
     
-    NSString *videoID = [self cutYoutubeURLforIDOnly:self.videoURL];
+    NSString *videoID = @"";
+    if ([self.videoURL containsString:@"watch"]) {
+        videoID = [self cutYoutubeURLforIDOnly:self.videoURL];
+    }
+    if ([self.videoURL containsString:@"embed"]) {
+        videoID = [self cutYoutubeEmbedURL:self.videoURL];
+    }
     
     self.thePlayer = [[YTPlayerView alloc]initWithFrame:self.contentView.bounds];
     [self.contentView addSubview:self.thePlayer];
