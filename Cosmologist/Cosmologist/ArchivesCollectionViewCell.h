@@ -23,5 +23,6 @@
 
 - (void)setUpWebView;
 - (void)setUpMultiple:(NSInteger)count; //show first few images of album, deck of cards stlye :)
+- (void)clearPlayerForImageModeIfExists;
 
 @end

@@ -49,6 +49,13 @@
     [self.thePlayer loadWithVideoId:videoID];
 }
 
+- (void)clearPlayerForImageModeIfExists {
+    if (self.thePlayer != nil) {
+        [self.thePlayer removeFromSuperview];
+        self.thePlayer = nil;
+    }
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSLog(@"WEB STRING: %@", webView.request.URL.absoluteString);
 }

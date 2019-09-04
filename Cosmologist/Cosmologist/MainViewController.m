@@ -53,6 +53,7 @@
     self.pictureTitle.layer.borderWidth = 2;
     self.pictureTitle.layer.masksToBounds = NO;
     self.pictureTitle.clipsToBounds = YES;
+    self.pictureTitle.numberOfLines = 0;
         
     [self getImageData];
     [self labelTimerSetup];

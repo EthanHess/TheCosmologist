@@ -76,12 +76,12 @@
     //Does this need to be safer?
     if (self.videoMode == NO) {
         Album *album = [[MediaController sharedInstance]albums][indexPath.row];
-        if (album.pictures.count == 1) {
+        //if (album.pictures.count == 1) {
             NSData *data = album.pictures[0].data; //first for cover?
             [self configureCell:cell withImageData:data];
-        } else {
-            [self configureCellForMultipleImages:cell andCount:album.pictures.count andAlbum:album];
-        }
+//        } else {
+//            [self configureCellForMultipleImages:cell andCount:album.pictures.count andAlbum:album];
+//        }
     } else {
         AlbumV *videoAlbum = [[MediaController sharedInstance]videoAlbums][indexPath.row];
         Video *theVideo = videoAlbum.videos[0];
@@ -118,6 +118,8 @@
 - (void)configureCell:(ArchivesCollectionViewCell *)cell withImageData:(NSData *)data {
     
     //Resizing images but perhaps should store separate thumbnails to make fetching faster, collection view is a bit choppy
+    
+    [cell clearPlayerForImageModeIfExists];
     
     NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSURL *picURL = [NSURL URLWithString:dataString];
