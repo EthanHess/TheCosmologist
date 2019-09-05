@@ -12,15 +12,50 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    NSLog(@"-- Did awake from Nib --");
 }
 
 - (void)setUpMultiple:(NSInteger)count {
     if (count > 2) {
-        
+        [self multiSetup:NO andCount:2];
     } else {
-        
+        [self multiSetup:NO andCount:3];
     }
+}
+
+- (void)multiSetup:(BOOL)remove andCount:(NSInteger)count {
+    if (remove == YES) {
+        if (self.multiImageOne != nil) {
+            [self.multiImageOne removeFromSuperview];
+            self.multiImageOne = nil;
+        }
+        if (self.multiImageTwo != nil) {
+            [self.multiImageTwo removeFromSuperview];
+            self.multiImageTwo = nil;
+        }
+        if (self.multiImageThree != nil) {
+            [self.multiImageThree removeFromSuperview];
+            self.multiImageThree = nil;
+        }
+    } else { //TODO deck of cards effect
+        CGFloat parentWidth = self.theImageView.frame.size.width;
+        CGFloat parentHeight = self.theImageView.frame.size.height;
+        if (count > 2) {
+            self.multiImageOne = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15, parentWidth - 60, parentHeight - 60)];
+            [self.theImageView addSubview:self.multiImageOne];
+            self.multiImageTwo = [[UIImageView alloc]initWithFrame:CGRectMake(30, 30, parentWidth - 45, parentHeight - 45)];
+            [self.theImageView addSubview:self.multiImageTwo];
+            self.multiImageThree = [[UIImageView alloc]initWithFrame:CGRectMake(45, 45, parentWidth - 30, parentHeight - 30)];
+            [self.theImageView addSubview:self.multiImageThree];
+        } else {
+            //TODO imp.
+        }
+    }
+}
+
+- (void)childIVStyle:(UIImageView *)iv {
+    iv.layer.cornerRadius = 5;
+    iv.layer.masksToBounds = YES; //Border color ?
 }
 
 - (NSString *)cutYoutubeURLforIDOnly:(NSString *)fullURlString {
@@ -66,7 +101,7 @@
 
 - (void)prepareForReuse {
     [super prepareForReuse];
-
+    [self multiSetup:YES andCount:0];
 }
 
 @end
