@@ -68,20 +68,29 @@
 //TODO update for video mode, most are YouTube URLS
 //Will also want to save description
 
+- (void)cellStylizer:(ArchivesCollectionViewCell *)theCell {
+    theCell.layer.cornerRadius = 5;
+    theCell.layer.masksToBounds = YES;
+    theCell.layer.borderColor = [[UIColor whiteColor]CGColor];
+    theCell.layer.borderWidth = 1;
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     //Check if nil?
     ArchivesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
+    [self cellStylizer:cell];
+    
     //Does this need to be safer?
     if (self.videoMode == NO) {
         Album *album = [[MediaController sharedInstance]albums][indexPath.row];
-        //if (album.pictures.count == 1) {
+        if (album.pictures.count == 1) {
             NSData *data = album.pictures[0].data; //first for cover?
             [self configureCell:cell withImageData:data];
-//        } else {
-//            [self configureCellForMultipleImages:cell andCount:album.pictures.count andAlbum:album];
-//        }
+        } else {
+            [self configureCellForMultipleImages:cell andCount:album.pictures.count andAlbum:album];
+        }
     } else {
         AlbumV *videoAlbum = [[MediaController sharedInstance]videoAlbums][indexPath.row];
         Video *theVideo = videoAlbum.videos[0];
@@ -103,6 +112,7 @@
 
 //Ideally should do inside of cell
 - (void)configureCellForMultipleImages:(ArchivesCollectionViewCell *)cell andCount:(NSInteger)count andAlbum:(Album *)album {
+    [cell clearPlayerForImageModeIfExists];
     NSData *firstData = album.pictures[0].data;
     NSData *secontData = album.pictures[1].data;
     cell.firstData = firstData;

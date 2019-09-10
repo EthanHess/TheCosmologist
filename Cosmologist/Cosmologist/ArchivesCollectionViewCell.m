@@ -17,9 +17,9 @@
 
 - (void)setUpMultiple:(NSInteger)count {
     if (count > 2) {
-        [self multiSetup:NO andCount:2];
-    } else {
         [self multiSetup:NO andCount:3];
+    } else {
+        [self multiSetup:NO andCount:2];
     }
 }
 
@@ -41,16 +41,36 @@
         CGFloat parentWidth = self.theImageView.frame.size.width;
         CGFloat parentHeight = self.theImageView.frame.size.height;
         if (count > 2) {
-            self.multiImageOne = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15, parentWidth - 60, parentHeight - 60)];
+            CGFloat dimensionThreeWidth = parentWidth - 60;
+            CGFloat dimensionThreeHeight = parentHeight = 60;
+            self.multiImageOne = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15, dimensionThreeWidth, dimensionThreeHeight)];
+            self.multiImageOne.image = [self fromData:self.firstData];
             [self.theImageView addSubview:self.multiImageOne];
-            self.multiImageTwo = [[UIImageView alloc]initWithFrame:CGRectMake(30, 30, parentWidth - 45, parentHeight - 45)];
+            self.multiImageTwo = [[UIImageView alloc]initWithFrame:CGRectMake(30, 30, dimensionThreeWidth, dimensionThreeHeight)];
+            self.multiImageTwo.image = [self fromData:self.secondData];
             [self.theImageView addSubview:self.multiImageTwo];
-            self.multiImageThree = [[UIImageView alloc]initWithFrame:CGRectMake(45, 45, parentWidth - 30, parentHeight - 30)];
+            self.multiImageThree = [[UIImageView alloc]initWithFrame:CGRectMake(45, 45, dimensionThreeWidth, dimensionThreeHeight)];
+            self.multiImageThree.image = [self fromData:self.thirdData];
             [self.theImageView addSubview:self.multiImageThree];
         } else {
-            //TODO imp.
+            CGFloat dimensionTwoWidth = parentWidth - 60; //TODO update
+            CGFloat dimensionTwoHeight = parentHeight - 60;
+            self.multiImageOne = [[UIImageView alloc]initWithFrame:CGRectMake(20, 20, dimensionTwoWidth, dimensionTwoHeight)];
+            self.multiImageOne.image = [self fromData:self.firstData];
+            [self.theImageView addSubview:self.multiImageOne];
+            self.multiImageTwo = [[UIImageView alloc]initWithFrame:CGRectMake(40, 40, dimensionTwoWidth, dimensionTwoHeight)];
+            self.multiImageTwo.image = [self fromData:self.secondData];
+            [self.theImageView addSubview:self.multiImageTwo];
         }
     }
+}
+
+- (UIImage *)fromData:(NSData *)data {
+    if (!data) {
+        return [UIImage imageNamed:@"earthButton"]; //default
+    }
+    UIImage *imageToReturn = [UIImage imageWithData:data];
+    return imageToReturn != nil ? imageToReturn : [UIImage imageNamed:@"earthButton"];
 }
 
 - (void)childIVStyle:(UIImageView *)iv {
