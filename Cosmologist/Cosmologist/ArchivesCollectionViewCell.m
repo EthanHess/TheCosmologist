@@ -42,7 +42,7 @@
         CGFloat parentHeight = self.theImageView.frame.size.height;
         if (count > 2) {
             CGFloat dimensionThreeWidth = parentWidth - 60;
-            CGFloat dimensionThreeHeight = parentHeight = 60;
+            CGFloat dimensionThreeHeight = parentHeight - 60;
             self.multiImageOne = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15, dimensionThreeWidth, dimensionThreeHeight)];
             self.multiImageOne.image = [self fromData:self.firstData];
             [self.theImageView addSubview:self.multiImageOne];

@@ -106,7 +106,7 @@
     view.clipsToBounds = NO;
 }
 
-//TODO cycle through
+//TODO cycle through (will also use for SWReveal, make global?)
 - (NSArray *)shadowColorsForLabel {
     UIColor *colorOne = [UIColor colorWithRed:124.0f/255.0f green:247.0f/255.0f blue:252.0f/255.0f alpha:1.0];
     UIColor *colorTwo = [UIColor colorWithRed:124.0f/255.0f green:252.0f/255.0f blue:230.0f/255.0f alpha:1.0];

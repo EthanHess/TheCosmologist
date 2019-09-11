@@ -56,10 +56,14 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.vMode == YES) {
-        
+        //Video will play
     } else {
         Picture *picture = self.album.pictures[indexPath.row];
-        [self popAlertWithPicture:picture title:@"" andMessage:@""]; //share/delete etc.
+        if (self.album.pictures.count == 1) {
+            //Can't delete if only one picture left, pop alert to delete album
+        } else {
+            [self popAlertWithPicture:picture title:@"What would you like to do?" andMessage:@""]; //share/delete etc.
+        }
     }
 }
 

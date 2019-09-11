@@ -50,10 +50,10 @@
     
     [self animateViewsIn];
     
-    NSString *customStringOne = @"A special thanks to SWRevealController";
+    NSString *customStringOne = @"Frameworks: SWRevealController, API: NASA (The one and only)";
     [self configureSWRLabel:customStringOne];
 
-    NSString *customStringTwo = @"Also a special thanks to NASA for their awesome API";
+    NSString *customStringTwo = @"Image credits: Pixabay";
     [self configureNasaLabel:customStringTwo];
 }
 
@@ -68,15 +68,15 @@
 
 - (void)configureSWRLabel:(NSString *)string {
     NSMutableAttributedString *customAttStrOne = [[NSMutableAttributedString alloc]initWithString:string];
-    [customAttStrOne addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(20, 18)];
-    [customAttStrOne addAttribute:NSFontAttributeName value:[UIFont italicSystemFontOfSize:21] range:NSMakeRange(20, 18)];
+    [customAttStrOne addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, string.length)];
+    [customAttStrOne addAttribute:NSFontAttributeName value:[UIFont italicSystemFontOfSize:21] range:NSMakeRange(0, string.length)];
     self.SWRLabel.attributedText = customAttStrOne;
 }
 
 - (void)configureNasaLabel:(NSString *)string {
     NSMutableAttributedString *customAttStrTwo = [[NSMutableAttributedString alloc]initWithString:string];
-    [customAttStrTwo addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(25, 4)];
-    [customAttStrTwo addAttribute:NSFontAttributeName value:[UIFont italicSystemFontOfSize:21] range:NSMakeRange(25, 4)];
+    [customAttStrTwo addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, string.length)];
+    [customAttStrTwo addAttribute:NSFontAttributeName value:[UIFont italicSystemFontOfSize:21] range:NSMakeRange(0, string.length)];
     self.NASALabel.attributedText = customAttStrTwo;
 }
 

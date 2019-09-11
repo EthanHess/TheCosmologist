@@ -88,7 +88,7 @@
         if (album.pictures.count == 1) {
             NSData *data = album.pictures[0].data; //first for cover?
             [self configureCell:cell withImageData:data];
-        } else {
+        } else { //Would check if count is 0 but they can't delete if pic is last one in detail VC
             [self configureCellForMultipleImages:cell andCount:album.pictures.count andAlbum:album];
         }
     } else {
