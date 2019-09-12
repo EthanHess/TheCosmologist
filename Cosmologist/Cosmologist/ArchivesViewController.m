@@ -18,6 +18,8 @@
 @property (nonatomic, assign) BOOL videoMode;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *videosBarButton;
 
+@property (strong, nonatomic) UIImageView *theImageView;
+
 @end
 
 @implementation ArchivesViewController
@@ -29,7 +31,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.collectionView reloadData]; //move?
+    [self refresh];  //move?
+    
+    if (self.theImageView == nil) {
+        self.theImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        self.theImageView.image = [UIImage imageNamed:@"tableViewBG"]; //Size to fit?
+        self.collectionView.backgroundColor = [UIColor clearColor];
+        [self.view insertSubview:self.theImageView belowSubview:self.collectionView];
+    }
     
     if ([[MediaController sharedInstance]videoAlbums].count > 0) {
         AlbumV *videoAlbum = [[MediaController sharedInstance]videoAlbums][0];
@@ -40,6 +49,11 @@
     
     self.videoMode = NO;
     [self barButtonTitle];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
 }
 
 
@@ -127,24 +141,20 @@
 
 - (void)configureCell:(ArchivesCollectionViewCell *)cell withImageData:(NSData *)data {
     
-    //Resizing images but perhaps should store separate thumbnails to make fetching faster, collection view is a bit choppy
-    
     [cell clearPlayerForImageModeIfExists];
     
     NSString *dataString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSURL *picURL = [NSURL URLWithString:dataString];
     UIImage *cahcedImage = [[CachedImage sharedInstance]imageForKey:(NSString *)picURL];
     
-    //dispatch_async(dispatch_get_main_queue(), ^{
-        if (cahcedImage) {
-            cell.theImageView.hidden = NO;
-            cell.theImageView.image = [cahcedImage resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
-        } else {
-            cell.theImageView.hidden = NO;
-            cell.theImageView.image = [[UIImage imageWithData:data]resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
-            [[CachedImage sharedInstance]setImage:[[UIImage imageWithData:data]resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)] forKey:(NSString *)picURL];
-        }
-    //});
+    if (cahcedImage) {
+        cell.theImageView.hidden = NO;
+        cell.theImageView.image = [cahcedImage resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
+    } else {
+        cell.theImageView.hidden = NO;
+        cell.theImageView.image = [[UIImage imageWithData:data]resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)];
+        [[CachedImage sharedInstance]setImage:[[UIImage imageWithData:data]resize:CGSizeMake(cell.frame.size.width, cell.frame.size.height)] forKey:(NSString *)picURL];
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -163,17 +173,6 @@
         [self popAlertWithVideoAlbum:videoAlbum title:@"Options" andMessage:@"What would you like to do?"];
     }
 }
-
-//- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-//    
-//    [UIView animateWithDuration:1 animations:^{
-//        
-//        attributes.size = CGSizeMake(300, 300);
-//        
-//    }];
-//}
 
 - (void)popAlertWithVideoAlbum:(AlbumV *)videoAlbum title:(NSString *)title andMessage:(NSString *)message {
     

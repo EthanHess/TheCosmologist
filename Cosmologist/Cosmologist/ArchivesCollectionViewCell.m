@@ -13,6 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     NSLog(@"-- Did awake from Nib --");
+    self.backgroundColor = [UIColor blackColor];
 }
 
 - (void)setUpMultiple:(NSInteger)count {

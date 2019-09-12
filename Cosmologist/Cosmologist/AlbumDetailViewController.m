@@ -17,6 +17,8 @@
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
+@property (strong, nonatomic) UIImageView *theImageView;
+
 @end
 
 @implementation AlbumDetailViewController
@@ -29,6 +31,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self refresh];
+    if (self.theImageView == nil) {
+        self.theImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        self.theImageView.image = [UIImage imageNamed:@"tableViewBG"]; //Size to fit?
+        self.collectionView.backgroundColor = [UIColor clearColor];
+        [self.view insertSubview:self.theImageView belowSubview:self.collectionView];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
 }
 
 - (void)refresh {
