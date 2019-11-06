@@ -5,18 +5,18 @@
 //  Created by Ethan Hess on 2/5/19.
 //
 //
-
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-
-@class Video;
-
-NS_ASSUME_NONNULL_BEGIN
-
-@interface AlbumV : NSManagedObject
-
-@end
-
-NS_ASSUME_NONNULL_END
-
-#import "AlbumV+CoreDataProperties.h"
+//
+//#import <Foundation/Foundation.h>
+//#import <CoreData/CoreData.h>
+//
+//@class Video;
+//
+//NS_ASSUME_NONNULL_BEGIN
+//
+//@interface AlbumV : NSManagedObject
+//
+//@end
+//
+//NS_ASSUME_NONNULL_END
+//
+//#import "AlbumV+CoreDataProperties.h"

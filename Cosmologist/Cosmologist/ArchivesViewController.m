@@ -13,8 +13,8 @@
 
 @interface ArchivesViewController ()
 
-@property (nonatomic, strong) Album *selectedAlbum;
-@property (nonatomic, strong) AlbumV *selectedVideoAlbum;
+@property (nonatomic, strong) TheAlbum *selectedAlbum;
+@property (nonatomic, strong) TheAlbumV *selectedVideoAlbum;
 @property (nonatomic, assign) BOOL videoMode;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *videosBarButton;
 
@@ -41,8 +41,8 @@
     }
     
     if ([[MediaController sharedInstance]videoAlbums].count > 0) {
-        AlbumV *videoAlbum = [[MediaController sharedInstance]videoAlbums][0];
-        Video *first = videoAlbum.videos[0];
+        TheAlbumV *videoAlbum = [[MediaController sharedInstance]videoAlbums][0];
+        TheVideo *first = videoAlbum.videos[0];
         NSLog(@"--- VA --- %@", videoAlbum.name);
         NSLog(@"--- FA --- FU %@ %@", first.about, first.url);
     }
@@ -98,7 +98,7 @@
     
     //Does this need to be safer?
     if (self.videoMode == NO) {
-        Album *album = [[MediaController sharedInstance]albums][indexPath.row];
+        TheAlbum *album = [[MediaController sharedInstance]albums][indexPath.row];
         if (album.pictures.count == 1) {
             NSData *data = album.pictures[0].data; //first for cover?
             [self configureCell:cell withImageData:data];
@@ -106,8 +106,8 @@
             [self configureCellForMultipleImages:cell andCount:album.pictures.count andAlbum:album];
         }
     } else {
-        AlbumV *videoAlbum = [[MediaController sharedInstance]videoAlbums][indexPath.row];
-        Video *theVideo = videoAlbum.videos[0];
+        TheAlbumV *videoAlbum = [[MediaController sharedInstance]videoAlbums][indexPath.row];
+        TheVideo *theVideo = videoAlbum.videos[0];
         [self configureCell:cell withVideoURL:theVideo.url andAbout:theVideo.about];
     }
     
@@ -125,7 +125,7 @@
 }
 
 //Ideally should do inside of cell
-- (void)configureCellForMultipleImages:(ArchivesCollectionViewCell *)cell andCount:(NSInteger)count andAlbum:(Album *)album {
+- (void)configureCellForMultipleImages:(ArchivesCollectionViewCell *)cell andCount:(NSInteger)count andAlbum:(TheAlbum *)album {
     [cell clearPlayerForImageModeIfExists];
     NSData *firstData = album.pictures[0].data;
     NSData *secontData = album.pictures[1].data;
@@ -165,16 +165,16 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (self.videoMode == NO) {
-        Album *album = [[MediaController sharedInstance] albums][indexPath.row];
+        TheAlbum *album = [[MediaController sharedInstance] albums][indexPath.row];
         [self popAlertWthAlbum:album title:@"Options" andMessage:@"What would you like to do?"];
     } else {
-        AlbumV *videoAlbum = [[MediaController sharedInstance] videoAlbums][indexPath.row];
+        TheAlbumV *videoAlbum = [[MediaController sharedInstance] videoAlbums][indexPath.row];
         NSLog(@"SELECTED VIDEO ALBUM %@", videoAlbum);
         [self popAlertWithVideoAlbum:videoAlbum title:@"Options" andMessage:@"What would you like to do?"];
     }
 }
 
-- (void)popAlertWithVideoAlbum:(AlbumV *)videoAlbum title:(NSString *)title andMessage:(NSString *)message {
+- (void)popAlertWithVideoAlbum:(TheAlbumV *)videoAlbum title:(NSString *)title andMessage:(NSString *)message {
     
     UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
@@ -198,7 +198,7 @@
 
 //Can DRY these two
 
-- (void)popAlertWthAlbum:(Album *)album title:(NSString *)title andMessage:(NSString *)message {
+- (void)popAlertWthAlbum:(TheAlbum *)album title:(NSString *)title andMessage:(NSString *)message {
     
     UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
@@ -220,12 +220,12 @@
     [self presentViewController:alertCon animated:YES completion:nil];
 }
 
-- (void)goToAlbum:(Album *)album {
+- (void)goToAlbum:(TheAlbum *)album {
     self.selectedAlbum = album;
     [self performSegueWithIdentifier:@"toDetail" sender:nil];
 }
 
-- (void)goToVideoAlbum:(AlbumV *)videoAlbum {
+- (void)goToVideoAlbum:(TheAlbumV *)videoAlbum {
     self.selectedVideoAlbum = videoAlbum;
     [self performSegueWithIdentifier:@"toDetailVideo" sender:nil];
 }

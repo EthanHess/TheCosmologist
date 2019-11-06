@@ -120,16 +120,18 @@
 }
 
 - (void)youtubeThumbnailTest {
-    //NSString *urlOne = @"https://www.youtube.com/watch?v=FEmoqRp8_dw";
-    NSString *urlTwo = @"https://www.youtube.com/watch?v=pKSVYwl6-Mk"; ;
-    NSString *urlThree = @"https://www.youtube.com/watch?v=_X7i1ALXh8E"; ;
-    //[[MediaController sharedInstance]addURLtoAlbum:urlOne about:@"One" andCreateNew:YES];
-    [[MediaController sharedInstance]addURLtoAlbum:urlTwo about:@"Two" andCreateNew:NO];
-    [[MediaController sharedInstance]addURLtoAlbum:urlThree about:@"Three" andCreateNew:NO];
+    NSString *urlOne = @"https://www.youtube.com/watch?v=FEmoqRp8_dw";
+    [[MediaController sharedInstance]addURLtoAlbum:urlOne about:@"One" andCreateNew:YES];
+    dispatch_after(DISPATCH_TIME_NOW + 1, dispatch_get_main_queue(), ^{
+        NSString *urlTwo = @"https://www.youtube.com/watch?v=pKSVYwl6-Mk";
+        NSString *urlThree = @"https://www.youtube.com/watch?v=_X7i1ALXh8E";
+        [[MediaController sharedInstance]addURLtoAlbum:urlTwo about:@"Two" andCreateNew:NO];
+        [[MediaController sharedInstance]addURLtoAlbum:urlThree about:@"Three" andCreateNew:NO];
+    });
 }
 
 - (void)deleteYoutubeTest {
-    AlbumV *theAlbum = [[MediaController sharedInstance]videoAlbums][0];
+    TheAlbumV *theAlbum = [[MediaController sharedInstance]videoAlbums][0];
     [[MediaController sharedInstance]removeVideoAlbum:theAlbum];
 }
 
@@ -238,7 +240,7 @@
         
         UIImage *image = self.pictureView.image;
         if (image != nil) {
-            Album *album = [[[MediaController sharedInstance]albums]lastObject];
+            TheAlbum *album = [[[MediaController sharedInstance]albums]lastObject];
             //Can DRY (one line)
             if (album != nil && album.pictures.count < 11) {
                 [[MediaController sharedInstance]addPictureToAlbum:image about:self.descriptionString new:NO];
@@ -251,7 +253,7 @@
                 NSLog(@"No Web View"); //Alert, also make sure it's checking for desc. string
                 return;
             }
-            AlbumV *vAlbum = [[[MediaController sharedInstance]videoAlbums]lastObject];
+            TheAlbumV *vAlbum = [[[MediaController sharedInstance]videoAlbums]lastObject];
             if (vAlbum != nil && vAlbum.videos.count < 11) {
                 [[MediaController sharedInstance]addURLtoAlbum:self.webViewURL about:self.descriptionString andCreateNew:NO];
             } else {

@@ -58,10 +58,10 @@
     NSString *ri = @"pCell";
     ArchivesCollectionViewCell *ac = [collectionView dequeueReusableCellWithReuseIdentifier:ri forIndexPath:indexPath];
     if (self.vMode == YES) {
-        Video *video = self.videoAlbum.videos[indexPath.row];
+        TheVideo *video = self.videoAlbum.videos[indexPath.row];
         [self configureVideoCell:ac withVideo:video];
     } else {
-        Picture *pic = self.album.pictures[indexPath.row];
+        ThePicture *pic = self.album.pictures[indexPath.row];
         [self configureCell:ac withImageData:pic.data];
     }
     return ac;
@@ -71,7 +71,7 @@
     if (self.vMode == YES) {
         //Video will play
     } else {
-        Picture *picture = self.album.pictures[indexPath.row];
+        ThePicture *picture = self.album.pictures[indexPath.row];
         if (self.album.pictures.count == 1) {
             //Can't delete if only one picture left, pop alert to delete album
         } else {
@@ -82,7 +82,7 @@
 
 // D.R.Y. this doesn't need to be in two VCs
 
-- (void)configureVideoCell:(ArchivesCollectionViewCell *)cell withVideo:(Video *)video {
+- (void)configureVideoCell:(ArchivesCollectionViewCell *)cell withVideo:(TheVideo *)video {
     cell.videoURL = video.url;
     [cell setUpWebView];
 }
@@ -105,7 +105,7 @@
 
 //Move to detail VC
 
-- (void)popAlertWithPicture:(Picture *)picture title:(NSString *)title andMessage:(NSString *)message {
+- (void)popAlertWithPicture:(ThePicture *)picture title:(NSString *)title andMessage:(NSString *)message {
     
     UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
@@ -127,7 +127,7 @@
     [self presentViewController:alertCon animated:YES completion:nil];
 }
 
-- (void)shareContent:(Picture *)picture {
+- (void)shareContent:(ThePicture *)picture {
     
     //convert pic to uiimage
     UIImage *image = [self imageFromPicture:picture];
@@ -139,7 +139,7 @@
     }
 }
 
-- (UIImage *)imageFromPicture:(Picture *)picture {
+- (UIImage *)imageFromPicture:(ThePicture *)picture {
     if (picture.data) {
         return [UIImage imageWithData:picture.data];
     } else {

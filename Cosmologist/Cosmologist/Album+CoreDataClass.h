@@ -6,17 +6,17 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-
-@class Picture;
-
-NS_ASSUME_NONNULL_BEGIN
-
-@interface Album : NSManagedObject
-
-@end
-
-NS_ASSUME_NONNULL_END
-
-#import "Album+CoreDataProperties.h"
+//#import <Foundation/Foundation.h>
+//#import <CoreData/CoreData.h>
+//
+//@class Picture;
+//
+//NS_ASSUME_NONNULL_BEGIN
+//
+//@interface Album : NSManagedObject
+//
+//@end
+//
+//NS_ASSUME_NONNULL_END
+//
+//#import "Album+CoreDataProperties.h"

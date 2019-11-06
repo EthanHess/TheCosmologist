@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="17G65" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <entity name="Album" representedClassName="Album" syncable="YES">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15400" systemVersion="18G103" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="TheAlbum" representedClassName="TheAlbum" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Picture" inverseName="album" inverseEntity="Picture" syncable="YES"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ThePicture" inverseName="album" inverseEntity="ThePicture" syncable="YES"/>
     </entity>
-    <entity name="AlbumV" representedClassName="AlbumV" syncable="YES">
+    <entity name="TheAlbumV" representedClassName="TheAlbumV" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Video" inverseName="albumV" inverseEntity="Video" syncable="YES"/>
+        <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TheVideo" inverseName="albumV" inverseEntity="TheVideo" syncable="YES"/>
     </entity>
-    <entity name="Picture" representedClassName="Picture" syncable="YES">
+    <entity name="ThePicture" representedClassName="ThePicture" syncable="YES">
         <attribute name="about" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="data" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="pictures" inverseEntity="Album" syncable="YES"/>
+        <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TheAlbum" inverseName="pictures" inverseEntity="TheAlbum" syncable="YES"/>
     </entity>
-    <entity name="Video" representedClassName="Video" syncable="YES">
+    <entity name="TheVideo" representedClassName="TheVideo" syncable="YES">
         <attribute name="about" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="albumV" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlbumV" inverseName="videos" inverseEntity="AlbumV" syncable="YES"/>
+        <relationship name="albumV" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TheAlbumV" inverseName="videos" inverseEntity="TheAlbumV" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Album" positionX="-63" positionY="-9" width="128" height="75"/>
-        <element name="Picture" positionX="-298.66796875" positionY="-49.8515625" width="128" height="90"/>
-        <element name="AlbumV" positionX="-180" positionY="-9" width="128" height="75"/>
-        <element name="Video" positionX="-171" positionY="0" width="128" height="90"/>
+        <element name="TheAlbum" positionX="-63" positionY="-9" width="128" height="73"/>
+        <element name="TheAlbumV" positionX="-180" positionY="-9" width="128" height="73"/>
+        <element name="ThePicture" positionX="-298.66796875" positionY="-49.8515625" width="128" height="88"/>
+        <element name="TheVideo" positionX="-171" positionY="0" width="128" height="88"/>
     </elements>
 </model>

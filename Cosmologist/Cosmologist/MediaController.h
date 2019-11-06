@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "Picture+CoreDataClass.h"
-#import "Album+CoreDataClass.h"
-#import "Video+CoreDataClass.h"
-#import "AlbumV+CoreDataClass.h"
+#import "ThePicture+CoreDataClass.h"
+#import "TheAlbum+CoreDataClass.h"
+#import "TheVideo+CoreDataClass.h"
+#import "TheAlbumV+CoreDataClass.h"
 #import "CoreDataStack.h"
 
 @interface MediaController : NSObject
@@ -21,12 +21,12 @@
 
 + (MediaController *)sharedInstance;
 
-- (void)removePicture:(Picture *)picture;
-- (void)removeAlbum:(Album *)album;
+- (void)removePicture:(ThePicture *)picture;
+- (void)removeAlbum:(TheAlbum *)album;
 - (void)addPictureToAlbum:(UIImage *)image about:(NSString *)desc new:(BOOL)createNew;
 
-- (void)removeVideo:(Video *)video;
-- (void)removeVideoAlbum:(AlbumV *)albumV;
+- (void)removeVideo:(TheVideo *)video;
+- (void)removeVideoAlbum:(TheAlbumV *)albumV;
 - (void)addURLtoAlbum:(NSString *)videoURL about:(NSString *)about andCreateNew:(BOOL)createNew;
 
 @end
