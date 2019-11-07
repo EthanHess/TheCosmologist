@@ -13,8 +13,6 @@
 #import "Constants.h"
 #import "DescriptionViewController.h"
 #import "CachedImage.h"
-#import "Album+CoreDataClass.h"
-#import "AlbumV+CoreDataClass.h"
 
 @import WebKit;
 
@@ -230,6 +228,15 @@
 
 
 - (IBAction)optionsButtonTapped:(id)sender {
+    
+//    NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+//    double dbVersion = [version doubleValue];
+//    if (dbVersion < 1.04) {
+//
+//    } else {
+//
+//    }
+    
     [self popAlertWithString:@"Options" andMessage:@""];
 }
 
