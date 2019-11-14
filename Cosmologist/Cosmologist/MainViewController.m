@@ -120,10 +120,10 @@
 }
 
 - (void)youtubeThumbnailTest {
-    //NSString *urlOne = @"https://www.youtube.com/watch?v=FEmoqRp8_dw";
-    NSString *urlTwo = @"https://www.youtube.com/watch?v=pKSVYwl6-Mk"; ;
-    NSString *urlThree = @"https://www.youtube.com/watch?v=_X7i1ALXh8E"; ;
-    //[[MediaController sharedInstance]addURLtoAlbum:urlOne about:@"One" andCreateNew:YES];
+//    NSString *urlOne = @"https://www.youtube.com/watch?v=FEmoqRp8_dw";
+    NSString *urlTwo = @"https://www.youtube.com/watch?v=pKSVYwl6-Mk";
+    NSString *urlThree = @"https://www.youtube.com/watch?v=_X7i1ALXh8E";
+//    [[MediaController sharedInstance]addURLtoAlbum:urlOne about:@"One" andCreateNew:YES];
     [[MediaController sharedInstance]addURLtoAlbum:urlTwo about:@"Two" andCreateNew:NO];
     [[MediaController sharedInstance]addURLtoAlbum:urlThree about:@"Three" andCreateNew:NO];
 }

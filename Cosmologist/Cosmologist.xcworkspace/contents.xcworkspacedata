@@ -2,52 +2,52 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/AlbumV+CoreDataProperties.h">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/AlbumV+CoreDataProperties.h">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/AlbumV+CoreDataClass.h">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/AlbumV+CoreDataClass.h">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/AlbumV+CoreDataClass.m">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/AlbumV+CoreDataClass.m">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/AlbumV+CoreDataProperties.m">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/AlbumV+CoreDataProperties.m">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Video+CoreDataProperties.h">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Video+CoreDataProperties.h">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Video+CoreDataClass.h">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Video+CoreDataClass.h">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Video+CoreDataClass.m">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Video+CoreDataClass.m">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Video+CoreDataProperties.m">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Video+CoreDataProperties.m">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Picture+CoreDataProperties.h">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Album+CoreDataProperties.h">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Picture+CoreDataClass.h">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Album+CoreDataClass.h">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Picture+CoreDataClass.m">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Album+CoreDataClass.m">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Picture+CoreDataProperties.m">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Album+CoreDataProperties.m">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Album+CoreDataProperties.h">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Picture+CoreDataProperties.h">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Album+CoreDataClass.h">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Picture+CoreDataClass.h">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Album+CoreDataClass.m">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Picture+CoreDataClass.m">
    </FileRef>
    <FileRef
-      location = "group:/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Album+CoreDataProperties.m">
+      location = "group:/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Picture+CoreDataProperties.m">
    </FileRef>
    <FileRef
       location = "group:Cosmologist.xcodeproj">

@@ -19,17 +19,17 @@
 		27081C3C1E725F9400BE4A5E /* CachedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 27081C3B1E725F9400BE4A5E /* CachedImage.m */; };
 		270EAFA61DA592FA005E2723 /* DescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAFA51DA592FA005E2723 /* DescriptionViewController.m */; };
 		2718BE9C1DB41F950081C911 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718BE9B1DB41F950081C911 /* MapViewController.m */; };
+		2723E37B237CF589005C8D30 /* Picture+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723E36D237CF587005C8D30 /* Picture+CoreDataClass.m */; };
+		2723E37C237CF589005C8D30 /* Video+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723E371237CF587005C8D30 /* Video+CoreDataProperties.m */; };
+		2723E37D237CF589005C8D30 /* Album+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723E374237CF588005C8D30 /* Album+CoreDataProperties.m */; };
+		2723E37E237CF589005C8D30 /* AlbumV+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723E375237CF588005C8D30 /* AlbumV+CoreDataClass.m */; };
+		2723E37F237CF589005C8D30 /* AlbumV+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723E377237CF588005C8D30 /* AlbumV+CoreDataProperties.m */; };
+		2723E380237CF589005C8D30 /* Picture+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723E372237CF587005C8D30 /* Picture+CoreDataProperties.m */; };
+		2723E381237CF589005C8D30 /* Video+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723E370237CF587005C8D30 /* Video+CoreDataClass.m */; };
+		2723E382237CF589005C8D30 /* Album+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2723E373237CF588005C8D30 /* Album+CoreDataClass.m */; };
 		273B4F831D99D95600E1FE24 /* ArchivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B4F821D99D95600E1FE24 /* ArchivesViewController.m */; };
-		275625F521EEC933003ECBF2 /* Album+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 275625EE21EEC932003ECBF2 /* Album+CoreDataClass.m */; };
-		275625F621EEC933003ECBF2 /* Album+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 275625EF21EEC932003ECBF2 /* Album+CoreDataProperties.m */; };
-		275625F721EEC933003ECBF2 /* Picture+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 275625F221EEC932003ECBF2 /* Picture+CoreDataProperties.m */; };
-		275625F821EEC933003ECBF2 /* Picture+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 275625F421EEC933003ECBF2 /* Picture+CoreDataClass.m */; };
 		275625FB21EED6F5003ECBF2 /* AlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 275625FA21EED6F5003ECBF2 /* AlbumDetailViewController.m */; };
 		277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 277522D21D5547FB0099D511 /* MarsTableViewCell.m */; };
-		2790EB1F220A8B3A00FBDC5C /* AlbumV+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2790EB17220A8B3800FBDC5C /* AlbumV+CoreDataProperties.m */; };
-		2790EB20220A8B3A00FBDC5C /* AlbumV+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2790EB19220A8B3900FBDC5C /* AlbumV+CoreDataClass.m */; };
-		2790EB21220A8B3A00FBDC5C /* Video+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2790EB1B220A8B3900FBDC5C /* Video+CoreDataClass.m */; };
-		2790EB22220A8B3A00FBDC5C /* Video+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 2790EB1D220A8B3900FBDC5C /* Video+CoreDataProperties.m */; };
 		27C41B9B1DB421150035123C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C41B9A1DB421150035123C /* MapKit.framework */; };
 		27CFF6101D494017003668BC /* NasaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CFF60F1D494017003668BC /* NasaData.m */; };
 		27CFF6131D496A52003668BC /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CFF6121D496A52003668BC /* DetailViewController.m */; };
@@ -78,28 +78,28 @@
 		270EAFA51DA592FA005E2723 /* DescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DescriptionViewController.m; sourceTree = "<group>"; };
 		2718BE9A1DB41F950081C911 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		2718BE9B1DB41F950081C911 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		2723E36B237CF586005C8D30 /* Video+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Video+CoreDataClass.h"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Video+CoreDataClass.h"; sourceTree = "<absolute>"; };
+		2723E36C237CF586005C8D30 /* Video+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Video+CoreDataProperties.h"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Video+CoreDataProperties.h"; sourceTree = "<absolute>"; };
+		2723E36D237CF587005C8D30 /* Picture+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Picture+CoreDataClass.m"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Picture+CoreDataClass.m"; sourceTree = "<absolute>"; };
+		2723E36E237CF587005C8D30 /* AlbumV+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AlbumV+CoreDataClass.h"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/AlbumV+CoreDataClass.h"; sourceTree = "<absolute>"; };
+		2723E36F237CF587005C8D30 /* Picture+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Picture+CoreDataProperties.h"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Picture+CoreDataProperties.h"; sourceTree = "<absolute>"; };
+		2723E370237CF587005C8D30 /* Video+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Video+CoreDataClass.m"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Video+CoreDataClass.m"; sourceTree = "<absolute>"; };
+		2723E371237CF587005C8D30 /* Video+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Video+CoreDataProperties.m"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Video+CoreDataProperties.m"; sourceTree = "<absolute>"; };
+		2723E372237CF587005C8D30 /* Picture+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Picture+CoreDataProperties.m"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Picture+CoreDataProperties.m"; sourceTree = "<absolute>"; };
+		2723E373237CF588005C8D30 /* Album+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Album+CoreDataClass.m"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Album+CoreDataClass.m"; sourceTree = "<absolute>"; };
+		2723E374237CF588005C8D30 /* Album+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Album+CoreDataProperties.m"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Album+CoreDataProperties.m"; sourceTree = "<absolute>"; };
+		2723E375237CF588005C8D30 /* AlbumV+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AlbumV+CoreDataClass.m"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/AlbumV+CoreDataClass.m"; sourceTree = "<absolute>"; };
+		2723E376237CF588005C8D30 /* Album+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Album+CoreDataClass.h"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Album+CoreDataClass.h"; sourceTree = "<absolute>"; };
+		2723E377237CF588005C8D30 /* AlbumV+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AlbumV+CoreDataProperties.m"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/AlbumV+CoreDataProperties.m"; sourceTree = "<absolute>"; };
+		2723E378237CF589005C8D30 /* AlbumV+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AlbumV+CoreDataProperties.h"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/AlbumV+CoreDataProperties.h"; sourceTree = "<absolute>"; };
+		2723E379237CF589005C8D30 /* Picture+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Picture+CoreDataClass.h"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Picture+CoreDataClass.h"; sourceTree = "<absolute>"; };
+		2723E37A237CF589005C8D30 /* Album+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Album+CoreDataProperties.h"; path = "/Users/ethanhess/Desktop/Projects redone/Cosmologist/Cosmologist/Cosmologist/Album+CoreDataProperties.h"; sourceTree = "<absolute>"; };
 		273B4F811D99D95600E1FE24 /* ArchivesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchivesViewController.h; sourceTree = "<group>"; };
 		273B4F821D99D95600E1FE24 /* ArchivesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivesViewController.m; sourceTree = "<group>"; };
-		275625ED21EEC932003ECBF2 /* Picture+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Picture+CoreDataProperties.h"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Picture+CoreDataProperties.h"; sourceTree = "<absolute>"; };
-		275625EE21EEC932003ECBF2 /* Album+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Album+CoreDataClass.m"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Album+CoreDataClass.m"; sourceTree = "<absolute>"; };
-		275625EF21EEC932003ECBF2 /* Album+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Album+CoreDataProperties.m"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Album+CoreDataProperties.m"; sourceTree = "<absolute>"; };
-		275625F021EEC932003ECBF2 /* Album+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Album+CoreDataProperties.h"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Album+CoreDataProperties.h"; sourceTree = "<absolute>"; };
-		275625F121EEC932003ECBF2 /* Album+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Album+CoreDataClass.h"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Album+CoreDataClass.h"; sourceTree = "<absolute>"; };
-		275625F221EEC932003ECBF2 /* Picture+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Picture+CoreDataProperties.m"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Picture+CoreDataProperties.m"; sourceTree = "<absolute>"; };
-		275625F321EEC933003ECBF2 /* Picture+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Picture+CoreDataClass.h"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Picture+CoreDataClass.h"; sourceTree = "<absolute>"; };
-		275625F421EEC933003ECBF2 /* Picture+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Picture+CoreDataClass.m"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Picture+CoreDataClass.m"; sourceTree = "<absolute>"; };
 		275625F921EED6F5003ECBF2 /* AlbumDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumDetailViewController.h; sourceTree = "<group>"; };
 		275625FA21EED6F5003ECBF2 /* AlbumDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumDetailViewController.m; sourceTree = "<group>"; };
 		277522D11D5547FB0099D511 /* MarsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarsTableViewCell.h; sourceTree = "<group>"; };
 		277522D21D5547FB0099D511 /* MarsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarsTableViewCell.m; sourceTree = "<group>"; };
-		2790EB17220A8B3800FBDC5C /* AlbumV+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AlbumV+CoreDataProperties.m"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/AlbumV+CoreDataProperties.m"; sourceTree = "<absolute>"; };
-		2790EB18220A8B3900FBDC5C /* Video+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Video+CoreDataProperties.h"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Video+CoreDataProperties.h"; sourceTree = "<absolute>"; };
-		2790EB19220A8B3900FBDC5C /* AlbumV+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "AlbumV+CoreDataClass.m"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/AlbumV+CoreDataClass.m"; sourceTree = "<absolute>"; };
-		2790EB1A220A8B3900FBDC5C /* AlbumV+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AlbumV+CoreDataProperties.h"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/AlbumV+CoreDataProperties.h"; sourceTree = "<absolute>"; };
-		2790EB1B220A8B3900FBDC5C /* Video+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Video+CoreDataClass.m"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Video+CoreDataClass.m"; sourceTree = "<absolute>"; };
-		2790EB1C220A8B3900FBDC5C /* Video+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Video+CoreDataClass.h"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Video+CoreDataClass.h"; sourceTree = "<absolute>"; };
-		2790EB1D220A8B3900FBDC5C /* Video+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Video+CoreDataProperties.m"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/Video+CoreDataProperties.m"; sourceTree = "<absolute>"; };
-		2790EB1E220A8B3900FBDC5C /* AlbumV+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AlbumV+CoreDataClass.h"; path = "/Users/ethanhess/Desktop/Summer 2016 projects/Cosmologist Git Repo/Cosmologist/Cosmologist/AlbumV+CoreDataClass.h"; sourceTree = "<absolute>"; };
 		27C41B9A1DB421150035123C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		27CFF60E1D494017003668BC /* NasaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NasaData.h; sourceTree = "<group>"; };
 		27CFF60F1D494017003668BC /* NasaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NasaData.m; sourceTree = "<group>"; };
@@ -163,34 +163,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2790EB23220A8B5100FBDC5C /* Core Data Picture Models */ = {
+		2723E383237CF590005C8D30 /* Core Data Models */ = {
 			isa = PBXGroup;
 			children = (
-				275625ED21EEC932003ECBF2 /* Picture+CoreDataProperties.h */,
-				275625F321EEC933003ECBF2 /* Picture+CoreDataClass.h */,
-				275625F421EEC933003ECBF2 /* Picture+CoreDataClass.m */,
-				275625F221EEC932003ECBF2 /* Picture+CoreDataProperties.m */,
-				275625F021EEC932003ECBF2 /* Album+CoreDataProperties.h */,
-				275625F121EEC932003ECBF2 /* Album+CoreDataClass.h */,
-				275625EE21EEC932003ECBF2 /* Album+CoreDataClass.m */,
-				275625EF21EEC932003ECBF2 /* Album+CoreDataProperties.m */,
+				2723E378237CF589005C8D30 /* AlbumV+CoreDataProperties.h */,
+				2723E36E237CF587005C8D30 /* AlbumV+CoreDataClass.h */,
+				2723E375237CF588005C8D30 /* AlbumV+CoreDataClass.m */,
+				2723E377237CF588005C8D30 /* AlbumV+CoreDataProperties.m */,
+				2723E36C237CF586005C8D30 /* Video+CoreDataProperties.h */,
+				2723E36B237CF586005C8D30 /* Video+CoreDataClass.h */,
+				2723E370237CF587005C8D30 /* Video+CoreDataClass.m */,
+				2723E371237CF587005C8D30 /* Video+CoreDataProperties.m */,
+				2723E37A237CF589005C8D30 /* Album+CoreDataProperties.h */,
+				2723E376237CF588005C8D30 /* Album+CoreDataClass.h */,
+				2723E373237CF588005C8D30 /* Album+CoreDataClass.m */,
+				2723E374237CF588005C8D30 /* Album+CoreDataProperties.m */,
+				2723E36F237CF587005C8D30 /* Picture+CoreDataProperties.h */,
+				2723E379237CF589005C8D30 /* Picture+CoreDataClass.h */,
+				2723E36D237CF587005C8D30 /* Picture+CoreDataClass.m */,
+				2723E372237CF587005C8D30 /* Picture+CoreDataProperties.m */,
 			);
-			name = "Core Data Picture Models";
-			sourceTree = "<group>";
-		};
-		2790EB24220A8B6000FBDC5C /* Core Data Video Models */ = {
-			isa = PBXGroup;
-			children = (
-				2790EB1A220A8B3900FBDC5C /* AlbumV+CoreDataProperties.h */,
-				2790EB1E220A8B3900FBDC5C /* AlbumV+CoreDataClass.h */,
-				2790EB19220A8B3900FBDC5C /* AlbumV+CoreDataClass.m */,
-				2790EB17220A8B3800FBDC5C /* AlbumV+CoreDataProperties.m */,
-				2790EB18220A8B3900FBDC5C /* Video+CoreDataProperties.h */,
-				2790EB1C220A8B3900FBDC5C /* Video+CoreDataClass.h */,
-				2790EB1B220A8B3900FBDC5C /* Video+CoreDataClass.m */,
-				2790EB1D220A8B3900FBDC5C /* Video+CoreDataProperties.m */,
-			);
-			name = "Core Data Video Models";
+			name = "Core Data Models";
 			sourceTree = "<group>";
 		};
 		27EEB70F1D3C82FB00F46FBC = {
@@ -215,6 +208,7 @@
 		27EEB71A1D3C82FB00F46FBC /* Cosmologist */ = {
 			isa = PBXGroup;
 			children = (
+				2723E383237CF590005C8D30 /* Core Data Models */,
 				27EEB71E1D3C82FB00F46FBC /* AppDelegate.h */,
 				27EEB71F1D3C82FB00F46FBC /* AppDelegate.m */,
 				27EEB7801D3D897300F46FBC /* MainViewController.h */,
@@ -316,8 +310,6 @@
 				270228A01DCFD2B60044FB68 /* UIImage+Resize.h */,
 				270228A11DCFD2B60044FB68 /* UIImage+Resize.m */,
 				270292191D9EF23900A3B25D /* Model.xcdatamodeld */,
-				2790EB23220A8B5100FBDC5C /* Core Data Picture Models */,
-				2790EB24220A8B6000FBDC5C /* Core Data Video Models */,
 			);
 			name = "Custom Views + Cells";
 			sourceTree = "<group>";
@@ -387,6 +379,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -460,45 +453,45 @@
 			files = (
 				27EF9F3B1D6294E60063F907 /* AsteroidTableViewCell.m in Sources */,
 				270228A81DCFEEC10044FB68 /* SliderView.m in Sources */,
+				2723E380237CF589005C8D30 /* Picture+CoreDataProperties.m in Sources */,
 				2702921B1D9EF23900A3B25D /* Model.xcdatamodeld in Sources */,
 				27CFF6101D494017003668BC /* NasaData.m in Sources */,
 				27EEB7791D3D797600F46FBC /* SWRevealViewController.m in Sources */,
+				2723E37D237CF589005C8D30 /* Album+CoreDataProperties.m in Sources */,
 				27EEB7201D3C82FB00F46FBC /* AppDelegate.m in Sources */,
-				275625F721EEC933003ECBF2 /* Picture+CoreDataProperties.m in Sources */,
 				27CFF6131D496A52003668BC /* DetailViewController.m in Sources */,
-				275625F621EEC933003ECBF2 /* Album+CoreDataProperties.m in Sources */,
 				270292181D9EEED400A3B25D /* CoreDataStack.m in Sources */,
 				27F3A4A21D4A67CD002DC4DA /* SoundData.m in Sources */,
 				270EAFA61DA592FA005E2723 /* DescriptionViewController.m in Sources */,
 				270010AD1D9CC1F500C714A8 /* MediaController.m in Sources */,
 				27F5040C1D67BD5600C720B1 /* LocationManagerController.m in Sources */,
-				275625F821EEC933003ECBF2 /* Picture+CoreDataClass.m in Sources */,
 				270228A51DCFEBAC0044FB68 /* StationAnnotation.m in Sources */,
 				27F3A4AF1D4D2F63002DC4DA /* MarsViewController.m in Sources */,
 				27F3A4AC1D4D2C0E002DC4DA /* MarsData.m in Sources */,
 				27EEB7881D3D9D4F00F46FBC /* NasaDataController.m in Sources */,
-				2790EB21220A8B3A00FBDC5C /* Video+CoreDataClass.m in Sources */,
 				27EEB7821D3D897300F46FBC /* MainViewController.m in Sources */,
-				2790EB1F220A8B3A00FBDC5C /* AlbumV+CoreDataProperties.m in Sources */,
+				2723E381237CF589005C8D30 /* Video+CoreDataClass.m in Sources */,
 				27081C3C1E725F9400BE4A5E /* CachedImage.m in Sources */,
 				275625FB21EED6F5003ECBF2 /* AlbumDetailViewController.m in Sources */,
+				2723E37F237CF589005C8D30 /* AlbumV+CoreDataProperties.m in Sources */,
 				270292241D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m in Sources */,
 				270228A21DCFD2B60044FB68 /* UIImage+Resize.m in Sources */,
 				27EF9F381D626D550063F907 /* AsteroidData.m in Sources */,
-				2790EB22220A8B3A00FBDC5C /* Video+CoreDataProperties.m in Sources */,
 				27EFE2351DAC347D00B5458F /* CreditsViewController.m in Sources */,
 				27EB20DB1D5E75E800213554 /* AsteroidsViewController.m in Sources */,
 				2702289F1DCFCC8E0044FB68 /* ISSModel.m in Sources */,
 				27F3A4A51D4C0675002DC4DA /* SoundCell.m in Sources */,
-				275625F521EEC933003ECBF2 /* Album+CoreDataClass.m in Sources */,
 				27F504091D67B58B00C720B1 /* MarsDetailViewController.m in Sources */,
 				2718BE9C1DB41F950081C911 /* MapViewController.m in Sources */,
-				2790EB20220A8B3A00FBDC5C /* AlbumV+CoreDataClass.m in Sources */,
+				2723E37B237CF589005C8D30 /* Picture+CoreDataClass.m in Sources */,
 				27F5040F1D67BF1E00C720B1 /* EarthPhotoViewController.m in Sources */,
+				2723E37C237CF589005C8D30 /* Video+CoreDataProperties.m in Sources */,
 				277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */,
 				27EEB71D1D3C82FB00F46FBC /* main.m in Sources */,
 				27EEB77F1D3D804F00F46FBC /* ToggleTableViewController.m in Sources */,
 				273B4F831D99D95600E1FE24 /* ArchivesViewController.m in Sources */,
+				2723E37E237CF589005C8D30 /* AlbumV+CoreDataClass.m in Sources */,
+				2723E382237CF589005C8D30 /* Album+CoreDataClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

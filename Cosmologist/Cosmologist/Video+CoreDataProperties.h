@@ -2,7 +2,7 @@
 //  Video+CoreDataProperties.h
 //  
 //
-//  Created by Ethan Hess on 2/5/19.
+//  Created by Ethan Hess on 11/13/19.
 //
 //
 
@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<Video *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSString *url;
 @property (nullable, nonatomic, copy) NSString *about;
+@property (nullable, nonatomic, copy) NSString *url;
 @property (nullable, nonatomic, retain) AlbumV *albumV;
 
 @end

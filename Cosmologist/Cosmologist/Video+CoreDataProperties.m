@@ -2,7 +2,7 @@
 //  Video+CoreDataProperties.m
 //  
 //
-//  Created by Ethan Hess on 2/5/19.
+//  Created by Ethan Hess on 11/13/19.
 //
 //
 
@@ -14,8 +14,8 @@
 	return [NSFetchRequest fetchRequestWithEntityName:@"Video"];
 }
 
-@dynamic url;
 @dynamic about;
+@dynamic url;
 @dynamic albumV;
 
 @end
