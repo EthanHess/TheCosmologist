@@ -152,6 +152,10 @@
     
 }
 
+//TODO, cache image then clear every 24 hours (but check to see if URL is different since sometimes they update the API late
+
+//NSLocalized Strings for desc.
+
 - (void)getImageData {
     
     NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/planetary/apod?api_key=%@", NASA_API_KEY];
