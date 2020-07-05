@@ -203,12 +203,35 @@
 }
 
 //Modal pop would be better
+
+//Use subview, don't need to leave main view
 - (DescriptionViewController *)newFromStoryboard {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     return [storyboard instantiateViewControllerWithIdentifier:@"Description"];
 }
 
 //use webview to play youtube videos
+
+//TODO check if URL is different from last URL and use cached image if not, create custom loading icon and fetch new one if it is
+
+//TODO for video as well
+- (NSString *)cachedURLImage {
+    return [[NSUserDefaults standardUserDefaults]objectForKey:@"lastImage"];
+}
+
+//TODO call
+- (void)checkImageCacheAndLoadLastBeforeRequest {
+    if (![self cachedURLImage]) {
+        //fetch
+        return;
+    }
+    UIImage *cachedImage = [[CachedImage sharedInstance]imageForKey:[self cachedURLImage]];
+    if (cachedImage) {
+        //Set UIImageView then make call to see if updated
+    } else {
+        //Just make call
+    }
+}
 
 - (void)setUpViewForVideoWithURLString:(NSURL *)urlString andTitle:(NSString *)title {
     

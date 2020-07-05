@@ -28,6 +28,7 @@
 		273EC420245E5BC9006D0556 /* Video+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC416245E5BC9006D0556 /* Video+CoreDataProperties.m */; };
 		273EC421245E5BC9006D0556 /* Album+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC419245E5BC9006D0556 /* Album+CoreDataClass.m */; };
 		273EC422245E5BC9006D0556 /* Album+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC41A245E5BC9006D0556 /* Album+CoreDataProperties.m */; };
+		274E758024B28FDF0030BF18 /* DescriptionPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E757F24B28FDF0030BF18 /* DescriptionPresenter.m */; };
 		275625FB21EED6F5003ECBF2 /* AlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 275625FA21EED6F5003ECBF2 /* AlbumDetailViewController.m */; };
 		277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 277522D21D5547FB0099D511 /* MarsTableViewCell.m */; };
 		27C41B9B1DB421150035123C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C41B9A1DB421150035123C /* MapKit.framework */; };
@@ -96,6 +97,8 @@
 		273EC418245E5BC9006D0556 /* Album+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Album+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
 		273EC419245E5BC9006D0556 /* Album+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Album+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
 		273EC41A245E5BC9006D0556 /* Album+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Album+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
+		274E757E24B28FDF0030BF18 /* DescriptionPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DescriptionPresenter.h; sourceTree = "<group>"; };
+		274E757F24B28FDF0030BF18 /* DescriptionPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DescriptionPresenter.m; sourceTree = "<group>"; };
 		275625F921EED6F5003ECBF2 /* AlbumDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumDetailViewController.h; sourceTree = "<group>"; };
 		275625FA21EED6F5003ECBF2 /* AlbumDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumDetailViewController.m; sourceTree = "<group>"; };
 		277522D11D5547FB0099D511 /* MarsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarsTableViewCell.h; sourceTree = "<group>"; };
@@ -310,6 +313,8 @@
 				270228A01DCFD2B60044FB68 /* UIImage+Resize.h */,
 				270228A11DCFD2B60044FB68 /* UIImage+Resize.m */,
 				270292191D9EF23900A3B25D /* Model.xcdatamodeld */,
+				274E757E24B28FDF0030BF18 /* DescriptionPresenter.h */,
+				274E757F24B28FDF0030BF18 /* DescriptionPresenter.m */,
 			);
 			name = "Custom Views + Cells";
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 				27EEB7791D3D797600F46FBC /* SWRevealViewController.m in Sources */,
 				27EEB7201D3C82FB00F46FBC /* AppDelegate.m in Sources */,
 				273EC41C245E5BC9006D0556 /* Picture+CoreDataProperties.m in Sources */,
+				274E758024B28FDF0030BF18 /* DescriptionPresenter.m in Sources */,
 				27CFF6131D496A52003668BC /* DetailViewController.m in Sources */,
 				273EC420245E5BC9006D0556 /* Video+CoreDataProperties.m in Sources */,
 				270292181D9EEED400A3B25D /* CoreDataStack.m in Sources */,
