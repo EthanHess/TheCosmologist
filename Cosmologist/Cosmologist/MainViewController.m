@@ -15,10 +15,11 @@
 #import "CachedImage.h"
 #import "Album+CoreDataClass.h"
 #import "AlbumV+CoreDataClass.h"
+#import "DescriptionPresenter.h"
 
 @import WebKit;
 
-@interface MainViewController () <UIWebViewDelegate>
+@interface MainViewController () <UIWebViewDelegate, DescriptionPresenterDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *pictureView;
 @property (strong, nonatomic) IBOutlet UILabel *pictureTitle;
@@ -30,6 +31,7 @@
 @property (nonatomic, strong) NSString *descriptionString;
 @property (nonatomic, strong) NSTimer *labelTimer;
 
+@property (nonatomic, strong) DescriptionPresenter *descPresenter;
 
 @end
 
@@ -54,9 +56,6 @@
     self.pictureTitle.layer.masksToBounds = NO;
     self.pictureTitle.clipsToBounds = YES;
     self.pictureTitle.numberOfLines = 0;
-        
-    [self getImageData];
-    [self labelTimerSetup];
     
     //May not need if AFNetworking sends task to bg thread
     //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -65,6 +64,28 @@
     
     //[self youtubeThumbnailTest];
     //[self deleteYoutubeTest];
+    
+    [self descriptionPresenterSetup];
+}
+
+//TODO top navigation light mode/ dark mode
+
+#pragma mark desc. delegate + setup
+//NOTE: Normally mixing code and storyboards is generally not the best practice, but for this case it's okay.
+- (void)descriptionPresenterSetup {
+    if (self.descPresenter == nil) {
+        self.descPresenter = [[DescriptionPresenter alloc]initWithFrame:CGRectMake(10, 100, self.view.frame.size.width - 20, self.view.frame.size.height - 200)];
+        self.descPresenter.delegate = self;
+        self.descPresenter.hidden = YES;
+        [self.view addSubview:self.descPresenter];
+    }
+    [self descriptionShowHideHandler:NO]; //If reappearing, hide
+    [self getImageData];
+    [self labelTimerSetup];
+}
+
+- (void)handleDismiss {
+    [self descriptionShowHideHandler:NO];
 }
 
 - (void)labelTimerSetup {
@@ -196,10 +217,29 @@
     });
 }
 
+- (void)descriptionShowHideHandler:(BOOL)show {
+    [self dimHandlerForDescriptionPresentation:show];
+    self.descPresenter.hidden = !show;
+    [self.descPresenter setDescriptionText:self.descriptionString];
+}
+
+- (void)dimHandlerForDescriptionPresentation:(BOOL)dim {
+    for (UIView *view in self.view.subviews) {
+        if (![view isKindOfClass:[DescriptionPresenter class]]) {
+            view.alpha = dim == YES ? 0.7 : 1;
+        }
+    }
+}
+
+
 - (IBAction)labelTapped:(id)sender {
-    DescriptionViewController *descVC = [self newFromStoryboard];
-    [descVC setString:self.descriptionString];
-    [self presentViewController:descVC animated:YES completion:nil]; 
+    [self descriptionShowHideHandler:YES];
+    
+    //TODO discard this after test
+    
+//    DescriptionViewController *descVC = [self newFromStoryboard];
+//    [descVC setString:self.descriptionString];
+//    [self presentViewController:descVC animated:YES completion:nil];
 }
 
 //Modal pop would be better

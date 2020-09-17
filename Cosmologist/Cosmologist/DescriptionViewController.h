@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+//Can discard this class
+
 @interface DescriptionViewController : UIViewController <UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate>
 
 - (void)setString:(NSString *)descString; 

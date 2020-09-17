@@ -10,7 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol DescriptionPresenterDelegate <NSObject>
+
+@required
+
+- (void)handleDismiss;
+
+@end
+
 @interface DescriptionPresenter : UIView
+
+@property (nonatomic, weak) id <DescriptionPresenterDelegate> delegate;
 
 - (void)setDescriptionText:(NSString *)descriptionText; 
 

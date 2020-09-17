@@ -30,16 +30,52 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self congifureViews];
+        self.backgroundColor = [UIColor blackColor];
+        [self viewStylizer:self]; 
     }
     return self;
 }
 
+- (CGRect)textFrame {
+    return CGRectMake(10, 10, self.frame.size.width - 20, self.frame.size.height - 80);
+}
+
+- (CGRect)buttonFrame {
+    return CGRectMake(10, self.frame.size.height - 60, self.frame.size.width - 20, 40);
+}
+
 - (void)congifureViews {
-    
+    if (self.textView == nil) {
+        self.textView = [[UITextView alloc]initWithFrame:[self textFrame]];
+        self.textView.editable = NO;
+        self.textView.textAlignment = NSTextAlignmentCenter;
+        self.textView.textColor = [UIColor whiteColor];
+        self.textView.backgroundColor = [UIColor blackColor];
+        [self viewStylizer:self.textView];
+        [self addSubview:self.textView];
+    }
+    if (self.dismissButton == nil) {
+        self.dismissButton = [[UIButton alloc]initWithFrame:[self buttonFrame]];
+        [self.dismissButton setTitle:@"Dismiss" forState:UIControlStateNormal];
+        [self.dismissButton addTarget:self action:@selector(dismissTapped) forControlEvents:UIControlEventTouchUpInside];
+        [self viewStylizer:self.dismissButton];
+        [self addSubview:self.dismissButton];
+    }
+}
+
+- (void)viewStylizer:(UIView *)theView {
+    theView.layer.masksToBounds = YES;
+    theView.layer.cornerRadius = 5;
+    theView.layer.borderColor = [[UIColor whiteColor]CGColor];
+    theView.layer.borderWidth = 1;
+}
+
+- (void)dismissTapped {
+    [self.delegate handleDismiss];
 }
 
 - (void)setDescriptionText:(NSString *)descriptionText {
-    //TODO animate on
+    self.textView.text = descriptionText;
 }
 
 @end
