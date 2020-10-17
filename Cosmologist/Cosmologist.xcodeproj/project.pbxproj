@@ -30,6 +30,8 @@
 		273EC422245E5BC9006D0556 /* Album+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC41A245E5BC9006D0556 /* Album+CoreDataProperties.m */; };
 		274E758024B28FDF0030BF18 /* DescriptionPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E757F24B28FDF0030BF18 /* DescriptionPresenter.m */; };
 		275625FB21EED6F5003ECBF2 /* AlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 275625FA21EED6F5003ECBF2 /* AlbumDetailViewController.m */; };
+		2760AAAB253B9D46005CD1BC /* TimeZoneHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2760AAAA253B9D46005CD1BC /* TimeZoneHelper.m */; };
+		2760AAB1253BA03F005CD1BC /* SKSpaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2760AAB0253BA03F005CD1BC /* SKSpaceViewController.m */; };
 		277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 277522D21D5547FB0099D511 /* MarsTableViewCell.m */; };
 		27C41B9B1DB421150035123C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C41B9A1DB421150035123C /* MapKit.framework */; };
 		27CFF6101D494017003668BC /* NasaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CFF60F1D494017003668BC /* NasaData.m */; };
@@ -101,6 +103,10 @@
 		274E757F24B28FDF0030BF18 /* DescriptionPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DescriptionPresenter.m; sourceTree = "<group>"; };
 		275625F921EED6F5003ECBF2 /* AlbumDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumDetailViewController.h; sourceTree = "<group>"; };
 		275625FA21EED6F5003ECBF2 /* AlbumDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlbumDetailViewController.m; sourceTree = "<group>"; };
+		2760AAA9253B9D46005CD1BC /* TimeZoneHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeZoneHelper.h; sourceTree = "<group>"; };
+		2760AAAA253B9D46005CD1BC /* TimeZoneHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeZoneHelper.m; sourceTree = "<group>"; };
+		2760AAAF253BA03F005CD1BC /* SKSpaceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSpaceViewController.h; sourceTree = "<group>"; };
+		2760AAB0253BA03F005CD1BC /* SKSpaceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSpaceViewController.m; sourceTree = "<group>"; };
 		277522D11D5547FB0099D511 /* MarsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarsTableViewCell.h; sourceTree = "<group>"; };
 		277522D21D5547FB0099D511 /* MarsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarsTableViewCell.m; sourceTree = "<group>"; };
 		27C41B9A1DB421150035123C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -236,6 +242,8 @@
 				2718BE9B1DB41F950081C911 /* MapViewController.m */,
 				27EFE2331DAC347D00B5458F /* CreditsViewController.h */,
 				27EFE2341DAC347D00B5458F /* CreditsViewController.m */,
+				2760AAAF253BA03F005CD1BC /* SKSpaceViewController.h */,
+				2760AAB0253BA03F005CD1BC /* SKSpaceViewController.m */,
 				27081C3A1E725F9400BE4A5E /* CachedImage.h */,
 				27081C3B1E725F9400BE4A5E /* CachedImage.m */,
 				275625F921EED6F5003ECBF2 /* AlbumDetailViewController.h */,
@@ -293,6 +301,8 @@
 				270010AC1D9CC1F500C714A8 /* MediaController.m */,
 				27EEB7771D3D797600F46FBC /* SWRevealViewController.h */,
 				27EEB7781D3D797600F46FBC /* SWRevealViewController.m */,
+				2760AAA9253B9D46005CD1BC /* TimeZoneHelper.h */,
+				2760AAAA253B9D46005CD1BC /* TimeZoneHelper.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -479,6 +489,7 @@
 				27EEB7881D3D9D4F00F46FBC /* NasaDataController.m in Sources */,
 				27EEB7821D3D897300F46FBC /* MainViewController.m in Sources */,
 				27081C3C1E725F9400BE4A5E /* CachedImage.m in Sources */,
+				2760AAB1253BA03F005CD1BC /* SKSpaceViewController.m in Sources */,
 				275625FB21EED6F5003ECBF2 /* AlbumDetailViewController.m in Sources */,
 				270292241D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m in Sources */,
 				270228A21DCFD2B60044FB68 /* UIImage+Resize.m in Sources */,
@@ -494,6 +505,7 @@
 				273EC41B245E5BC9006D0556 /* Picture+CoreDataClass.m in Sources */,
 				273EC422245E5BC9006D0556 /* Album+CoreDataProperties.m in Sources */,
 				27F5040F1D67BF1E00C720B1 /* EarthPhotoViewController.m in Sources */,
+				2760AAAB253B9D46005CD1BC /* TimeZoneHelper.m in Sources */,
 				277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */,
 				27EEB71D1D3C82FB00F46FBC /* main.m in Sources */,
 				27EEB77F1D3D804F00F46FBC /* ToggleTableViewController.m in Sources */,

@@ -71,7 +71,7 @@
 //TODO top navigation light mode/ dark mode
 
 #pragma mark desc. delegate + setup
-//NOTE: Normally mixing code and storyboards is generally not the best practice, but for this case it's okay.
+//NOTE: Mixing code and storyboards is generally not the best practice, but for this case it's okay.
 - (void)descriptionPresenterSetup {
     if (self.descPresenter == nil) {
         self.descPresenter = [[DescriptionPresenter alloc]initWithFrame:CGRectMake(10, 100, self.view.frame.size.width - 20, self.view.frame.size.height - 200)];
@@ -175,10 +175,20 @@
 
 //TODO, cache image then clear every 24 hours (but check to see if URL is different since sometimes they update the API late
 
+//Use Eastern time (NASA's API uses this to change image every 24 hrs)
+//Store current day in defaults, if different day, or current time is after midnight mark, fetch new data
+
 //NSLocalized Strings for desc.
+
+//FLOW
+
+//Fetch image / video from cache regardless, if within 24 hours
+//Check if needs updates in the background
+//Update and refresh if needed
 
 - (void)getImageData {
     
+    //Key should be hidden in .gitignore file but it's free and a test so just for future reference
     NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/planetary/apod?api_key=%@", NASA_API_KEY];
     
     [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
