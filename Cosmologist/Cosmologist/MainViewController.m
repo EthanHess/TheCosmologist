@@ -16,6 +16,7 @@
 #import "Album+CoreDataClass.h"
 #import "AlbumV+CoreDataClass.h"
 #import "DescriptionPresenter.h"
+#import "TimeZoneHelper.h" //utils
 
 @import WebKit;
 
@@ -80,8 +81,18 @@
         [self.view addSubview:self.descPresenter];
     }
     [self descriptionShowHideHandler:NO]; //If reappearing, hide
-    [self getImageData];
+//    [self getImageData];
     [self labelTimerSetup];
+    
+    UIImage *image = [[CachedImage sharedInstance]imageForKey:@"lastImageURLKey"];
+    if (image != nil) {
+        //Set then check if need to refresh or type is now video
+        [self setImage:image];
+        self.pictureTitle.text = [TimeZoneHelper lastTitle];
+        self.descriptionString = [TimeZoneHelper lastDescription];
+    } else {
+        [self getImageData];
+    }
 }
 
 - (void)handleDismiss {
@@ -215,6 +226,9 @@
                     self.pictureTitle.text = dataClass.title;
                     self.descriptionString = dataClass.explanation;
                 });
+                
+                [TimeZoneHelper setTitleInDefaults:dataClass.title];
+                [TimeZoneHelper setDescriptionInDefaults:dataClass.explanation];
             }
         }
     }];
@@ -225,6 +239,8 @@
         self.pictureView.image = image;
         [self.activityIndicator stopAnimating];
     });
+    
+    [[CachedImage sharedInstance]setImage:image forKey:@"lastImageURLKey"];
 }
 
 - (void)descriptionShowHideHandler:(BOOL)show {
