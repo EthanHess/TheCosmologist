@@ -101,9 +101,10 @@
     if (indexPath.section == 0) {
         return;
     }
-    
-    return; //TODO add segues to SB
-    
+    if (indexPath.row == 1 || indexPath.row == 2) {
+        //TODO. add Aux class for global alerts
+        return;
+    }
     NSString *segueID = [self cellTitles][indexPath.row];
     [self performSegueWithIdentifier:segueID sender:nil];
 }

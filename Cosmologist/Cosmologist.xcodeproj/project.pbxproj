@@ -198,6 +198,37 @@
 			name = "Core Data Models";
 			sourceTree = "<group>";
 		};
+		274740872557383900668501 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				270EAFA41DA592FA005E2723 /* DescriptionViewController.h */,
+				270EAFA51DA592FA005E2723 /* DescriptionViewController.m */,
+				27EEB77D1D3D804F00F46FBC /* ToggleTableViewController.h */,
+				27EEB77E1D3D804F00F46FBC /* ToggleTableViewController.m */,
+				27CFF6111D496A52003668BC /* DetailViewController.h */,
+				27CFF6121D496A52003668BC /* DetailViewController.m */,
+				27F3A4AD1D4D2F63002DC4DA /* MarsViewController.h */,
+				27F3A4AE1D4D2F63002DC4DA /* MarsViewController.m */,
+				27F504071D67B58B00C720B1 /* MarsDetailViewController.h */,
+				27F504081D67B58B00C720B1 /* MarsDetailViewController.m */,
+				27EB20D91D5E75E800213554 /* AsteroidsViewController.h */,
+				27EB20DA1D5E75E800213554 /* AsteroidsViewController.m */,
+				27F5040D1D67BF1D00C720B1 /* EarthPhotoViewController.h */,
+				27F5040E1D67BF1E00C720B1 /* EarthPhotoViewController.m */,
+				273B4F811D99D95600E1FE24 /* ArchivesViewController.h */,
+				273B4F821D99D95600E1FE24 /* ArchivesViewController.m */,
+				2718BE9A1DB41F950081C911 /* MapViewController.h */,
+				2718BE9B1DB41F950081C911 /* MapViewController.m */,
+				27EFE2331DAC347D00B5458F /* CreditsViewController.h */,
+				27EFE2341DAC347D00B5458F /* CreditsViewController.m */,
+				2760AAAF253BA03F005CD1BC /* SKSpaceViewController.h */,
+				2760AAB0253BA03F005CD1BC /* SKSpaceViewController.m */,
+				275625F921EED6F5003ECBF2 /* AlbumDetailViewController.h */,
+				275625FA21EED6F5003ECBF2 /* AlbumDetailViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		27EEB70F1D3C82FB00F46FBC = {
 			isa = PBXGroup;
 			children = (
@@ -225,33 +256,8 @@
 				27EEB71F1D3C82FB00F46FBC /* AppDelegate.m */,
 				27EEB7801D3D897300F46FBC /* MainViewController.h */,
 				27EEB7811D3D897300F46FBC /* MainViewController.m */,
-				270EAFA41DA592FA005E2723 /* DescriptionViewController.h */,
-				270EAFA51DA592FA005E2723 /* DescriptionViewController.m */,
-				27EEB77D1D3D804F00F46FBC /* ToggleTableViewController.h */,
-				27EEB77E1D3D804F00F46FBC /* ToggleTableViewController.m */,
-				27CFF6111D496A52003668BC /* DetailViewController.h */,
-				27CFF6121D496A52003668BC /* DetailViewController.m */,
-				27F3A4AD1D4D2F63002DC4DA /* MarsViewController.h */,
-				27F3A4AE1D4D2F63002DC4DA /* MarsViewController.m */,
-				27F504071D67B58B00C720B1 /* MarsDetailViewController.h */,
-				27F504081D67B58B00C720B1 /* MarsDetailViewController.m */,
-				27EB20D91D5E75E800213554 /* AsteroidsViewController.h */,
-				27EB20DA1D5E75E800213554 /* AsteroidsViewController.m */,
-				27F5040D1D67BF1D00C720B1 /* EarthPhotoViewController.h */,
-				27F5040E1D67BF1E00C720B1 /* EarthPhotoViewController.m */,
-				273B4F811D99D95600E1FE24 /* ArchivesViewController.h */,
-				273B4F821D99D95600E1FE24 /* ArchivesViewController.m */,
-				2718BE9A1DB41F950081C911 /* MapViewController.h */,
-				2718BE9B1DB41F950081C911 /* MapViewController.m */,
-				27EFE2331DAC347D00B5458F /* CreditsViewController.h */,
-				27EFE2341DAC347D00B5458F /* CreditsViewController.m */,
-				2760AAAF253BA03F005CD1BC /* SKSpaceViewController.h */,
-				2760AAB0253BA03F005CD1BC /* SKSpaceViewController.m */,
-				27081C3A1E725F9400BE4A5E /* CachedImage.h */,
-				27081C3B1E725F9400BE4A5E /* CachedImage.m */,
-				275625F921EED6F5003ECBF2 /* AlbumDetailViewController.h */,
-				275625FA21EED6F5003ECBF2 /* AlbumDetailViewController.m */,
 				27EB20D61D5E752B00213554 /* Constants.h */,
+				274740872557383900668501 /* View Controllers */,
 				27F3A4A71D4C06B0002DC4DA /* Controllers */,
 				27F3A4A61D4C0680002DC4DA /* Models */,
 				27F3A4A81D4C06BD002DC4DA /* Custom Views + Cells */,
@@ -296,6 +302,8 @@
 		27F3A4A71D4C06B0002DC4DA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				27081C3A1E725F9400BE4A5E /* CachedImage.h */,
+				27081C3B1E725F9400BE4A5E /* CachedImage.m */,
 				27EEB7861D3D9D4F00F46FBC /* NasaDataController.h */,
 				27EEB7871D3D9D4F00F46FBC /* NasaDataController.m */,
 				27F5040A1D67BD5600C720B1 /* LocationManagerController.h */,
@@ -633,6 +641,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devmountain.Cosmologist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -646,6 +655,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devmountain.Cosmologist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
