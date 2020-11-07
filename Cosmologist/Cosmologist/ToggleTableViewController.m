@@ -7,6 +7,7 @@
 //
 
 #import "ToggleTableViewController.h"
+#import "SlideItemCell.h"
 
 @interface ToggleTableViewController ()
 
@@ -18,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //, @"3D", @"AR"
     
     items = @[@"Title", @"Home" ,@"Sounds", @"Mars Photos", @"Asteroids", @"Earth Photos", @"Space Station", @"Credits"];
     
@@ -41,26 +44,68 @@
     // Dispose of any resources that can be recreated.
 }
 
+//Can also be segue names? Will replace original items
+- (NSArray *)cellTitles {
+    return @[@"Home", @"3D Tour", @"AR", @"Sounds", @"Mars Photos", @"Asteroids", @"Earth Photos", @"Space Station", @"Credits"];
+}
+
+- (UIImage *)backgroundForContentView {
+    return [UIImage imageNamed:@"cosCellBackground"];
+}
+
+- (UIImage *)backgroundForHeader {
+    return [UIImage imageNamed:@""];
+}
+
+//- (NSArray *)colorsArray {
+//    //TODO add.
+//}
+
 #pragma mark - Table view data source
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return items.count;
+    //return items.count;
+    return section == 0 ? 1 : [self cellTitles].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *cellID = items[indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
-    
-    return cell;
+    NSString *cellID = @"ItemCell";
+    //NSString *cellID = items[indexPath.row];
+    if (indexPath.section == 1) {
+        SlideItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+        cell.theLabel.text = [self cellTitles][indexPath.row];
+        return cell;
+    } else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Title"];
+        return cell;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath == 0) {
+    if (indexPath.section == 0) {
         return 90;
     } else {
         return 60;
     }
+}
+
+// Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0) {
+        return;
+    }
+    
+    return; //TODO add segues to SB
+    
+    NSString *segueID = [self cellTitles][indexPath.row];
+    [self performSegueWithIdentifier:segueID sender:nil];
 }
 
 

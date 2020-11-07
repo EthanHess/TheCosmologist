@@ -28,6 +28,7 @@
 		273EC420245E5BC9006D0556 /* Video+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC416245E5BC9006D0556 /* Video+CoreDataProperties.m */; };
 		273EC421245E5BC9006D0556 /* Album+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC419245E5BC9006D0556 /* Album+CoreDataClass.m */; };
 		273EC422245E5BC9006D0556 /* Album+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC41A245E5BC9006D0556 /* Album+CoreDataProperties.m */; };
+		274740292556287900668501 /* SlideItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274740282556287900668501 /* SlideItemCell.m */; };
 		274E758024B28FDF0030BF18 /* DescriptionPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E757F24B28FDF0030BF18 /* DescriptionPresenter.m */; };
 		275625FB21EED6F5003ECBF2 /* AlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 275625FA21EED6F5003ECBF2 /* AlbumDetailViewController.m */; };
 		2760AAAB253B9D46005CD1BC /* TimeZoneHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2760AAAA253B9D46005CD1BC /* TimeZoneHelper.m */; };
@@ -99,6 +100,8 @@
 		273EC418245E5BC9006D0556 /* Album+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Album+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
 		273EC419245E5BC9006D0556 /* Album+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Album+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
 		273EC41A245E5BC9006D0556 /* Album+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Album+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
+		274740272556287900668501 /* SlideItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlideItemCell.h; sourceTree = "<group>"; };
+		274740282556287900668501 /* SlideItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlideItemCell.m; sourceTree = "<group>"; };
 		274E757E24B28FDF0030BF18 /* DescriptionPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DescriptionPresenter.h; sourceTree = "<group>"; };
 		274E757F24B28FDF0030BF18 /* DescriptionPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DescriptionPresenter.m; sourceTree = "<group>"; };
 		275625F921EED6F5003ECBF2 /* AlbumDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlbumDetailViewController.h; sourceTree = "<group>"; };
@@ -310,6 +313,8 @@
 		27F3A4A81D4C06BD002DC4DA /* Custom Views + Cells */ = {
 			isa = PBXGroup;
 			children = (
+				274740272556287900668501 /* SlideItemCell.h */,
+				274740282556287900668501 /* SlideItemCell.m */,
 				270228A61DCFEEC10044FB68 /* SliderView.h */,
 				270228A71DCFEEC10044FB68 /* SliderView.m */,
 				27F3A4A31D4C0675002DC4DA /* SoundCell.h */,
@@ -495,6 +500,7 @@
 				270228A21DCFD2B60044FB68 /* UIImage+Resize.m in Sources */,
 				27EF9F381D626D550063F907 /* AsteroidData.m in Sources */,
 				27EFE2351DAC347D00B5458F /* CreditsViewController.m in Sources */,
+				274740292556287900668501 /* SlideItemCell.m in Sources */,
 				273EC41D245E5BC9006D0556 /* AlbumV+CoreDataClass.m in Sources */,
 				27EB20DB1D5E75E800213554 /* AsteroidsViewController.m in Sources */,
 				2702289F1DCFCC8E0044FB68 /* ISSModel.m in Sources */,
