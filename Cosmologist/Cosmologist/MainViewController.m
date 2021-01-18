@@ -34,6 +34,11 @@
 
 @property (nonatomic, strong) DescriptionPresenter *descPresenter;
 
+//Typewriter effect
+@property (nonatomic, strong) NSString *typingText;
+@property (nonatomic, strong) NSTimer *typingTimer;
+@property (nonatomic, assign) NSInteger typingIndex;
+
 @end
 
 @implementation MainViewController
@@ -236,6 +241,7 @@
 
 - (void)setImage:(UIImage *)image {
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self typeWriterEffectWithText:@"Image of the day"];
         self.pictureView.image = image;
         [self.activityIndicator stopAnimating];
     });
@@ -316,9 +322,25 @@
     [self.webView setContentMode:UIViewContentModeScaleAspectFit];
     
     self.pictureTitle.text = title;
-    self.imageOrVideoLabel.text = @"Video of the day!"; 
+   // self.imageOrVideoLabel.text = @"Video of the day!";
+    
+    [self typeWriterEffectWithText:@"Video of the day"];
 }
 
+- (void)typeWriterEffectWithText:(NSString *)text {
+    self.typingText = text;
+    self.typingIndex = 1;
+    self.typingTimer = [NSTimer scheduledTimerWithTimeInterval:0.08 target:self selector:@selector(type) userInfo:nil repeats:YES];
+    
+}
+
+- (void)type {
+    if ([self.typingText length] >= self.typingIndex) {
+        self.imageOrVideoLabel.text = [NSString stringWithFormat:@"%@", [self.typingText substringToIndex:self.typingIndex++]];
+    } else {
+        [self.typingTimer invalidate];
+    }
+}
 
 - (IBAction)optionsButtonTapped:(id)sender {
     [self popAlertWithString:@"Options" andMessage:@""];
