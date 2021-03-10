@@ -17,6 +17,7 @@
 #import "AlbumV+CoreDataClass.h"
 #import "DescriptionPresenter.h"
 #import "TimeZoneHelper.h" //utils
+#import "LoadingAnimationView.h"
 
 @import WebKit;
 
@@ -32,8 +33,10 @@
 @property (nonatomic, strong) NSString *descriptionString;
 @property (nonatomic, strong) NSTimer *labelTimer;
 
+//Custom classes
 @property (nonatomic, strong) DescriptionPresenter *descPresenter;
-
+@property (nonatomic, strong) LoadingAnimationView *loadingView;
+           
 //Typewriter effect
 @property (nonatomic, strong) NSString *typingText;
 @property (nonatomic, strong) NSTimer *typingTimer;
@@ -71,7 +74,19 @@
     //[self youtubeThumbnailTest];
     //[self deleteYoutubeTest];
     
+    //TODO tweak UI / presentation
+    //[self loadingViewSetup];
+    
     [self descriptionPresenterSetup];
+}
+
+- (void)loadingViewSetup {
+    if (self.loadingView == nil) {
+        //TODO update frame, this is just for test
+        self.loadingView = [[LoadingAnimationView alloc]initWithFrame:CGRectMake(20, 100, self.view.frame.size.width - 40, self.view.frame.size.height / 3)];
+        self.loadingView.hidden = YES;
+        [self.view addSubview:self.loadingView];
+    }
 }
 
 //TODO top navigation light mode/ dark mode
@@ -202,11 +217,18 @@
 //Check if needs updates in the background
 //Update and refresh if needed
 
+- (void)hideShowLoadingViewOnMainThread:(BOOL)hide {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.loadingView.hidden = hide;
+    });
+}
+
 - (void)getImageData {
     
     //Key should be hidden in .gitignore file but it's free and a test so just for future reference
     NSString *urlString = [NSString stringWithFormat:@"https://api.nasa.gov/planetary/apod?api_key=%@", NASA_API_KEY];
     
+    //[self hideShowLoadingViewOnMainThread:NO];
     [[NasaDataController sharedInstance]getNasaInfoWithURL:(NSURL *)urlString andCompletion:^(NSArray *nasaArray) {
         
         //Can just grab first element of array since they'll be one, if not one we'll log it and see what's happening
@@ -217,6 +239,8 @@
             NSURL *urlString = [NSURL URLWithString:dataClass.urlString];
             NSData *pictureData = [NSData dataWithContentsOfURL:urlString];
             NSLog(@"DATA CLASS %@", dataClass);
+            
+            //[self hideShowLoadingViewOnMainThread:YES];
             
             if ([dataClass.mediaType isEqualToString:@"video"]) {
                 self.descriptionString = dataClass.explanation;

@@ -13,9 +13,12 @@
 @interface LoadingAnimationView()
 
 @property SCNScene *mainScene;
-
 //Scene container
 @property UIView *sceneContainer;
+
+@property UIView *loadingAnimationContainer;
+@property UILabel *loadingLabel;
+@property NSMutableArray *animationDotArray;
 
 @end
 
@@ -26,7 +29,7 @@
     if (self) {
         self.layer.cornerRadius = 10;
         self.layer.masksToBounds = YES;
-        [self containerAndSceneSetup];
+        [self performSelector:@selector(containerAndSceneSetup) withObject:nil afterDelay:0.25];
     }
     return self;
 }
@@ -63,18 +66,68 @@
         ambientNode.light.color = [UIColor whiteColor]; //Change? Custom
         [self.mainScene.rootNode addChildNode:ambientNode];
         
-        SCNView *sceneView = (SCNView *)self.sceneContainer;
+        //Crashes
+        //SCNView *sceneView = (SCNView *)self.sceneContainer;
+        SCNView *sceneView = [[SCNView alloc]initWithFrame:self.sceneContainer.bounds];
+        [self.sceneContainer addSubview:sceneView];
         
         sceneView.scene = self.mainScene;
         sceneView.allowsCameraControl = YES;
         sceneView.showsStatistics = YES;
-        sceneView.backgroundColor = [self shadowColorsForLabel][0];
+        sceneView.backgroundColor = [UIColor blackColor];
 
-        //TODO add earth / moon rotation animation
+        //Earth + Moon
+        CGFloat size = 0.5;
+       // CGFloat orbit = 0;
+        
+        SCNSphere *earthGeo = [SCNSphere sphereWithRadius:size];
+        SCNNode *earthNode = [SCNNode nodeWithGeometry:earthGeo];
+        earthNode.geometry.firstMaterial.diffuse.contents = [self shadowColorsForLabel][3];
+        
+        [self.mainScene.rootNode addChildNode:earthNode];
+        
+        SCNTorus *geo = [SCNTorus torusWithRingRadius:0.7 pipeRadius:0.01];
+        SCNNode *moonOrbitNode = [SCNNode nodeWithGeometry:geo];
+        
+        [earthNode addChildNode:moonOrbitNode];
+        
+        [moonOrbitNode runAction:[SCNAction repeatActionForever:[SCNAction rotateByX:0 y:3.2 z:0 duration:1]]];
+
+        SCNSphere *moonGeo = [SCNSphere sphereWithRadius:0.2];
+        moonGeo.firstMaterial.diffuse.contents = [self shadowColorsForLabel][4];
+
+        SCNNode *moonNode = [SCNNode nodeWithGeometry:moonGeo];
+        [moonOrbitNode addChildNode:moonNode];
+        moonNode.position = SCNVector3Make(0.7, 0, 0);
+
+        [self addSubview:self.sceneContainer]; 
+        [self labelSetupWithAnimationDots];
+    }
+}
+
+- (void)labelSetupWithAnimationDots {
+    self.animationDotArray = [[NSMutableArray alloc]init];
+    
+    CGFloat yCoord = self.loadingAnimationContainer.frame.size.height + 40;
+    CGFloat width = self.frame.size.width;
+    self.loadingAnimationContainer = [[UIView alloc]initWithFrame:CGRectMake(20, yCoord, width - 40, 60)];
+    
+    //Subviews
+    self.loadingLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 30, self.loadingAnimationContainer.frame.size.width, 30)];
+    self.loadingLabel.text = @"LOADING"; //typewriter style?
+    self.loadingLabel.textAlignment = NSTextAlignmentCenter;
+    self.loadingLabel.textColor = [self shadowColorsForLabel][0];
+    [self.loadingAnimationContainer addSubview:self.loadingLabel];
+    [self.sceneContainer addSubview:self.loadingAnimationContainer];
+    
+    for (int i = 0; i < [self shadowColorsForLabel].count; i++) {
+        //TODO animate views onscreen
     }
 }
 
 //MARK: Is being used around app, make global, D.R.Y.
+//Can use category / extension
+
 - (NSArray *)shadowColorsForLabel {
     UIColor *colorOne = [UIColor colorWithRed:124.0f/255.0f green:247.0f/255.0f blue:252.0f/255.0f alpha:1.0];
     UIColor *colorTwo = [UIColor colorWithRed:124.0f/255.0f green:252.0f/255.0f blue:230.0f/255.0f alpha:1.0];
@@ -90,8 +143,10 @@
 - (CGRect)sceneContainerFrame {
     CGFloat width = self.frame.size.width;
     CGFloat height = self.frame.size.height;
-    return CGRectMake(20, 20, width - 40, height - 40);
+    return CGRectMake(20, 20, width - 40, height - 100);
 }
+
+//TODO use layout anchor extension from grammin etc. app
 
 /*
 // Only override drawRect: if you perform custom drawing.
