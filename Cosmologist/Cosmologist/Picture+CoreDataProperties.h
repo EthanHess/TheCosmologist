@@ -1,8 +1,9 @@
 //
 //  Picture+CoreDataProperties.h
-//  
+//  Cosmologist
 //
-//  Created by Ethan Hess on 11/13/19.
+//  Created by Ethan Hess on 1/12/23.
+//  Copyright © 2023 Ethan Hess. All rights reserved.
 //
 //
 
@@ -13,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Picture (CoreDataProperties)
 
-+ (NSFetchRequest<Picture *> *)fetchRequest;
++ (NSFetchRequest<Picture *> *)fetchRequest NS_SWIFT_NAME(fetchRequest());
 
 @property (nullable, nonatomic, copy) NSString *about;
 @property (nullable, nonatomic, retain) NSData *data;

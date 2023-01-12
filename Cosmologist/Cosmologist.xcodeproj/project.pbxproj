@@ -20,20 +20,20 @@
 		270EAFA61DA592FA005E2723 /* DescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270EAFA51DA592FA005E2723 /* DescriptionViewController.m */; };
 		2718BE9C1DB41F950081C911 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2718BE9B1DB41F950081C911 /* MapViewController.m */; };
 		273B4F831D99D95600E1FE24 /* ArchivesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 273B4F821D99D95600E1FE24 /* ArchivesViewController.m */; };
-		273EC41B245E5BC9006D0556 /* Picture+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC40D245E5BC9006D0556 /* Picture+CoreDataClass.m */; };
-		273EC41C245E5BC9006D0556 /* Picture+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC40E245E5BC9006D0556 /* Picture+CoreDataProperties.m */; };
-		273EC41D245E5BC9006D0556 /* AlbumV+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC411245E5BC9006D0556 /* AlbumV+CoreDataClass.m */; };
-		273EC41E245E5BC9006D0556 /* AlbumV+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC412245E5BC9006D0556 /* AlbumV+CoreDataProperties.m */; };
-		273EC41F245E5BC9006D0556 /* Video+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC415245E5BC9006D0556 /* Video+CoreDataClass.m */; };
-		273EC420245E5BC9006D0556 /* Video+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC416245E5BC9006D0556 /* Video+CoreDataProperties.m */; };
-		273EC421245E5BC9006D0556 /* Album+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC419245E5BC9006D0556 /* Album+CoreDataClass.m */; };
-		273EC422245E5BC9006D0556 /* Album+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 273EC41A245E5BC9006D0556 /* Album+CoreDataProperties.m */; };
 		274740292556287900668501 /* SlideItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274740282556287900668501 /* SlideItemCell.m */; };
 		274E758024B28FDF0030BF18 /* DescriptionPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 274E757F24B28FDF0030BF18 /* DescriptionPresenter.m */; };
 		275625FB21EED6F5003ECBF2 /* AlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 275625FA21EED6F5003ECBF2 /* AlbumDetailViewController.m */; };
 		2760AAAB253B9D46005CD1BC /* TimeZoneHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2760AAAA253B9D46005CD1BC /* TimeZoneHelper.m */; };
 		2760AAB1253BA03F005CD1BC /* SKSpaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2760AAB0253BA03F005CD1BC /* SKSpaceViewController.m */; };
 		277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 277522D21D5547FB0099D511 /* MarsTableViewCell.m */; };
+		277DA58E2970CF5B003802D0 /* AlbumV+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 277DA5802970CF5B003802D0 /* AlbumV+CoreDataClass.m */; };
+		277DA58F2970CF5B003802D0 /* AlbumV+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 277DA5812970CF5B003802D0 /* AlbumV+CoreDataProperties.m */; };
+		277DA5902970CF5B003802D0 /* Picture+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 277DA5842970CF5B003802D0 /* Picture+CoreDataClass.m */; };
+		277DA5912970CF5B003802D0 /* Picture+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 277DA5852970CF5B003802D0 /* Picture+CoreDataProperties.m */; };
+		277DA5922970CF5B003802D0 /* Album+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 277DA5882970CF5B003802D0 /* Album+CoreDataClass.m */; };
+		277DA5932970CF5B003802D0 /* Album+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 277DA5892970CF5B003802D0 /* Album+CoreDataProperties.m */; };
+		277DA5942970CF5B003802D0 /* Video+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 277DA58C2970CF5B003802D0 /* Video+CoreDataClass.m */; };
+		277DA5952970CF5B003802D0 /* Video+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 277DA58D2970CF5B003802D0 /* Video+CoreDataProperties.m */; };
 		2783DFA425F028BA006F2AA2 /* LoadingAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2783DFA325F028BA006F2AA2 /* LoadingAnimationView.m */; };
 		27C41B9B1DB421150035123C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C41B9A1DB421150035123C /* MapKit.framework */; };
 		27CFF6101D494017003668BC /* NasaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CFF60F1D494017003668BC /* NasaData.m */; };
@@ -85,22 +85,6 @@
 		2718BE9B1DB41F950081C911 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		273B4F811D99D95600E1FE24 /* ArchivesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchivesViewController.h; sourceTree = "<group>"; };
 		273B4F821D99D95600E1FE24 /* ArchivesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivesViewController.m; sourceTree = "<group>"; };
-		273EC40B245E5BC9006D0556 /* Picture+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Picture+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
-		273EC40C245E5BC9006D0556 /* Picture+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Picture+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
-		273EC40D245E5BC9006D0556 /* Picture+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Picture+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		273EC40E245E5BC9006D0556 /* Picture+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Picture+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
-		273EC40F245E5BC9006D0556 /* AlbumV+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlbumV+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
-		273EC410245E5BC9006D0556 /* AlbumV+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlbumV+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
-		273EC411245E5BC9006D0556 /* AlbumV+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AlbumV+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		273EC412245E5BC9006D0556 /* AlbumV+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AlbumV+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
-		273EC413245E5BC9006D0556 /* Video+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Video+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
-		273EC414245E5BC9006D0556 /* Video+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Video+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
-		273EC415245E5BC9006D0556 /* Video+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Video+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		273EC416245E5BC9006D0556 /* Video+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Video+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
-		273EC417245E5BC9006D0556 /* Album+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Album+CoreDataProperties.h"; sourceTree = SOURCE_ROOT; };
-		273EC418245E5BC9006D0556 /* Album+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Album+CoreDataClass.h"; sourceTree = SOURCE_ROOT; };
-		273EC419245E5BC9006D0556 /* Album+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Album+CoreDataClass.m"; sourceTree = SOURCE_ROOT; };
-		273EC41A245E5BC9006D0556 /* Album+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Album+CoreDataProperties.m"; sourceTree = SOURCE_ROOT; };
 		274740272556287900668501 /* SlideItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlideItemCell.h; sourceTree = "<group>"; };
 		274740282556287900668501 /* SlideItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlideItemCell.m; sourceTree = "<group>"; };
 		274E757E24B28FDF0030BF18 /* DescriptionPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DescriptionPresenter.h; sourceTree = "<group>"; };
@@ -113,6 +97,22 @@
 		2760AAB0253BA03F005CD1BC /* SKSpaceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SKSpaceViewController.m; sourceTree = "<group>"; };
 		277522D11D5547FB0099D511 /* MarsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarsTableViewCell.h; sourceTree = "<group>"; };
 		277522D21D5547FB0099D511 /* MarsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarsTableViewCell.m; sourceTree = "<group>"; };
+		277DA57E2970CF5B003802D0 /* AlbumV+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlbumV+CoreDataProperties.h"; sourceTree = "<group>"; };
+		277DA57F2970CF5B003802D0 /* AlbumV+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AlbumV+CoreDataClass.h"; sourceTree = "<group>"; };
+		277DA5802970CF5B003802D0 /* AlbumV+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AlbumV+CoreDataClass.m"; sourceTree = "<group>"; };
+		277DA5812970CF5B003802D0 /* AlbumV+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AlbumV+CoreDataProperties.m"; sourceTree = "<group>"; };
+		277DA5822970CF5B003802D0 /* Picture+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Picture+CoreDataProperties.h"; sourceTree = "<group>"; };
+		277DA5832970CF5B003802D0 /* Picture+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Picture+CoreDataClass.h"; sourceTree = "<group>"; };
+		277DA5842970CF5B003802D0 /* Picture+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Picture+CoreDataClass.m"; sourceTree = "<group>"; };
+		277DA5852970CF5B003802D0 /* Picture+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Picture+CoreDataProperties.m"; sourceTree = "<group>"; };
+		277DA5862970CF5B003802D0 /* Album+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Album+CoreDataProperties.h"; sourceTree = "<group>"; };
+		277DA5872970CF5B003802D0 /* Album+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Album+CoreDataClass.h"; sourceTree = "<group>"; };
+		277DA5882970CF5B003802D0 /* Album+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Album+CoreDataClass.m"; sourceTree = "<group>"; };
+		277DA5892970CF5B003802D0 /* Album+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Album+CoreDataProperties.m"; sourceTree = "<group>"; };
+		277DA58A2970CF5B003802D0 /* Video+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Video+CoreDataProperties.h"; sourceTree = "<group>"; };
+		277DA58B2970CF5B003802D0 /* Video+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Video+CoreDataClass.h"; sourceTree = "<group>"; };
+		277DA58C2970CF5B003802D0 /* Video+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Video+CoreDataClass.m"; sourceTree = "<group>"; };
+		277DA58D2970CF5B003802D0 /* Video+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Video+CoreDataProperties.m"; sourceTree = "<group>"; };
 		2783DFA225F028BA006F2AA2 /* LoadingAnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingAnimationView.h; sourceTree = "<group>"; };
 		2783DFA325F028BA006F2AA2 /* LoadingAnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingAnimationView.m; sourceTree = "<group>"; };
 		27C41B9A1DB421150035123C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -181,22 +181,22 @@
 		2723E383237CF590005C8D30 /* Core Data Models */ = {
 			isa = PBXGroup;
 			children = (
-				273EC40B245E5BC9006D0556 /* Picture+CoreDataProperties.h */,
-				273EC40C245E5BC9006D0556 /* Picture+CoreDataClass.h */,
-				273EC40D245E5BC9006D0556 /* Picture+CoreDataClass.m */,
-				273EC40E245E5BC9006D0556 /* Picture+CoreDataProperties.m */,
-				273EC40F245E5BC9006D0556 /* AlbumV+CoreDataProperties.h */,
-				273EC410245E5BC9006D0556 /* AlbumV+CoreDataClass.h */,
-				273EC411245E5BC9006D0556 /* AlbumV+CoreDataClass.m */,
-				273EC412245E5BC9006D0556 /* AlbumV+CoreDataProperties.m */,
-				273EC413245E5BC9006D0556 /* Video+CoreDataProperties.h */,
-				273EC414245E5BC9006D0556 /* Video+CoreDataClass.h */,
-				273EC415245E5BC9006D0556 /* Video+CoreDataClass.m */,
-				273EC416245E5BC9006D0556 /* Video+CoreDataProperties.m */,
-				273EC417245E5BC9006D0556 /* Album+CoreDataProperties.h */,
-				273EC418245E5BC9006D0556 /* Album+CoreDataClass.h */,
-				273EC419245E5BC9006D0556 /* Album+CoreDataClass.m */,
-				273EC41A245E5BC9006D0556 /* Album+CoreDataProperties.m */,
+				277DA57E2970CF5B003802D0 /* AlbumV+CoreDataProperties.h */,
+				277DA57F2970CF5B003802D0 /* AlbumV+CoreDataClass.h */,
+				277DA5802970CF5B003802D0 /* AlbumV+CoreDataClass.m */,
+				277DA5812970CF5B003802D0 /* AlbumV+CoreDataProperties.m */,
+				277DA5822970CF5B003802D0 /* Picture+CoreDataProperties.h */,
+				277DA5832970CF5B003802D0 /* Picture+CoreDataClass.h */,
+				277DA5842970CF5B003802D0 /* Picture+CoreDataClass.m */,
+				277DA5852970CF5B003802D0 /* Picture+CoreDataProperties.m */,
+				277DA5862970CF5B003802D0 /* Album+CoreDataProperties.h */,
+				277DA5872970CF5B003802D0 /* Album+CoreDataClass.h */,
+				277DA5882970CF5B003802D0 /* Album+CoreDataClass.m */,
+				277DA5892970CF5B003802D0 /* Album+CoreDataProperties.m */,
+				277DA58A2970CF5B003802D0 /* Video+CoreDataProperties.h */,
+				277DA58B2970CF5B003802D0 /* Video+CoreDataClass.h */,
+				277DA58C2970CF5B003802D0 /* Video+CoreDataClass.m */,
+				277DA58D2970CF5B003802D0 /* Video+CoreDataProperties.m */,
 			);
 			name = "Core Data Models";
 			sourceTree = "<group>";
@@ -204,6 +204,8 @@
 		274740872557383900668501 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				27EEB7801D3D897300F46FBC /* MainViewController.h */,
+				27EEB7811D3D897300F46FBC /* MainViewController.m */,
 				270EAFA41DA592FA005E2723 /* DescriptionViewController.h */,
 				270EAFA51DA592FA005E2723 /* DescriptionViewController.m */,
 				27EEB77D1D3D804F00F46FBC /* ToggleTableViewController.h */,
@@ -254,15 +256,13 @@
 		27EEB71A1D3C82FB00F46FBC /* Cosmologist */ = {
 			isa = PBXGroup;
 			children = (
-				2723E383237CF590005C8D30 /* Core Data Models */,
+				27EB20D61D5E752B00213554 /* Constants.h */,
 				27EEB71E1D3C82FB00F46FBC /* AppDelegate.h */,
 				27EEB71F1D3C82FB00F46FBC /* AppDelegate.m */,
-				27EEB7801D3D897300F46FBC /* MainViewController.h */,
-				27EEB7811D3D897300F46FBC /* MainViewController.m */,
-				27EB20D61D5E752B00213554 /* Constants.h */,
 				274740872557383900668501 /* View Controllers */,
 				27F3A4A71D4C06B0002DC4DA /* Controllers */,
 				27F3A4A61D4C0680002DC4DA /* Models */,
+				2723E383237CF590005C8D30 /* Core Data Models */,
 				27F3A4A81D4C06BD002DC4DA /* Custom Views + Cells */,
 				27EEB7241D3C82FB00F46FBC /* Main.storyboard */,
 				27EEB7271D3C82FB00F46FBC /* Assets.xcassets */,
@@ -338,11 +338,11 @@
 				270292231D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m */,
 				270228A01DCFD2B60044FB68 /* UIImage+Resize.h */,
 				270228A11DCFD2B60044FB68 /* UIImage+Resize.m */,
-				270292191D9EF23900A3B25D /* Model.xcdatamodeld */,
 				274E757E24B28FDF0030BF18 /* DescriptionPresenter.h */,
 				274E757F24B28FDF0030BF18 /* DescriptionPresenter.m */,
 				2783DFA225F028BA006F2AA2 /* LoadingAnimationView.h */,
 				2783DFA325F028BA006F2AA2 /* LoadingAnimationView.m */,
+				270292191D9EF23900A3B25D /* Model.xcdatamodeld */,
 			);
 			name = "Custom Views + Cells";
 			sourceTree = "<group>";
@@ -485,18 +485,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				27EF9F3B1D6294E60063F907 /* AsteroidTableViewCell.m in Sources */,
-				273EC41F245E5BC9006D0556 /* Video+CoreDataClass.m in Sources */,
 				270228A81DCFEEC10044FB68 /* SliderView.m in Sources */,
 				2702921B1D9EF23900A3B25D /* Model.xcdatamodeld in Sources */,
 				27CFF6101D494017003668BC /* NasaData.m in Sources */,
-				273EC421245E5BC9006D0556 /* Album+CoreDataClass.m in Sources */,
+				277DA5942970CF5B003802D0 /* Video+CoreDataClass.m in Sources */,
 				27EEB7791D3D797600F46FBC /* SWRevealViewController.m in Sources */,
 				27EEB7201D3C82FB00F46FBC /* AppDelegate.m in Sources */,
-				273EC41C245E5BC9006D0556 /* Picture+CoreDataProperties.m in Sources */,
 				274E758024B28FDF0030BF18 /* DescriptionPresenter.m in Sources */,
 				27CFF6131D496A52003668BC /* DetailViewController.m in Sources */,
-				273EC420245E5BC9006D0556 /* Video+CoreDataProperties.m in Sources */,
 				270292181D9EEED400A3B25D /* CoreDataStack.m in Sources */,
+				277DA5902970CF5B003802D0 /* Picture+CoreDataClass.m in Sources */,
 				27F3A4A21D4A67CD002DC4DA /* SoundData.m in Sources */,
 				270EAFA61DA592FA005E2723 /* DescriptionViewController.m in Sources */,
 				270010AD1D9CC1F500C714A8 /* MediaController.m in Sources */,
@@ -504,30 +502,32 @@
 				270228A51DCFEBAC0044FB68 /* StationAnnotation.m in Sources */,
 				27F3A4AF1D4D2F63002DC4DA /* MarsViewController.m in Sources */,
 				27F3A4AC1D4D2C0E002DC4DA /* MarsData.m in Sources */,
+				277DA58F2970CF5B003802D0 /* AlbumV+CoreDataProperties.m in Sources */,
 				27EEB7881D3D9D4F00F46FBC /* NasaDataController.m in Sources */,
 				27EEB7821D3D897300F46FBC /* MainViewController.m in Sources */,
+				277DA5912970CF5B003802D0 /* Picture+CoreDataProperties.m in Sources */,
 				27081C3C1E725F9400BE4A5E /* CachedImage.m in Sources */,
+				277DA5922970CF5B003802D0 /* Album+CoreDataClass.m in Sources */,
 				2760AAB1253BA03F005CD1BC /* SKSpaceViewController.m in Sources */,
 				275625FB21EED6F5003ECBF2 /* AlbumDetailViewController.m in Sources */,
 				270292241D9EF7CA00A3B25D /* ArchivesCollectionViewCell.m in Sources */,
+				277DA5952970CF5B003802D0 /* Video+CoreDataProperties.m in Sources */,
 				270228A21DCFD2B60044FB68 /* UIImage+Resize.m in Sources */,
 				27EF9F381D626D550063F907 /* AsteroidData.m in Sources */,
 				27EFE2351DAC347D00B5458F /* CreditsViewController.m in Sources */,
 				274740292556287900668501 /* SlideItemCell.m in Sources */,
-				273EC41D245E5BC9006D0556 /* AlbumV+CoreDataClass.m in Sources */,
 				27EB20DB1D5E75E800213554 /* AsteroidsViewController.m in Sources */,
 				2702289F1DCFCC8E0044FB68 /* ISSModel.m in Sources */,
 				27F3A4A51D4C0675002DC4DA /* SoundCell.m in Sources */,
-				273EC41E245E5BC9006D0556 /* AlbumV+CoreDataProperties.m in Sources */,
 				27F504091D67B58B00C720B1 /* MarsDetailViewController.m in Sources */,
 				2718BE9C1DB41F950081C911 /* MapViewController.m in Sources */,
-				273EC41B245E5BC9006D0556 /* Picture+CoreDataClass.m in Sources */,
-				273EC422245E5BC9006D0556 /* Album+CoreDataProperties.m in Sources */,
 				27F5040F1D67BF1E00C720B1 /* EarthPhotoViewController.m in Sources */,
 				2760AAAB253B9D46005CD1BC /* TimeZoneHelper.m in Sources */,
+				277DA58E2970CF5B003802D0 /* AlbumV+CoreDataClass.m in Sources */,
 				277522D31D5547FB0099D511 /* MarsTableViewCell.m in Sources */,
 				2783DFA425F028BA006F2AA2 /* LoadingAnimationView.m in Sources */,
 				27EEB71D1D3C82FB00F46FBC /* main.m in Sources */,
+				277DA5932970CF5B003802D0 /* Album+CoreDataProperties.m in Sources */,
 				27EEB77F1D3D804F00F46FBC /* ToggleTableViewController.m in Sources */,
 				273B4F831D99D95600E1FE24 /* ArchivesViewController.m in Sources */,
 			);

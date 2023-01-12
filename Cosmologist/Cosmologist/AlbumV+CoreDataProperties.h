@@ -1,8 +1,9 @@
 //
 //  AlbumV+CoreDataProperties.h
-//  
+//  Cosmologist
 //
-//  Created by Ethan Hess on 11/13/19.
+//  Created by Ethan Hess on 1/12/23.
+//  Copyright © 2023 Ethan Hess. All rights reserved.
 //
 //
 
@@ -13,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AlbumV (CoreDataProperties)
 
-+ (NSFetchRequest<AlbumV *> *)fetchRequest;
++ (NSFetchRequest<AlbumV *> *)fetchRequest NS_SWIFT_NAME(fetchRequest());
 
 @property (nullable, nonatomic, copy) NSString *name;
 @property (nullable, nonatomic, retain) NSOrderedSet<Video *> *videos;

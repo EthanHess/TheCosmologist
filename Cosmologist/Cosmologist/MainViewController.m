@@ -23,6 +23,8 @@
 
 @interface MainViewController () <UIWebViewDelegate, DescriptionPresenterDelegate>
 
+//MARK: Properties (nonatomic = fast, non-thread safe property)
+
 @property (strong, nonatomic) IBOutlet UIImageView *pictureView;
 @property (strong, nonatomic) IBOutlet UILabel *pictureTitle;
 @property (strong, nonatomic) IBOutlet UILabel *imageOrVideoLabel;
